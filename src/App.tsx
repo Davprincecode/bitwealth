@@ -53,6 +53,7 @@ import MinorSalesReport from "./pages/Warehouse/MinorSalesReport";
 import IssueToShop from "./pages/Warehouse/IssueToShop";
 import IssueToShopReport from "./pages/Warehouse/IssueToShopReport";
 import AddWareHouseEXpenses from "./pages/Warehouse/AddWareHouseEXpenses";
+import LandingPage from "./pages/LandingPage";
 
 
 
@@ -75,7 +76,13 @@ function App() {
    
 
     <Routes>
-    <Route path="/" element={<Login />} /> 
+
+    <Route path="/" element={<LandingPage />} />
+
+
+    <Route path="/login" element={<Login />} />
+
+
     <Route path="/logout" element={<Logout />} /> 
     <Route path="/pos-dashboard" element={<PosDashboard  />} />
     <Route path="/pr-dashboard" element={<PRDashboard  />} />

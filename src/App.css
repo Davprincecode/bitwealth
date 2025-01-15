@@ -30,7 +30,7 @@ img{
     object-fit: cover;
 }
 body{
-background-color: var(--bck);
+/* background-color: var(--bck); */
 }
 .mainWrapper{
     display: flex;
