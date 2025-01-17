@@ -66,7 +66,6 @@ body{
     top: 0px;
     bottom: 0px;
     left: 0px;
-    background-color: var(--whiteBck);
     width: 220px;
     /* height: 100vh; */
     text-align: center;
@@ -302,7 +301,7 @@ gap: 10px;
         margin-top: 45px;
     }
     .barMenu svg{
-        font-size: 20px;
+    font-size: 20px;
     color: #e1712d;
     }
     .harmburger{

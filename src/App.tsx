@@ -1,6 +1,7 @@
 // import { useState } from 'react';
 import { Route, Routes} from "react-router-dom";
 import './App.css'
+import './AppCustom.css'
 import 'react-multi-carousel/lib/styles.css';
 import Blog from "./component/Blog";
 import BlogDetails from "./component/BlogDetails";
@@ -54,15 +55,18 @@ import IssueToShop from "./pages/Warehouse/IssueToShop";
 import IssueToShopReport from "./pages/Warehouse/IssueToShopReport";
 import AddWareHouseEXpenses from "./pages/Warehouse/AddWareHouseEXpenses";
 import LandingPage from "./pages/LandingPage";
+import PosUiDesign from "./pages/user/PosUiDesign";
+import { userAuth } from "./pages/context/AuthContext";
 
 
 
 
 function App() {
-  
+  const {baseUrl, token} = userAuth();
+  let colorSwitch = "white";
   return (
-
-  <div className="App" style = {{ position: "relative" }}>
+  
+    <div className={colorSwitch === "white" ? "bodyappwhite" : "bodyappblack"}>
 
 <ToastContainer 
    position="top-right"
@@ -84,7 +88,13 @@ function App() {
 
 
     <Route path="/logout" element={<Logout />} /> 
+
+    <Route path="/dashboard" element={<PosUiDesign  />} />
+
+
+
     <Route path="/pos-dashboard" element={<PosDashboard  />} />
+
     <Route path="/pr-dashboard" element={<PRDashboard  />} />
     <Route path="/mg-dashboard" element={<MgDashboard  />} />
     <Route path="/sendproduct" element={<SendProduct  />} />
