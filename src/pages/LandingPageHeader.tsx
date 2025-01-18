@@ -18,13 +18,13 @@ function LandingPageHeader() {
                     <NavLink to="">Home</NavLink>
                 </li>
                 <li>
-                    <NavLink to="">Home</NavLink>
+                    <NavLink to="#about">About Us</NavLink>
                 </li>
                 <li>
-                    <NavLink to="">Home</NavLink>
+                    <NavLink to="#portfolio">Portfolio</NavLink>
                 </li>
                 <li>
-                    <NavLink to="">Home</NavLink>
+                    <NavLink to="#event">Event</NavLink>
                 </li>
             </ul>
 

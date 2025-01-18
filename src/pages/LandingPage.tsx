@@ -89,6 +89,15 @@ function LandingPage() {
       ],
       profileImg: profileImg2,
     },
+    {
+      name: 'Okoro Osinachi',
+      position : "Data analyst/community manager.",
+      portfolio: [
+       'A cryptocurrency enthusiast since 2016. Involved in blockchain research, cryptocurrency fundamental analysis, and tokenomics.',
+        'A community manager and moderator of BitWealthCapital from 2019 till date.'
+      ],
+      profileImg: profileImg2,
+    },
    
   ];
   return (
@@ -100,7 +109,7 @@ function LandingPage() {
           <div className="herosectioncontent">
             <h1>BitWealthCapital is a cryptocurrency trade club and hedge fund management company</h1>
             <p>BitWealthCapital is a cryptocurrency trade club and hedge fund management company that has been serving its members and clients since 2018. Over the years, <p>we’ve rebranded twice to enhance our services and adapt to the evolving needs of our community. Originally named Bitcoin Money Badgers, we adopted the name BitWealthCapital in 2019 following a major review and upgrade.
-            We have maintained consistent profitability from the cryptocurrency market cycle of 2017/18 to date. By applying unique strategies and risk management practices, we have thrived in both bull and bear markets. This commitment to excellence is why we proudly say, “We are forever stuck in profit.</p>
+            We have maintained consistent profitability from the cryptocurrency market cycle of 2017/2018 to date. By applying unique strategies and risk management practices, we have thrived in both bull and bear markets. This commitment to excellence is why we proudly say, “We are forever stuck in profit.</p>
 
            <p> We deeply value the trust of our members and clients who look to us for guidance, education, and coaching on their journey to financial freedom. By leveraging opportunities in Bitcoin, cryptocurrency, blockchain, and associated technologies, we help our community achieve their goals in a realistic and sustainable way.</p>
              </p>
@@ -118,103 +127,102 @@ function LandingPage() {
           
        </div>
 {/* =============historical performance and portio */}
-<div className="historySection">
-            <div className="historySectionCon">
-               <h1>our historical performance or portfolio</h1>
-               
-               <div className="historyConFlex">
+            <div className="historySection" id='portfolio'>
+                    <div className="historySectionCon">
+                        <h1>our historical performance or portfolio</h1>
+                        
+                        <div className="historyConFlex">
 
-                <div className="historyProfitCon">
-                  <div className="historyDate">
-                    May - December 2018
-                  </div>
-                    <div className="profitmargin">
-                     304.59%
-                    </div>
-                    <div className="profitCon">
-                      <p>
-                        We Achieved 304.59% profit (~3× ROI).
-                      </p>
-                    </div>
-                </div>
+                        <div className="historyProfitCon">
+                          <div className="historyDate">
+                            May - December 2018
+                          </div>
+                            <div className="profitmargin">
+                              304.59%
+                            </div>
+                            <div className="profitCon">
+                              <p>
+                                We Achieved 304.59% profit (~3× ROI).
+                              </p>
+                            </div>
+                        </div>
 
-                <div className="historyProfitCon">
-                  <div className="historyDate">
-                    January - December 2019
-                  </div>
-                    <div className="profitmargin">
-                    677.92%
-                    </div>
-                    <div className="profitCon">
-                      <p>
-                        We Delivered an impressive 677.92% profit (~6.7× ROI).
-                      </p>
-                    </div>
-                </div>
+                        <div className="historyProfitCon">
+                          <div className="historyDate">
+                            January - December 2019
+                          </div>
+                            <div className="profitmargin">
+                            677.92%
+                            </div>
+                            <div className="profitCon">
+                              <p>
+                                We Delivered an impressive 677.92% profit (~6.7× ROI).
+                              </p>
+                            </div>
+                        </div>
 
-                <div className="historyProfitCon">
-                  <div className="historyDate">
-                    January 2020 - December 2021
-                  </div>
-                    <div className="profitmargin">
-                    2000%
-                    </div>
-                    <div className="profitCon">
-                      <p>
-                        We Recorded a remarkable 2000% profit (~20× ROI).
-                      </p>
-                    </div>
-                </div>
-
-
-                <div className="historyProfitCon">
-                  <div className="historyDate">
-                    2022 - 2023
-                  </div>
-                    <div className="profitCon">
-                      <p>
-                       This period was marked as an accumulation phase for Bitcoin.
-                      </p>
-                      <p>
-                      Accumulated Bitcoin between the $18,000 and $30,000 price range.
-                      </p>
-                    </div>
-                </div>
-
-                <div className="historyProfitCon">
-                  <div className="historyDate">
-                   2024
-                  </div>
-                    <div className="profitmargin">
-                    500%
-                    </div>
-                    <div className="profitCon">
-                      <p>
-                       Currently holding our Bitcoin portfolio with approximately 500% profit (~5× ROI).
-                      </p>
-                    </div>
-                </div>
-
-                <div className="historyProfitCon">
-                  <div className="historyDate">
-                  2025
-                  </div>
-                    
-                    <div className="profitCon">
-                      <p>
-                      We plan to diversify into carefully selected mid- and low-market-cap alternative cryptocurrencies to maximize returns for the 2025-2026 market cycle.
-                      </p>
-                    </div>
-                </div>
+                        <div className="historyProfitCon">
+                          <div className="historyDate">
+                            January 2020 - December 2021
+                          </div>
+                            <div className="profitmargin">
+                            2000%
+                            </div>
+                            <div className="profitCon">
+                              <p>
+                                We Recorded a remarkable 2000% profit (~20× ROI).
+                              </p>
+                            </div>
+                        </div>
 
 
-               </div>
+                        <div className="historyProfitCon">
+                          <div className="historyDate">
+                            2022 - 2023
+                          </div>
+                            <div className="profitCon">
+                              <p>
+                                This period was marked as an accumulation phase for Bitcoin.
+                              </p>
+                              <p>
+                              Accumulated Bitcoin between the $18,000 and $30,000 price range.
+                              </p>
+                            </div>
+                        </div>
+
+                        <div className="historyProfitCon">
+                          <div className="historyDate">
+                            2024
+                          </div>
+                            <div className="profitmargin">
+                            500%
+                            </div>
+                            <div className="profitCon">
+                              <p>
+                                Currently holding our Bitcoin portfolio with approximately 500% profit (~5× ROI).
+                              </p>
+                            </div>
+                        </div>
+
+                        <div className="historyProfitCon">
+                          <div className="historyDate">
+                          2025
+                          </div>
+                            
+                            <div className="profitCon">
+                              <p>
+                              We plan to diversify into carefully selected mid- and low-market-cap alternative cryptocurrencies to maximize returns for the 2025-2026 market cycle.
+                              </p>
+                            </div>
+                        </div>
+
+
+                        </div>
+                    </div>
             </div>
-    </div>
 
-        {/* ============ historical end and portfolio ========== */}
-
-       <div className="aboutSection">
+{/* ============ historical and portfolio end========== */}
+       <div className="aboutSection" id="about">
         <h1>why choose use</h1>
         <div className="aboutSectionCon">
         <div className="aboutSectionContentCon">
@@ -227,7 +235,7 @@ function LandingPage() {
                 <div className="aboutOutlineContext">
                   <h4>Consistent Profitability</h4>
                   <p>
-                  We have maintained consistent profitability from the cryptocurrency market cycle of 2017/18 to date. By applying unique strategies and risk management practices, we have thrived in both bull and bear markets. This commitment to excellence is why we proudly say, “We are forever stuck in profit.”
+                  We have maintained consistent profitability from the cryptocurrency market cycle of 2017/2018 to date. By applying unique strategies and risk management practices, we have thrived in both bull and bear markets. This commitment to excellence is why we proudly say, “We are forever stuck in profit.”
                   </p>
                 </div>
               </div>
@@ -269,121 +277,120 @@ function LandingPage() {
         </div>
         </div>
        </div>
-    {/* ====== historical end ========= */}
+{/* ====== historical end ========= */}
       </div>
       
+{/* ===================== events ================== */}
+  <div className="pastEvent" id='event'>
+    <div className="pastEventHeader">
+      <h2>Previous Event</h2>
+    </div>
 
-
-            {/* ===================== events ================== */}
-              <div className="pastEvent">
-                <div className="pastEventHeader">
-                  <h2>Event</h2>
+    <Carousel
+    responsive={responsive}
+    >
+        <div>
+          <div className="eventConwrapper">
+            <div className="eventCon">
+                <div className="eventImage">
+                <img src={image1} alt="" />
                 </div>
-
-               <Carousel
-                responsive={responsive}
-                >
-                    <div>
-                      <div className="eventConwrapper">
-                        <div className="eventCon">
-                           <div className="eventImage">
-                            <img src={image1} alt="" />
-                           </div>
-                           <div className="eventContent">
-                            <p>Educating the participants of Blockchain Digital Asset Conference 2018</p>
-                           </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <div className="eventConwrapper">
-                        <div className="eventCon">
-                           <div className="eventImage">
-                            <img src={image2} alt="" />
-                           </div>
-                           <div className="eventContent">
-                            <p>Educating the participants of Blockchain Digital Asset Conference 2018</p>
-                           </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <div className="eventConwrapper">
-                        <div className="eventCon">
-                           <div className="eventImage">
-                            <img src={image3} alt="" />
-                           </div>
-                           <div className="eventContent">
-                            <p>Educating the participants of Blockchain Digital Asset Conference 2018</p>
-                           </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <div className="eventConwrapper">
-                        <div className="eventCon">
-                           <div className="eventImage">
-                            <img src={image4} alt="" />
-                           </div>
-                           <div className="eventContent">
-                            <p>Educating the participants of Blockchain Digital Asset Conference 2018</p>
-                           </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <div className="eventConwrapper">
-                        <div className="eventCon">
-                           <div className="eventImage">
-                            <img src={image5} alt="" />
-                           </div>
-                           <div className="eventContent">
-                            <p>Educating the participants of Blockchain Digital Asset Conference 2018</p>
-                           </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <div className="eventConwrapper">
-                        <div className="eventCon">
-                           <div className="eventImage">
-                            <img src={image6} alt="" />
-                           </div>
-                           <div className="eventContent">
-                            <p>Educating the participants of Blockchain Digital Asset Conference 2018</p>
-                           </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <div className="eventConwrapper">
-                        <div className="eventCon">
-                           <div className="eventImage">
-                            <img src={image7} alt="" />
-                           </div>
-                           <div className="eventContent">
-                            <p>Educating the participants of Blockchain Digital Asset Conference 2018</p>
-                           </div>
-                        </div>
-                      </div>
-                    </div>
-
-
-                    
-                </Carousel>
+                <div className="eventContent">
+                <p>Educating the participants of Blockchain Digital Asset Conference 2018</p>
+                </div>
             </div>
-              {/* ======================events end=============== */}
+          </div>
+        </div>
+
+        <div>
+          <div className="eventConwrapper">
+            <div className="eventCon">
+                <div className="eventImage">
+                <img src={image2} alt="" />
+                </div>
+                <div className="eventContent">
+                <p>Educating the participants of Blockchain Digital Asset Conference 2018</p>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div className="eventConwrapper">
+            <div className="eventCon">
+                <div className="eventImage">
+                <img src={image3} alt="" />
+                </div>
+                <div className="eventContent">
+                <p>Educating the participants of Blockchain Digital Asset Conference 2018</p>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div className="eventConwrapper">
+            <div className="eventCon">
+                <div className="eventImage">
+                <img src={image4} alt="" />
+                </div>
+                <div className="eventContent">
+                <p>Educating the participants of Blockchain Digital Asset Conference 2018</p>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div className="eventConwrapper">
+            <div className="eventCon">
+                <div className="eventImage">
+                <img src={image5} alt="" />
+                </div>
+                <div className="eventContent">
+                <p>Educating the participants of Blockchain Digital Asset Conference 2018</p>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div className="eventConwrapper">
+            <div className="eventCon">
+                <div className="eventImage">
+                <img src={image6} alt="" />
+                </div>
+                <div className="eventContent">
+                <p>Educating the participants of Blockchain Digital Asset Conference 2018</p>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div className="eventConwrapper">
+            <div className="eventCon">
+                <div className="eventImage">
+                <img src={image7} alt="" />
+                </div>
+                <div className="eventContent">
+                <p>Educating the participants of Blockchain Digital Asset Conference 2018</p>
+                </div>
+            </div>
+          </div>
+        </div>
+
+
+        
+    </Carousel>
+</div>
+  {/* ======================events end=============== */}
 
     <div className="founderProfile">
-        <h2>About the Founder and Team</h2>
+       
     <div className="founderCon">
-      <div className="team-section">
+
+    <div className="team-section">
       <h1>Our Team</h1>
 
       <div className="team-members-con">
@@ -457,7 +464,7 @@ function LandingPage() {
           
       </div>
        <div className="copyright">
-            <p>copy right @ 2025</p>
+            <p>© 2025 ismodev. All rights reserved.</p>
            </div>
       </div>
       

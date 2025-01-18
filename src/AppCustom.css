@@ -212,6 +212,20 @@ cursor: pointer;
     padding: 7px 20px;
     cursor: pointer;
 }
+
+
+@media(max-width : 620px){
+    .barMenu{
+        display: block;
+    }
+    .headermenu ul{
+        display: none;
+    }
+    .headermenu .auth{
+        display: none;
+    }
+}
+
 .herosectioncon{
 display: flex;
 margin-top: 50px;
@@ -266,13 +280,13 @@ width: 100%;
 
 /* ---------------- */
 .historySection{
-
+    margin-top: 40px;
 }
 .historySectionCon{
 
 }
 .historySectionCon h1{
-
+    margin-bottom: 20px;
 }
 .historyConFlex{
 display: flex;
@@ -337,12 +351,11 @@ padding-top: 10px;
 /* ====================== about us ========== */
 
 .aboutSection{
-margin: 20px 0px;
-
+margin: 40px 0px;
 }
 .aboutSection h1{
 text-transform: capitalize;
-margin-bottom: 10px;
+margin-bottom: 20px;
 }
 
 .aboutSectionCon{
@@ -388,6 +401,9 @@ gap: 10px;
 .pastEvent{
     margin: 20px 0px;
 }
+.pastEventHeader{
+    margin-bottom: 20px;
+}
 .eventConwrapper{
 margin: 0px 10px;
 }
@@ -410,14 +426,20 @@ margin: 0px 10px;
     border-top-right-radius: 10px;
 }
 /* ==========  our team ================== */
+.founderProfile{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
 .team-members-con{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 .team-member {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: calc(33.33% - 20px);
+    flex-basis: calc(30.33% - 20px);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin: 20px;
     padding: 20px;
@@ -472,7 +494,18 @@ margin: 0px 10px;
     width: 75%;
   }
   
-
+  @media (max-width: 768px) {
+    .team-member {
+      flex-basis: calc(40% - 20px); 
+    }
+  }
+  @media (max-width: 600px) {
+    .team-member {
+        flex-basis: 100%;
+       margin: 20px 0px;
+      }
+  }
+  
 /* ============ our team end ============= */
 
 /* faq */
@@ -535,7 +568,7 @@ margin: 0px 10px;
 .footer {
     background-color: black;
     color: #fff;
-    margin: 0px -40px;
+    margin: -5px -40px 0px -40px;
   }
   .footerCon{
     padding: 50px 0;
@@ -546,6 +579,7 @@ margin: 0px 10px;
   }
   .contactus {
     width: 30%;
+    margin-left: 20px;
   }
   
   .contactus h1 {
@@ -555,7 +589,7 @@ margin: 0px 10px;
   
   .contactFlexicon {
     display: flex;
-    justify-content: space-between;
+    
     align-items: center;
   }
   
@@ -593,5 +627,10 @@ margin: 0px 10px;
   .itemCon p:hover {
     color: #fff;
   }
-
+.copyright{
+    border-top: 1px solid white;
+    padding: 10px 0px;
+    text-align: center;
+    text-transform: capitalize;
+}
 /* ========== footer end ================ */
