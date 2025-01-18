@@ -18,6 +18,9 @@ import profileImg2 from '../assets/images/profile2.jpeg'
 
 import FAQ from './Faq'
 import TeamMember from '../TeamMember'
+import { FaFacebook, FaInstagramSquare, FaWhatsappSquare } from 'react-icons/fa'
+import { MdOutlineEmail } from 'react-icons/md'
+import { RiTwitterXLine } from 'react-icons/ri'
 
 function LandingPage() {
 
@@ -400,23 +403,34 @@ function LandingPage() {
 {/* ===== faq end ============ */}
 
                 <div className="footer">
+                <div className="footerCon">
 
                   <div className="contactus">
                        <h1>community</h1>
                        <div className="contactFlexicon">
                         <div className="icon"> 
                         <NavLink to="#">
-                          a
+                        <FaFacebook />
                         </NavLink> 
                         </div>
                         <div className="icon"> 
                         <NavLink to="#">
-                          a
+                          <FaWhatsappSquare />
                         </NavLink> 
                         </div>
                         <div className="icon"> 
                         <NavLink to="#">
-                          a
+                           <FaInstagramSquare />
+                        </NavLink> 
+                        </div>
+                        <div className="icon"> 
+                        <NavLink to="#">
+                           <RiTwitterXLine />
+                        </NavLink> 
+                        </div>
+                        <div className="icon"> 
+                        <NavLink to="#">
+                          <MdOutlineEmail />
                         </NavLink> 
                         </div>
                         
@@ -440,8 +454,13 @@ function LandingPage() {
                       
                     </div>
                   </div>
-
-                </div>
+          
+      </div>
+       <div className="copyright">
+            <p>copy right @ 2025</p>
+           </div>
+      </div>
+      
     </div>
   )
 }
