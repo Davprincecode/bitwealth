@@ -1,10 +1,20 @@
 :root{
-  --bPrimary : #ffaa00;
+  --bPrimary : #faa205;
+  --mixedColor: #DE8B2D;
+  /* --bPrimary : #ffaa00; */
   /* #ffa800 */
-  --bs-orange: #fd7e14;
+  /* --bs-orange: #fd7e14; */
+  --bs-orange: #099b6a;
 }
 #root{
     height: 100vh;
+}
+h1, h2, h3, h4, h6{
+    text-transform: capitalize;
+}
+p{
+    line-height: 25px;
+    font-size: 18px;
 }
 .bodyappblack{
     background-color: #060610;
@@ -279,7 +289,7 @@ justify-content: space-between;
     text-transform: capitalize;
 }
 .historyDate{
-    background: #fd7e14;
+    background: var(--bs-orange);
     width: 186px;
     font-size: 16px;
     padding: 7px;
@@ -426,7 +436,7 @@ margin: 0px 10px;
     border-radius: 50%;
     margin-left: 7px;
     border-left: 5px solid green;
-    border-bottom: 5px solid green;
+    border-bottom: 5px solid var(--bs-orange);
   }
   
   .portfolio {
@@ -437,7 +447,7 @@ margin: 0px 10px;
     display: flex;
     align-items: center;
     gap: 10px;
-    background-color: #4CAF50;
+    background-color: var(--bs-orange);
     color: #fff;
     padding: 10px 20px;
     border-top-right-radius: 10px;
