@@ -3,11 +3,21 @@ import LandingPageHeader from './LandingPageHeader'
 import { NavLink } from 'react-router-dom'
 import heroImg from '../assets/images/heroImage-removebg.png'
 import signalImg from '../assets/images/signal.svg'
-import { IoArrowForwardCircleSharp } from 'react-icons/io5'
+import { IoArrowForwardCircleSharp, IoHomeSharp } from 'react-icons/io5'
 import Carousel from 'react-multi-carousel'
 import image1 from '../assets/images/image1.jpeg'
 import image2 from '../assets/images/image2.jpeg'
+import image3 from '../assets/images/image3.jpeg'
+import image4 from '../assets/images/image4.jpeg'
+import image5 from '../assets/images/image5.jpeg'
+import image6 from '../assets/images/image6.jpeg'
+import image7 from '../assets/images/image7.jpeg'
+import profileImg from '../assets/images/ceophoto.jpeg'
+import profileImg1 from '../assets/images/profile.jpg'
+import profileImg2 from '../assets/images/profile2.jpeg'
+
 import FAQ from './Faq'
+import TeamMember from '../TeamMember'
 
 function LandingPage() {
 
@@ -31,6 +41,53 @@ function LandingPage() {
     }
   };
 
+
+  const teamMembers = [
+    {
+      name: 'Dr. Shadrach Egbokwu',
+      portfolio: [
+        'BitWealthCapital was founded by Dr. Shadrach Egbokwu in May 2018. He leads the company’s operations alongside a team of skilled professionals, ensuring the delivery of exceptional services to clients and members.',
+        'Dr. Shadrach has been actively involved in the Bitcoin, cryptocurrency, and blockchain space since the third quarter of 2016. He made his initial Bitcoin purchases when 1 BTC was valued at less than $800.',
+        'As a prolific educator, advocate, and coach, Dr. Shadrach is deeply committed to advancing the growth and adoption of Bitcoin and its associated technologies both in Africa and globally. His efforts have earned him recognition as a key figure in the industry.',
+        'Highlights of His Contributions:',
+        'Speaker at numerous cryptocurrency conferences worldwide (onsite and online) since 2018.',
+        'Actively led individuals to become knowledgeable and profitable within the cryptocurrency ecosystem.',
+        'A steadfast crusader and believer in the transformative potential of blockchain technology.',
+        'Once a brand ambassador of OKX exchange and TinyTraders company.',
+        'Advisor to several cryptocurrency projects.',
+        'A consistently profitable trader , investor, and entrepreneur.',
+        'Dr. Shadrach’s vision and leadership have been instrumental in shaping the mission and success of BitWealthCapital.',
+      ],
+      profileImg: profileImg,
+    },
+    {
+      name: 'Dr. Shadrach Egbokwu',
+      portfolio: [
+        'BitWealthCapital was founded by Dr. Shadrach Egbokwu in May 2018. He leads the company’s operations alongside a team of skilled professionals, ensuring the delivery of exceptional services to clients and members.',
+        'Dr. Shadrach has been actively involved in the Bitcoin, cryptocurrency, and blockchain space since the third quarter of 2016. He made his initial Bitcoin purchases when 1 BTC was valued at less than $800.',
+        'As a prolific educator, advocate, and coach, Dr. Shadrach is deeply committed to advancing the growth and adoption of Bitcoin and its associated technologies both in Africa and globally. His efforts have earned him recognition as a key figure in the industry.',
+        'Highlights of His Contributions:',
+        'Speaker at numerous cryptocurrency conferences worldwide (onsite and online) since 2018.',
+        'Actively led individuals to become knowledgeable and profitable within the cryptocurrency ecosystem.',
+        'A steadfast crusader and believer in the transformative potential of blockchain technology.',
+        'Once a brand ambassador of OKX exchange and TinyTraders company.',
+        'Advisor to several cryptocurrency projects.',
+        'A consistently profitable trader , investor, and entrepreneur.',
+        'Dr. Shadrach’s vision and leadership have been instrumental in shaping the mission and success of BitWealthCapital.',
+      ],
+      profileImg: profileImg1,
+    },
+    {
+      name: 'Okoro Osinachi',
+      position : "Data analyst/community manager.",
+      portfolio: [
+       'A cryptocurrency enthusiast since 2016. Involved in blockchain research, cryptocurrency fundamental analysis, and tokenomics.',
+        'A community manager and moderator of BitWealthCapital from 2019 till date.'
+      ],
+      profileImg: profileImg2,
+    },
+   
+  ];
   return (
     <div className='homeLandingPage'>
       <div className="herosection">
@@ -158,9 +215,13 @@ function LandingPage() {
         <h1>why choose use</h1>
         <div className="aboutSectionCon">
         <div className="aboutSectionContentCon">
+
            <div className="aboutContent">
               <div className="aboutOutline">
-                <div className="aboutOutlineCon">
+                <div className="aboutOutlineIcon">
+                 <IoHomeSharp />
+                </div>
+                <div className="aboutOutlineContext">
                   <h4>Consistent Profitability</h4>
                   <p>
                   We have maintained consistent profitability from the cryptocurrency market cycle of 2017/18 to date. By applying unique strategies and risk management practices, we have thrived in both bull and bear markets. This commitment to excellence is why we proudly say, “We are forever stuck in profit.”
@@ -169,21 +230,30 @@ function LandingPage() {
               </div>
               
               <div className="aboutOutline">
-                <div className="aboutOutlineCon">
+              <div className="aboutOutlineIcon">
+                 <IoHomeSharp />
+                </div>
+                <div className="aboutOutlineContext">
                 <h4>Our approach</h4>
               <p>Our approach is built on a foundation of timely strategies and disciplined risk management, which sets us apart in the industry and ensures exceptional service delivery.</p>
                 </div>
               </div>
 
               <div className="aboutOutline">
-                <div className="aboutOutlineCon">
+              <div className="aboutOutlineIcon">
+                 <IoHomeSharp />
+                </div>
+                <div className="aboutOutlineContext">
                 <h4>Empowering Our Community</h4>
                <p>We deeply value the trust of our members and clients who look to us for guidance, education, and coaching on their journey to financial freedom. By leveraging opportunities in Bitcoin, cryptocurrency, blockchain, and associated technologies, we help our community achieve their goals in a realistic and sustainable way.</p>
                 </div>
               </div>
 
               <div className="aboutOutline">
-                <div className="aboutOutlineCon">
+              <div className="aboutOutlineIcon">
+                 <IoHomeSharp />
+                </div>
+                <div className="aboutOutlineContext">
                 <h4>Our Promise</h4>
                 <p>Since our inception, we have been dedicated to providing satisfactory services to cryptocurrency traders, investors, and enthusiasts. We don’t take this trust for granted. Our mission is to safely and profitably guide our members as they navigate the cryptocurrency free market.</p>
                  <p>
@@ -202,11 +272,14 @@ function LandingPage() {
 
 
             {/* ===================== events ================== */}
-           <div className="pastEvent">
+              <div className="pastEvent">
+                <div className="pastEventHeader">
+                  <h2>Event</h2>
+                </div>
+
                <Carousel
                 responsive={responsive}
-                
-               >
+                >
                     <div>
                       <div className="eventConwrapper">
                         <div className="eventCon">
@@ -232,67 +305,99 @@ function LandingPage() {
                         </div>
                       </div>
                     </div>
-                    <div>Item 2</div>
-                    <div>Item 3</div>
-                    <div>Item 4</div>
-                    <div>Item 5</div>
-                    <div>Item 6</div>
-                    <div>Item 7</div>
-                    <div>Item 8</div>
-                    <div>Item 9</div>
-                    <div>Item 10</div>
-                    <div>Item 11</div>
-                    <div>Item 12</div>
+
+                    <div>
+                      <div className="eventConwrapper">
+                        <div className="eventCon">
+                           <div className="eventImage">
+                            <img src={image3} alt="" />
+                           </div>
+                           <div className="eventContent">
+                            <p>Educating the participants of Blockchain Digital Asset Conference 2018</p>
+                           </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div className="eventConwrapper">
+                        <div className="eventCon">
+                           <div className="eventImage">
+                            <img src={image4} alt="" />
+                           </div>
+                           <div className="eventContent">
+                            <p>Educating the participants of Blockchain Digital Asset Conference 2018</p>
+                           </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div className="eventConwrapper">
+                        <div className="eventCon">
+                           <div className="eventImage">
+                            <img src={image5} alt="" />
+                           </div>
+                           <div className="eventContent">
+                            <p>Educating the participants of Blockchain Digital Asset Conference 2018</p>
+                           </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div className="eventConwrapper">
+                        <div className="eventCon">
+                           <div className="eventImage">
+                            <img src={image6} alt="" />
+                           </div>
+                           <div className="eventContent">
+                            <p>Educating the participants of Blockchain Digital Asset Conference 2018</p>
+                           </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div className="eventConwrapper">
+                        <div className="eventCon">
+                           <div className="eventImage">
+                            <img src={image7} alt="" />
+                           </div>
+                           <div className="eventContent">
+                            <p>Educating the participants of Blockchain Digital Asset Conference 2018</p>
+                           </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    
                 </Carousel>
             </div>
               {/* ======================events end=============== */}
 
-               <div className="founderProfile">
-                <h2>About the Founder and Team</h2>
-                <div className="founderCon">
-                  <div className="founderImage">
-                    <img src="" alt="" />
-                  </div>
-                  <div className="founterContent">
-                    <p>
-                    BitWealthCapital was founded by Dr. Shadrach Egbokwu in May 2018. He leads the company’s operations alongside a team of skilled professionals, ensuring the delivery of exceptional services to clients and members.
-                    </p>
+    <div className="founderProfile">
+        <h2>About the Founder and Team</h2>
+    <div className="founderCon">
+      <div className="team-section">
+      <h1>Our Team</h1>
 
-                    <p>
-                    Dr. Shadrach has been actively involved in the Bitcoin, cryptocurrency, and blockchain space since the third quarter of 2016. He made his initial Bitcoin purchases when 1 BTC was valued at less than $800.
-                    </p>
-                    <p>
-                    As a prolific educator, advocate, and coach, Dr. Shadrach is deeply committed to advancing the growth and adoption of Bitcoin and its associated technologies both in Africa and globally. His efforts have earned him recognition as a key figure in the industry.
-                    </p>
-                    <h2>Highlights of His Contributions:</h2>
-                    <p>
-                    Speaker at numerous cryptocurrency conferences worldwide (onsite and online) since 2018.
-                    </p>
-                    <p>
-                    Actively led individuals to become knowledgeable and profitable within the cryptocurrency ecosystem.
-                    </p>
-                    <p>
-                    A steadfast crusader and believer in the transformative potential of blockchain technology.
-                    </p>
-                    <p>
-                    Once a brand ambassador of OKX exchange and TinyTraders company.
-                    </p>
-                    <p>
-                    Advisor to several cryptocurrency projects.
-                    </p>
-                    <p>
-                    A consistently profitable trader , investor, and entrepreneur.
-                    </p>
-                    <p>
-                    Dr. Shadrach’s vision and leadership have been instrumental in shaping the mission and success of BitWealthCapital.
-                    </p>
-                  </div>
-                </div>
-               </div>
+      <div className="team-members-con">
+        {teamMembers.map((member, index) => (
+          <TeamMember key={index} name={member.name} portfolio={member.portfolio} profileImg={member.profileImg}/>
+        ))}
+      </div>
+
+    </div>
+    </div>              
+</div>
                 
-                {/* ======= faq === */}
-                <FAQ />
-                {/* ===== faq end ============ */}
+{/* ======= faq === */}
+<div className="faqCon">
+  <FAQ /> 
+</div>
+{/* ===== faq end ============ */}
 
                 <div className="footer">
 

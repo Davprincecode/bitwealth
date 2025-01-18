@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaPlus, FaPlusSquare } from 'react-icons/fa';
 
 const FAQ = () => {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -85,7 +86,11 @@ const FAQ = () => {
             <div className="faq-question" onClick={() => handleToggle(index)}>
               <span className="icon">{faq.icon}</span>
               <span className="question">{faq.question}</span>
-              <span className="arrow">{activeIndex === index ? '↑' : '↓'}</span>
+              <span className="arrow">
+                {/* {activeIndex === index ? '↑' : '↓'} */}
+                {/* <FaPlus /> */}
+                <FaPlusSquare />
+                </span>
             </div>
             {activeIndex === index && (
               <div className="faq-answer">

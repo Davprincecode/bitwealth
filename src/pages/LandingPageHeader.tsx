@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../assets/images/johntopLogo.png'
+import logo from '../assets/images/logo.jpeg'
 import { NavLink } from 'react-router-dom'
 import { FiAlignRight } from 'react-icons/fi'
 

@@ -168,8 +168,9 @@ align-items: center;
 justify-content: space-between;
 padding: 10px 20px;
 }
+
 .headerLogo{
- width: 50px;
+ width: 80px;
  height: 50px;
 }
 
@@ -323,15 +324,17 @@ padding-top: 10px;
     }
   }
   
-/* ====================== about use ========== */
+/* ====================== about us ========== */
 
 .aboutSection{
-margin-top: 20px;
+margin: 20px 0px;
+
 }
 .aboutSection h1{
 text-transform: capitalize;
-
+margin-bottom: 10px;
 }
+
 .aboutSectionCon{
 
 }
@@ -341,22 +344,148 @@ text-transform: capitalize;
     flex-direction: column;
     gap: 20px;
 }
+.aboutOutline{
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.aboutOutlineIcon{
+    background-color: var(--bs-orange);
+    border-radius: 8px;
+    padding: 10px;
+}
+.aboutOutlineIcon svg{
+    font-size: 18px;
+    color: white;
+}
+.aboutOutlineContext{
 
-.eventImage{
-    width: 100px;
-    height: 100px;
+}
+.aboutOutlineContext h4{
+    text-transform: capitalize;
+    margin-bottom: 5px;
+    font-size: 24px;
 }
 
+@media(max-width : 650px){
+    .aboutOutline{
+        flex-direction: column;
+        align-items: normal;
+    }
+}
+
+/* ============= about us end ================ */
+.pastEvent{
+    margin: 20px 0px;
+}
+.eventConwrapper{
+margin: 0px 10px;
+}
+
+.eventCon{
+    border-radius: 10px ;
+    border: 2px solid var(--bPrimary);
+    width: 250px;
+    padding: 10px;
+}
+
+.eventImage{
+    width: 100%;
+    height: 200px;
+    margin-bottom: 10px;
+}
+
+.eventImage img{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+/* ==========  our team ================== */
+.team-members-con{
+    display: flex;
+}
+.team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(33.33% - 20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+  border-radius: 10px;   
+  }
+  .TeamProfileImage{
+    width: 120px;
+    height: 120px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    background-color: skyblue;
+  }
+  .TeamProfileImage img {
+    border-radius: 50%;
+    margin-left: 7px;
+    border-left: 5px solid green;
+    border-bottom: 5px solid green;
+  }
+  
+  .portfolio {
+    margin-top: 20px;
+  }
+  
+  .read-more {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    width: fit-content;
+
+  }
+  .read-more button{
+    border: none;
+    background: transparent;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+  }
+  .read-more svg{
+    font-size: 16px;
+    margin-top: 5px;
+  }
+  .read-more:hover{
+    width: 75%;
+  }
+  
+
+/* ============ our team end ============= */
 
 /* faq */
-
+.faqCon{
+    border: 1px solid;
+}
 .faq-section {
-    max-width: 800px;
+    max-width: 90%;
     margin: 40px auto;
     padding: 20px;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  .faq-section ul{
+    margin-top: 50px;
+  }
+  .faq-section ul li{
+    border: 1px solid;
+    margin: 10px 0px;
+    padding: 5px;
+    border-radius: 5px;
   }
   
   .faq-question {
@@ -378,6 +507,8 @@ text-transform: capitalize;
   .arrow {
     font-size: 18px;
     margin-left: 10px;
+    margin-top: 2px;
+ 
   }
   
   .faq-answer {
@@ -388,3 +519,67 @@ text-transform: capitalize;
   }
 
 /* faq end */
+
+
+/* ============== footer ============ */
+.footer {
+    background-color: black;
+    color: #fff;
+    padding: 50px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 0px -40px;
+  }
+  
+  .contactus {
+    width: 30%;
+  }
+  
+  .contactus h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .contactFlexicon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .icon {
+    margin-right: 20px;
+  }
+  
+  .icon a {
+    color: #fff;
+    font-size: 24px;
+  }
+  
+  .contactItemCon {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .itemCon {
+    margin-right: 50px;
+  }
+  
+  .itemCon h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .itemCon p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #ccc;
+  }
+  
+  .itemCon p:hover {
+    color: #fff;
+  }
+
+/* ========== footer end ================ */
