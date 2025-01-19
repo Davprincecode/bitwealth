@@ -15,12 +15,14 @@ import image7 from '../assets/images/image7.jpeg'
 import profileImg from '../assets/images/ceophoto.jpeg'
 import profileImg1 from '../assets/images/profile.jpg'
 import profileImg2 from '../assets/images/profile2.jpeg'
+import { GoLaw } from "react-icons/go";
 
 import FAQ from './Faq'
 import TeamMember from '../TeamMember'
-import { FaFacebook, FaInstagramSquare, FaWhatsappSquare } from 'react-icons/fa'
+import { FaChartPie, FaFacebook, FaInstagramSquare, FaWhatsappSquare } from 'react-icons/fa'
 import { MdOutlineEmail } from 'react-icons/md'
-import { RiTwitterXLine } from 'react-icons/ri'
+import { RiCommunityFill, RiTwitterXLine } from 'react-icons/ri'
+import { FcSalesPerformance } from 'react-icons/fc'
 
 function LandingPage() {
 
@@ -230,7 +232,7 @@ function LandingPage() {
            <div className="aboutContent">
               <div className="aboutOutline">
                 <div className="aboutOutlineIcon">
-                 <IoHomeSharp />
+                <FcSalesPerformance />
                 </div>
                 <div className="aboutOutlineContext">
                   <h4>Consistent Profitability</h4>
@@ -242,7 +244,7 @@ function LandingPage() {
               
               <div className="aboutOutline">
               <div className="aboutOutlineIcon">
-                 <IoHomeSharp />
+              <FaChartPie />
                 </div>
                 <div className="aboutOutlineContext">
                 <h4>Our approach</h4>
@@ -252,7 +254,7 @@ function LandingPage() {
 
               <div className="aboutOutline">
               <div className="aboutOutlineIcon">
-                 <IoHomeSharp />
+              <RiCommunityFill />
                 </div>
                 <div className="aboutOutlineContext">
                 <h4>Empowering Our Community</h4>
@@ -262,7 +264,7 @@ function LandingPage() {
 
               <div className="aboutOutline">
               <div className="aboutOutlineIcon">
-                 <IoHomeSharp />
+                   <GoLaw />
                 </div>
                 <div className="aboutOutlineContext">
                 <h4>Our Promise</h4>

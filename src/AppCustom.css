@@ -575,7 +575,7 @@ margin: 0px 10px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    
+    flex-wrap: wrap;
   }
   .contactus {
     width: 30%;
@@ -634,3 +634,40 @@ margin: 0px 10px;
     text-transform: capitalize;
 }
 /* ========== footer end ================ */
+
+
+
+@media(max-width : 500px){
+    .homeLandingPage {
+        padding: 4px 15px;
+    }
+    .headingCon{
+        padding: 5px 0px;
+    }
+    .herosectioncon {
+        margin-top: 10px !important;
+    }
+    .herosectioncontent h1 {
+        font-size: 20px;
+    }
+    h1{
+        font-size: 20px !important; 
+    }
+    .historySection {
+        margin-top: -40px !important;
+    }
+
+    .aboutSection {
+        margin: 10px 0px !important;
+    }
+    .footerCon{
+        flex-direction: column-reverse;
+        padding-left: 40px;
+    }
+    .contactus{
+        margin-left: 0px;
+    }
+    .faq-section ul li{
+        padding: 1px;
+    }
+}
