@@ -439,8 +439,8 @@ margin: 0px 10px;
 }
 
 .eventImage img{
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-radius: 10px;
+    object-fit: cover;
 }
 /* ==========  our team ================== */
 .founderProfile{
@@ -509,7 +509,7 @@ margin: 0px 10px;
     margin-top: 5px;
   }
   .read-more:hover{
-    width: 75%;
+    width: 65%;
   }
   
   @media (max-width: 768px) {

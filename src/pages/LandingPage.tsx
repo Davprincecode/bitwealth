@@ -15,6 +15,8 @@ import image7 from '../assets/images/image7.jpeg'
 import profileImg from '../assets/images/ceophoto.jpeg'
 import profileImg1 from '../assets/images/profile.jpg'
 import profileImg2 from '../assets/images/profile2.jpeg'
+import marketer from '../assets/images/marketing.jpeg'
+import headofmarketer from '../assets/images/hdmarketer.jpeg'
 import { GoLaw } from "react-icons/go";
 
 import FAQ from './Faq'
@@ -50,6 +52,7 @@ function LandingPage() {
   const teamMembers = [
     {
       name: 'Dr. Shadrach Egbokwu',
+      position : 'founder',
       portfolio: [
         'BitWealthCapital was founded by Dr. Shadrach Egbokwu in May 2018. He leads the company’s operations alongside a team of skilled professionals, ensuring the delivery of exceptional services to clients and members.',
         'Dr. Shadrach has been actively involved in the Bitcoin, cryptocurrency, and blockchain space since the third quarter of 2016. He made his initial Bitcoin purchases when 1 BTC was valued at less than $800.',
@@ -66,24 +69,17 @@ function LandingPage() {
       profileImg: profileImg,
     },
     {
-      name: 'Dr. Shadrach Egbokwu',
+      name: 'Mr. Dee Duncan',
+      position : "Head of Marketing & Client Relations.",
       portfolio: [
-        'BitWealthCapital was founded by Dr. Shadrach Egbokwu in May 2018. He leads the company’s operations alongside a team of skilled professionals, ensuring the delivery of exceptional services to clients and members.',
-        'Dr. Shadrach has been actively involved in the Bitcoin, cryptocurrency, and blockchain space since the third quarter of 2016. He made his initial Bitcoin purchases when 1 BTC was valued at less than $800.',
-        'As a prolific educator, advocate, and coach, Dr. Shadrach is deeply committed to advancing the growth and adoption of Bitcoin and its associated technologies both in Africa and globally. His efforts have earned him recognition as a key figure in the industry.',
-        'Highlights of His Contributions:',
-        'Speaker at numerous cryptocurrency conferences worldwide (onsite and online) since 2018.',
-        'Actively led individuals to become knowledgeable and profitable within the cryptocurrency ecosystem.',
-        'A steadfast crusader and believer in the transformative potential of blockchain technology.',
-        'Once a brand ambassador of OKX exchange and TinyTraders company.',
-        'Advisor to several cryptocurrency projects.',
-        'A consistently profitable trader , investor, and entrepreneur.',
-        'Dr. Shadrach’s vision and leadership have been instrumental in shaping the mission and success of BitWealthCapital.',
+        'Studied Business and Computer Information Systems. Major Former Faster Payments Council Member Sponsored by Federal Reserve Bank of Boston Authorised Blockchain Payments Distributor for Pundix LTD Singapore Jan 2019 - December 2021 Providing a borderless payment ecosystem beyond fiat.',
+        'Mr. Duncan is a Techprenuer and travels the world consulting corporations and governments on how to develop real-world use cases with blockchain technology.',
+        'A leader in global payments and fintech as a delegate  RSPA,  the largest Pundit sales association in America.',
       ],
-      profileImg: profileImg1,
+      profileImg: headofmarketer,
     },
     {
-      name: 'Okoro Osinachi',
+      name: 'Mr. Okoro Osinachi',
       position : "Data analyst/community manager.",
       portfolio: [
        'A cryptocurrency enthusiast since 2016. Involved in blockchain research, cryptocurrency fundamental analysis, and tokenomics.',
@@ -91,14 +87,16 @@ function LandingPage() {
       ],
       profileImg: profileImg2,
     },
+
     {
-      name: 'Okoro Osinachi',
-      position : "Data analyst/community manager.",
+      name: 'Mr. Iwojamo Emmanuel',
+      position : "Marketing, Client Relations, and Communication - Unit Member",
       portfolio: [
-       'A cryptocurrency enthusiast since 2016. Involved in blockchain research, cryptocurrency fundamental analysis, and tokenomics.',
-        'A community manager and moderator of BitWealthCapital from 2019 till date.'
+       'Completed  Blockchain and Crypto training through NITDA scholarship.',
+        'Hands-on experience with cryptocurrency transactions, wallets, and decentralized exchanges (DEXs).',
+        'Extensive persona and intentional study on Blockchain technology, decentralized finance (DeFi), smart contracts, research analysis, and content management',
       ],
-      profileImg: profileImg2,
+      profileImg: marketer,
     },
    
   ];
