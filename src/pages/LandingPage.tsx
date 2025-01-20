@@ -100,8 +100,10 @@ function LandingPage() {
     },
    
   ];
+
+
   return (
-    <div className='homeLandingPage'>
+    <div className='homeLandingPage' id='home'>
       <div className="herosection">
        <LandingPageHeader />
        <div className="herosectioncon">

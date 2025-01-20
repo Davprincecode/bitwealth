@@ -7,11 +7,16 @@ function LandingPageHeader() {
 
   const [mobileNav, setMobileNav] = useState(false);
 
-  const   mobileNavToggle = () => {
-    console.log("hellow orld");
-    
+  const   mobileNavToggle = () => { 
     setMobileNav(!mobileNav);
   }
+
+  const handleNav = (id : string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <div>
@@ -23,17 +28,17 @@ function LandingPageHeader() {
 
         <div className="headermenu">
          <ul className={mobileNav ? 'mobileNavActive' : 'mobileNav'}>
-                <li>
-                    <NavLink to="">Home</NavLink>
+                <li onClick={() => handleNav('home')}>
+                   Home
                 </li>
-                <li>
-                    <NavLink to="#about">About Us</NavLink>
+                <li onClick={() => handleNav('about')}>
+                    About Us
                 </li>
-                <li>
-                    <NavLink to="#portfolio">Portfolio</NavLink>
+                <li onClick={() => handleNav('portfolio')}>
+                    Portfolio
                 </li>
-                <li>
-                    <NavLink to="#event">Event</NavLink>
+                <li onClick={() => handleNav('event')}>
+                    Event
                 </li>
             </ul>
 

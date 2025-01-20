@@ -232,6 +232,9 @@ cursor: pointer;
   color: var(--bs-white);
   font-size: 22px;
 }
+.headermenu ul li{
+  cursor: pointer;
+}
 .headermenu ul li:hover {
   background:  #df9a2c5f;
     width: 117px;
