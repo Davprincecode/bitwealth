@@ -174,6 +174,13 @@ height: 200px;
     padding: 10px 40px;
 }
 .headingCon{
+  position: fixed;
+  left: 0px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+  right: 0px;
+  top: 0px;
+  z-index: 10000;
 display: flex;
 align-items: center;
 justify-content: space-between;
@@ -219,27 +226,63 @@ cursor: pointer;
   border-radius: 5px;
   padding: 10px 10px 1px 10px;
   text-align: center;
+  cursor: pointer;
 }
 .landingBarMenu svg{
   color: var(--bs-white);
   font-size: 22px;
 }
+.headermenu ul li:hover {
+  background:  #df9a2c5f;
+    width: 117px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+}
+.headermenu ul li:hover  a{
+color: white;
+}
 
 @media(max-width : 620px){
+
+  .headermenu .mobileNav{
+    display: none;
+  }
+  .headermenu .auth{
+    display: none;
+  }
+  
+
+.headermenu .mobileNavActive{
+  position: fixed;
+  left: 0px;
+  top: 69px;
+  flex-direction: column;
+  width: 200px;
+  height: 100vh;
+  background: blue;
+  gap: 20px;
+  padding-top: 20px;
+  font-weight: bold; 
+}
+.headermenu .mobileauthActive{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-transform: capitalize;
+    position: fixed;
+    top: 270px;
+    left: 8px;
+}
     .landingBarMenu{
         display: block;
     }
-    .headermenu ul{
-        display: none;
-    }
-    .headermenu .auth{
-        display: none;
-    }
+    
 }
 
 .herosectioncon{
 display: flex;
-margin-top: 50px;
+margin-top: 80px;
 gap: 40px;
 }
 
@@ -654,18 +697,92 @@ margin: 0px 10px;
 }
 /* ========== footer end ================ */
 
+/* =============================== term and condition ======= */
+
+.terms-and-conditions {
+  margin-top: 69px;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.terms-and-conditions h1 {
+  color: #2196f3; /* blue */
+  margin-top: 0;
+}
+
+.terms-and-conditions section {
+  margin-bottom: 20px;
+}
+
+.terms-and-conditions h2 {
+  color: #333; /* dark gray */
+  margin-top: 10px;
+}
+
+.terms-and-conditions p {
+  color: #666; /* gray */
+  line-height: 1.5;
+}
+/* ==== term and condition end ======== */
+
+/* ============ disclamer =========== */
+.topNav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: fixed;
+    left: 0px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgb(0 0 0 / 10%);
+    right: 0px;
+    top: 0px;
+    z-index: 10;
+    
+}
+/* styles.css */
+.disclaimer {
+  margin-top: 69px;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.disclaimer h1 {
+  color: #2196f3; /* blue */
+  margin-top: 0;
+}
+
+.disclaimer section {
+  margin-bottom: 20px;
+}
+
+.disclaimer h2 {
+  color: #333; /* dark gray */
+  margin-top: 10px;
+}
+
+.disclaimer p {
+  color: #666; /* gray */
+  line-height: 1.5;
+}
+
+/* === disclammer end ========= */
+
 
 
 @media(max-width : 500px){
     .homeLandingPage {
         padding: 4px 15px;
     }
-    .headingCon{
-        padding: 5px 0px;
-    }
-    .herosectioncon {
-        margin-top: 10px !important;
-    }
+   
     .herosectioncontent h1 {
         font-size: 20px;
        

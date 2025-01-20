@@ -58,9 +58,8 @@ import LandingPage from "./pages/LandingPage";
 import PosUiDesign from "./pages/user/PosUiDesign";
 import { userAuth } from "./pages/context/AuthContext";
 import BinanceApi from "./pages/Binance";
-
-
-
+import TermsAndConditions from "./TermAndCondition";
+import Disclaimer from "./Disclamer";
 
 function App() {
   const {baseUrl, token} = userAuth();
@@ -85,6 +84,8 @@ function App() {
     <Route path="/" element={<LandingPage />} />
 
     <Route path="/crypto" element={<BinanceApi />} />
+    <Route path="/term" element={<TermsAndConditions />} />
+    <Route path="/disclamer" element={<Disclaimer />} />
       
 
     <Route path="/login" element={<Login />} />

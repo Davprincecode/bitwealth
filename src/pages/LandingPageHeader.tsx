@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../assets/images/logo.png'
 import { NavLink } from 'react-router-dom'
 import { FiAlignRight } from 'react-icons/fi'
 
 function LandingPageHeader() {
+
+  const [mobileNav, setMobileNav] = useState(false);
+
+  const   mobileNavToggle = () => {
+    console.log("hellow orld");
+    
+    setMobileNav(!mobileNav);
+  }
+
   return (
     <div>
       <div className="headingCon">
@@ -13,7 +22,7 @@ function LandingPageHeader() {
        </div>
 
         <div className="headermenu">
-            <ul>
+         <ul className={mobileNav ? 'mobileNavActive' : 'mobileNav'}>
                 <li>
                     <NavLink to="">Home</NavLink>
                 </li>
@@ -28,7 +37,7 @@ function LandingPageHeader() {
                 </li>
             </ul>
 
-            <div className="auth">
+            <div className= {mobileNav ? 'mobileauthActive' : 'auth'}>
                 <div className="loginauth">
                   <NavLink to="#">login</NavLink>  
                 </div>
@@ -36,8 +45,7 @@ function LandingPageHeader() {
                 <NavLink to="#">sign up</NavLink>  
                 </div>
             </div>
-{/* onClick={handleToggle} */}
-            <p className='landingBarMenu'>
+            <p className='landingBarMenu' onClick={mobileNavToggle}>
               <FiAlignRight />
             </p>
 
