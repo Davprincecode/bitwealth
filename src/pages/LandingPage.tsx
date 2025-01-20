@@ -26,7 +26,11 @@ import { MdOutlineEmail } from 'react-icons/md'
 import { RiCommunityFill, RiTwitterXLine } from 'react-icons/ri'
 import { FcSalesPerformance } from 'react-icons/fc'
 
-function LandingPage() {
+interface LandingProp {
+  colorSwitchFunction: () => void;
+}
+
+const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction}) =>{
 
   const responsive = {
     superLargeDesktop: {
@@ -53,6 +57,7 @@ function LandingPage() {
     {
       name: 'Dr. Shadrach Egbokwu',
       position : 'founder',
+      socialMedia : true,
       portfolio: [
         'BitWealthCapital was founded by Dr. Shadrach Egbokwu in May 2018. He leads the company’s operations alongside a team of skilled professionals, ensuring the delivery of exceptional services to clients and members.',
         'Dr. Shadrach has been actively involved in the Bitcoin, cryptocurrency, and blockchain space since the third quarter of 2016. He made his initial Bitcoin purchases when 1 BTC was valued at less than $800.',
@@ -71,6 +76,7 @@ function LandingPage() {
     {
       name: 'Mr. Dee Duncan',
       position : "Head of Marketing & Client Relations.",
+      socialMedia : false,
       portfolio: [
         'Studied Business and Computer Information Systems. Major Former Faster Payments Council Member Sponsored by Federal Reserve Bank of Boston Authorised Blockchain Payments Distributor for Pundix LTD Singapore Jan 2019 - December 2021 Providing a borderless payment ecosystem beyond fiat.',
         'Mr. Duncan is a Techprenuer and travels the world consulting corporations and governments on how to develop real-world use cases with blockchain technology.',
@@ -81,16 +87,17 @@ function LandingPage() {
     {
       name: 'Mr. Okoro Osinachi',
       position : "Data analyst/community manager.",
+      socialMedia : false,
       portfolio: [
        'A cryptocurrency enthusiast since 2016. Involved in blockchain research, cryptocurrency fundamental analysis, and tokenomics.',
         'A community manager and moderator of BitWealthCapital from 2019 till date.'
       ],
       profileImg: profileImg2,
     },
-
     {
       name: 'Mr. Iwojamo Emmanuel',
-      position : "Marketing, Client Relations, and Communication - Unit Member",
+      position : "Marketing, Client Relations and Communication - Unit Member",
+      socialMedia : false,
       portfolio: [
        'Completed  Blockchain and Crypto training through NITDA scholarship.',
         'Hands-on experience with cryptocurrency transactions, wallets, and decentralized exchanges (DEXs).',
@@ -111,7 +118,7 @@ function LandingPage() {
   return (
     <div className='homeLandingPage' id='home'>
       <div className="herosection">
-       <LandingPageHeader />
+       <LandingPageHeader colorSwitchFunction={colorSwitchFunction}/>
        <div className="herosectioncon">
 
           <div className="herosectioncontent">
@@ -403,7 +410,7 @@ function LandingPage() {
 
       <div className="team-members-con">
         {teamMembers.map((member, index) => (
-          <TeamMember key={index} name={member.name} portfolio={member.portfolio} profileImg={member.profileImg}/>
+          <TeamMember key={index} name={member.name} portfolio={member.portfolio} profileImg={member.profileImg} position={member.position} socialMedia={member.socialMedia} />
         ))}
       </div>
 

@@ -63,9 +63,21 @@ import Disclaimer from "./Disclamer";
 
 function App() {
   const {baseUrl, token} = userAuth();
+
   let colorSwitch = "white";
-  return (
+
+ const colorSwitchFunction = () => {
+  console.log("hello world");
   
+  if(colorSwitch == "white"){
+    colorSwitch = "black";
+  }
+  if(colorSwitch == "black"){
+    colorSwitch = "white"
+  }
+ }
+
+  return (
     <div className={colorSwitch === "white" ? "bodyappwhite" : "bodyappblack"}>
 
 <ToastContainer 
@@ -81,7 +93,7 @@ function App() {
 
     <Routes>
 
-    <Route path="/" element={<LandingPage />} />
+    <Route path="/" element={<LandingPage  colorSwitchFunction={colorSwitchFunction}/>} />
 
     <Route path="/crypto" element={<BinanceApi />} />
     <Route path="/term" element={<TermsAndConditions />} />

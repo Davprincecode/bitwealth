@@ -3,7 +3,10 @@ import logo from '../assets/images/logo.png'
 import { NavLink } from 'react-router-dom'
 import { FiAlignRight } from 'react-icons/fi'
 
-function LandingPageHeader() {
+interface LandingProp {
+  colorSwitchFunction: () => void;
+}
+const LandingPageHeader: React.FC<LandingProp> = ({ colorSwitchFunction}) =>  {
 
   const [mobileNav, setMobileNav] = useState(false);
 
@@ -50,6 +53,11 @@ function LandingPageHeader() {
                 <NavLink to="#">sign up</NavLink>  
                 </div>
             </div>
+            {/* <div className="switchModeIcon">
+              <p onClick={(event) => colorSwitchFunction}>
+                a
+              </p>
+            </div> */}
             <p className='landingBarMenu' onClick={mobileNavToggle}>
               <FiAlignRight />
             </p>

@@ -13,11 +13,12 @@ h1, h2, h3, h4, h6{
     text-transform: capitalize;
 }
 p{
-    line-height: 25px;
-    font-size: 18px;
+  color: #666;
+  line-height: 1.5;
+  font-size: 19px;
 }
 .bodyappblack{
-    background-color: #060610;
+    background-color: #000000;
     color: white;
     overflow: auto;
     height: 100%;
@@ -25,6 +26,18 @@ p{
 .bodyappblack a{
     color: #cbcbcb;
 }
+
+/* ============landing page ========= */
+.bodyappblack .headermenu li {
+color: #000000;
+}
+.bodyappblack .team-member {
+color: #000000;
+}
+.bodyappblack .faqCon {
+color: #000000;
+}
+/* ========================= */
 .bodyappwhite{
 background-color: white;
 color: #060610;
@@ -392,7 +405,7 @@ border-top: 1px solid var(--bs-orange);
 padding-top: 10px;
 }
 .profitCon p{
-
+color: white;
 }
 
 /* Tablets (max-width: 1024px) */
@@ -524,7 +537,23 @@ margin: 0px 10px;
     border-left: 5px solid var(--bPrimary);
     border-bottom: 5px solid var(--bs-orange);
   }
-  
+ 
+  .socialMedia{
+   display: flex;
+   align-items: center;
+   gap: 20px;
+   margin: 10px 0px;
+  }
+  .socialIcon{
+/* background-color: blue; */
+  }
+  .socialIcon a{
+
+  }
+  .socialIcon svg{
+    font-size: 22px;
+  }
+
   .portfolio {
     margin-top: 20px;
   }
