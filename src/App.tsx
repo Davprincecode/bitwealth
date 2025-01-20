@@ -57,6 +57,7 @@ import AddWareHouseEXpenses from "./pages/Warehouse/AddWareHouseEXpenses";
 import LandingPage from "./pages/LandingPage";
 import PosUiDesign from "./pages/user/PosUiDesign";
 import { userAuth } from "./pages/context/AuthContext";
+import BinanceApi from "./pages/Binance";
 
 
 
@@ -83,6 +84,8 @@ function App() {
 
     <Route path="/" element={<LandingPage />} />
 
+    <Route path="/crypto" element={<BinanceApi />} />
+      
 
     <Route path="/login" element={<Login />} />
 

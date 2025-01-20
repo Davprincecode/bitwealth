@@ -1,7 +1,7 @@
 import React from 'react'
 import LandingPageHeader from './LandingPageHeader'
 import { NavLink } from 'react-router-dom'
-import heroImg from '../assets/images/heroImage-removebg.png'
+import heroImg from '../assets/images/heroImageNew.png'
 import signalImg from '../assets/images/signal.svg'
 import { IoArrowForwardCircleSharp, IoHomeSharp } from 'react-icons/io5'
 import Carousel from 'react-multi-carousel'
@@ -449,7 +449,7 @@ function LandingPage() {
                   <div className="contactItemCon">
                     <div className="itemCon">
                       <h2>company</h2>
-                      <p>white paper</p>
+                      
                       <p>about us</p>
                       <p>our team</p>
                       <p>referral program</p>

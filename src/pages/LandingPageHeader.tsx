@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../assets/images/logo.jpeg'
+import logo from '../assets/images/logo.png'
 import { NavLink } from 'react-router-dom'
 import { FiAlignRight } from 'react-icons/fi'
 
@@ -37,7 +37,7 @@ function LandingPageHeader() {
                 </div>
             </div>
 {/* onClick={handleToggle} */}
-            <p className='barMenu' >
+            <p className='landingBarMenu'>
               <FiAlignRight />
             </p>
 

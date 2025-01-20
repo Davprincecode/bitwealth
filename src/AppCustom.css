@@ -1,10 +1,10 @@
 :root{
-  --bPrimary : #faa205;
-  --mixedColor: #DE8B2D;
+  --bPrimary : #0598fa;
   /* --bPrimary : #ffaa00; */
   /* #ffa800 */
   /* --bs-orange: #fd7e14; */
-  --bs-orange: #099b6a;
+  --bs-white : white;
+  --bs-orange: #00308F;
 }
 #root{
     height: 100vh;
@@ -37,6 +37,7 @@ height: 100%;
 img{
     width: 100%;
     height: 100%;
+    object-fit: contain;
 }
 .mainContainersHeader{
     /* border: 2px solid; */
@@ -180,7 +181,6 @@ padding: 10px 20px;
 }
 
 .headerLogo{
- width: 80px;
  height: 50px;
 }
 
@@ -212,10 +212,21 @@ cursor: pointer;
     padding: 7px 20px;
     cursor: pointer;
 }
-
+.landingBarMenu{
+  display: none;
+  background-color: var(--bs-orange);
+  padding: 10px;
+  border-radius: 5px;
+  padding: 10px 10px 1px 10px;
+  text-align: center;
+}
+.landingBarMenu svg{
+  color: var(--bs-white);
+  font-size: 22px;
+}
 
 @media(max-width : 620px){
-    .barMenu{
+    .landingBarMenu{
         display: block;
     }
     .headermenu ul{
@@ -241,6 +252,7 @@ height: 400px;
 width: 50%;
 }
 .herosectioncontent h1{
+  color: var(--bs-orange);
 margin-bottom: 12px;
 }
 .herosectioncontent p{
@@ -253,11 +265,15 @@ margin-bottom: 12px;
  padding: 10px;
  border-radius: 10px;
  font-weight: bold;
- background-color: var(--bs-orange);   
+ background-color: var(--bs-orange); 
+ color: var(--bs-white) !important;  
  display: flex;
  align-items: center;
  gap: 10px;
  cursor: pointer;
+}
+.getstarted a{
+  color: var(--bs-white);
 }
 .getstarted svg{
     font-size: 20px;
@@ -298,6 +314,7 @@ justify-content: space-between;
     flex-basis: calc(33.33% - 20px);
     position: relative;
     background-color: var(--bPrimary);
+    color: var(--bs-white);
     border-radius: 10px;
     padding: 70px 20px 10px 20px;
     text-transform: capitalize;
@@ -315,7 +332,7 @@ justify-content: space-between;
 position: absolute;
 top: 10px;
 right: 10px;
-background-color: #14fd15; 
+background-color: var(--bs-white); 
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 font-size: 24px;
@@ -379,7 +396,7 @@ gap: 10px;
 }
 .aboutOutlineIcon svg{
     font-size: 18px;
-    color: white;
+    color: #df9b2c;
 }
 .aboutOutlineContext{
 
@@ -455,9 +472,10 @@ margin: 0px 10px;
     background-color: skyblue;
   }
   .TeamProfileImage img {
+    object-fit: cover;
     border-radius: 50%;
     margin-left: 7px;
-    border-left: 5px solid green;
+    border-left: 5px solid var(--bPrimary);
     border-bottom: 5px solid var(--bs-orange);
   }
   
@@ -569,6 +587,7 @@ margin: 0px 10px;
     background-color: black;
     color: #fff;
     margin: -5px -40px 0px -40px;
+    text-transform: capitalize;
   }
   .footerCon{
     padding: 50px 0;
@@ -649,14 +668,11 @@ margin: 0px 10px;
     }
     .herosectioncontent h1 {
         font-size: 20px;
+       
     }
     h1{
-        font-size: 20px !important; 
+        font-size: 22px !important; 
     }
-    .historySection {
-        margin-top: -40px !important;
-    }
-
     .aboutSection {
         margin: 10px 0px !important;
     }
