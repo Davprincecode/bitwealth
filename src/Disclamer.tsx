@@ -1,7 +1,15 @@
 import React from 'react';
 import logo from './assets/images/logo.png'
+import { MdArrowCircleLeft } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
 function Disclaimer() {
+    const navigate = useNavigate();
+
+    const handleGoBack = () => {
+      navigate(-1);
+    };
+
   return (
      <div>
      
@@ -9,9 +17,9 @@ function Disclaimer() {
         <div className="headerLogo">
             <img src={logo} alt="" />
         </div>
-
-        <div className="backArrow">
-        -
+         <p>Disclaimer</p>
+        <div className="backArrow"  onClick={handleGoBack}>
+         <MdArrowCircleLeft />
         </div>
      </div>
 

@@ -101,6 +101,12 @@ function LandingPage() {
    
   ];
 
+  const handleNav = (id : string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <div className='homeLandingPage' id='home'>
@@ -388,7 +394,7 @@ function LandingPage() {
 </div>
   {/* ======================events end=============== */}
 
-    <div className="founderProfile">
+    <div className="founderProfile" id='team'>
        
     <div className="founderCon">
 
@@ -450,16 +456,25 @@ function LandingPage() {
                     <div className="itemCon">
                       <h2>company</h2>
                       
-                      <p>about us</p>
-                      <p>our team</p>
+                      <p onClick={() => handleNav('about')} >about us</p>
+                      <p onClick={() => handleNav('team')} >our team</p>
                       <p>referral program</p>
                     </div>
 
                     <div className="itemCon">
                       <h2>legal</h2>
-                      <p>terms of use</p>
-                      <p>privacy policy</p>
-                      <p>rick disclore</p>
+                      <p>
+                       <NavLink to='/term'>
+                        terms and condition
+                       </NavLink> 
+                      </p>
+                      <p>
+                        <NavLink to='/disclamer'>
+                          disclaimer
+                        </NavLink>
+                      </p>
+                      {/* <p>privacy policy</p> */}
+                      
                       
                     </div>
                   </div>

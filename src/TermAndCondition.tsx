@@ -1,8 +1,17 @@
 // TermsAndConditions.js
 import React from 'react';
 import logo from './assets/images/logo.png'
+import { MdArrowCircleLeft } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
 function TermsAndConditions() {
+
+    const navigate = useNavigate();
+
+    const handleGoBack = () => {
+      navigate(-1);
+    };
+  
   return (
     <div>
 
@@ -10,9 +19,9 @@ function TermsAndConditions() {
         <div className="headerLogo">
             <img src={logo} alt="" />
         </div>
-
-        <div className="backArrow">
-        -
+         <p>Terms and Condition</p>
+        <div className="backArrow" onClick={handleGoBack}>
+           <MdArrowCircleLeft />
         </div>
      </div>
 
