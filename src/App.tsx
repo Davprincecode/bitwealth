@@ -60,20 +60,22 @@ import { userAuth } from "./pages/context/AuthContext";
 import BinanceApi from "./pages/Binance";
 import TermsAndConditions from "./TermAndCondition";
 import Disclaimer from "./Disclamer";
+import { useState } from "react";
 
 function App() {
   const {baseUrl, token} = userAuth();
 
-  let colorSwitch = "white";
+  // let colorSwitch = "white";
+  const [colorSwitch, setColorSwitch] = useState("white");
 
  const colorSwitchFunction = () => {
   console.log("hello world");
   
   if(colorSwitch == "white"){
-    colorSwitch = "black";
+    setColorSwitch("black");
   }
   if(colorSwitch == "black"){
-    colorSwitch = "white"
+    setColorSwitch("white");
   }
  }
 
@@ -93,7 +95,7 @@ function App() {
 
     <Routes>
 
-    <Route path="/" element={<LandingPage  colorSwitchFunction={colorSwitchFunction}/>} />
+    <Route path="/" element={<LandingPage  colorSwitchFunction={colorSwitchFunction} colorSwitch={colorSwitch}/>} />
 
     <Route path="/crypto" element={<BinanceApi />} />
     <Route path="/term" element={<TermsAndConditions />} />

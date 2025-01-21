@@ -28,6 +28,9 @@ p{
 }
 
 /* ============landing page ========= */
+.bodyappblack .herosectioncontent h1 {
+  color: #0598fa
+}
 .bodyappblack .headermenu li {
 color: #000000;
 }
@@ -232,12 +235,25 @@ cursor: pointer;
     padding: 7px 20px;
     cursor: pointer;
 }
+.barAndModeCon{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.switchModeIcon{
+cursor: pointer;
+}
+.modeIcon{
+
+}
+.modeIcon svg{
+  font-size: 22px;
+}
 .landingBarMenu{
   display: none;
   background-color: var(--bs-orange);
   padding: 10px;
   border-radius: 5px;
-  padding: 10px 10px 1px 10px;
   text-align: center;
   cursor: pointer;
 }

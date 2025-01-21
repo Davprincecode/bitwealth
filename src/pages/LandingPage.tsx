@@ -28,9 +28,10 @@ import { FcSalesPerformance } from 'react-icons/fc'
 
 interface LandingProp {
   colorSwitchFunction: () => void;
+  colorSwitch : string;
 }
 
-const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction}) =>{
+const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }) =>{
 
   const responsive = {
     superLargeDesktop: {
@@ -118,7 +119,7 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction}) =>{
   return (
     <div className='homeLandingPage' id='home'>
       <div className="herosection">
-       <LandingPageHeader colorSwitchFunction={colorSwitchFunction}/>
+       <LandingPageHeader colorSwitchFunction={colorSwitchFunction} colorSwitch={colorSwitch} />
        <div className="herosectioncon">
 
           <div className="herosectioncontent">

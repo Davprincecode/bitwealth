@@ -2,11 +2,14 @@ import React, { useState } from 'react'
 import logo from '../assets/images/logo.png'
 import { NavLink } from 'react-router-dom'
 import { FiAlignRight } from 'react-icons/fi'
+import { IoSunnyOutline } from 'react-icons/io5';
+import { IoIosMoon } from 'react-icons/io';
 
 interface LandingProp {
   colorSwitchFunction: () => void;
+  colorSwitch : string;
 }
-const LandingPageHeader: React.FC<LandingProp> = ({ colorSwitchFunction}) =>  {
+const LandingPageHeader: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch}) =>  {
 
   const [mobileNav, setMobileNav] = useState(false);
 
@@ -53,19 +56,28 @@ const LandingPageHeader: React.FC<LandingProp> = ({ colorSwitchFunction}) =>  {
                 <NavLink to="#">sign up</NavLink>  
                 </div>
             </div>
-            {/* <div className="switchModeIcon">
-              <p onClick={(event) => colorSwitchFunction}>
-                a
-              </p>
-            </div> */}
-            <p className='landingBarMenu' onClick={mobileNavToggle}>
-              <FiAlignRight />
-            </p>
 
+    <div className="barAndModeCon">
+      <div className="switchModeIcon" style={{color:"gray"}}  onClick={colorSwitchFunction}>
+        <div className='modeIcon'>
+          { 
+          colorSwitch == "white" ? (
+                <IoSunnyOutline />
+          ) : (
+              <IoIosMoon /> 
+          )
+
+          }        
         </div>
-         
-
       </div>
+
+      <div className='landingBarMenu' onClick={mobileNavToggle}>
+        <FiAlignRight />
+      </div>
+    </div>
+      
+    </div>
+    </div>
     </div>
   )
 }
