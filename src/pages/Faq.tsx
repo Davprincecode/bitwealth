@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { FaPlus, FaPlusSquare } from 'react-icons/fa';
+import { IoArrowForwardCircleSharp } from 'react-icons/io5';
+import { NavLink } from 'react-router-dom';
 
 const FAQ = () => {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -67,8 +69,9 @@ const FAQ = () => {
         },
         {
           question: 'How do I join or learn more?',
-          answer: 'To join the trading club or inquire about hedge fund investment opportunities, click on the register icon.',
+          answer: 'To join the trading club or inquire about hedge fund investment opportunities, click on the get started button.',
           icon: '',
+          getstarted : "get started"
         },
       ];
     
@@ -87,14 +90,23 @@ const FAQ = () => {
               <span className="icon">{faq.icon}</span>
               <span className="question">{faq.question}</span>
               <span className="arrow">
-                {/* {activeIndex === index ? '↑' : '↓'} */}
-                {/* <FaPlus /> */}
                 <FaPlusSquare />
                 </span>
             </div>
             {activeIndex === index && (
               <div className="faq-answer">
                 <p>{faq.answer}</p>
+                 {
+                  faq.getstarted && (
+                    <div className="getstarted">
+                      <NavLink to="#">
+                          {faq.getstarted}
+                      </NavLink>
+                      <div><IoArrowForwardCircleSharp /></div>
+                      </div>
+                  )
+                 }
+                 
               </div>
             )}
           </li>
