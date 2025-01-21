@@ -430,12 +430,41 @@ padding-top: 10px;
 color: white;
 }
 
+.graphicCon{
+  /* border: 1px solid; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 66px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.graphic18{
+width: calc(50% -  66px);
+}
+.graphic19{
+width: calc(50% -  66px);
+}
+.grphicImg{
+
+}
+.grphicImg img{
+
+}
+
 /* Tablets (max-width: 1024px) */
 @media (max-width: 1024px) {
     .historyProfitCon {
       flex-basis: calc(50% - 20px);
       margin-bottom: 20px;
     }
+    .graphic18{
+      width: 100%;
+      }
+      .graphic19{
+      margin-top: 30px;
+      width: 100%;
+      }
   }  
 
 /* Mobile devices (max-width: 768px) */
@@ -864,6 +893,7 @@ margin: 0px 10px;
         padding-left: 40px;
     }
     .contactus{
+      margin-top: 20px;
         margin-left: 0px;
     }
     .faq-section ul li{

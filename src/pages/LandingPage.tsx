@@ -17,6 +17,8 @@ import profileImg1 from '../assets/images/profile.jpg'
 import profileImg2 from '../assets/images/profile2.jpeg'
 import marketer from '../assets/images/marketing.jpeg'
 import headofmarketer from '../assets/images/hdmarketer.jpeg'
+import graphice1 from '../assets/images/Frame 2.png'
+import graphice2 from '../assets/images/Frame 1.png'
 import { GoLaw } from "react-icons/go";
 
 import FAQ from './Faq'
@@ -231,7 +233,22 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
                               </p>
                             </div>
                         </div>
+                        
 
+                        <div className="graphicCon">
+
+                        <div className="graphic18">
+                            <div className="grphicImg">
+                            <img src={graphice1} alt="" />
+                          </div>
+                        </div>
+                        
+                          <div className="graphic19">
+                          <div className="grphicImg">
+                            <img src={graphice2} alt="" />
+                          </div>
+                          </div>
+                        </div>
 
                         </div>
                     </div>
@@ -413,6 +430,16 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
         {teamMembers.map((member, index) => (
           <TeamMember key={index} name={member.name} portfolio={member.portfolio} profileImg={member.profileImg} position={member.position} socialMedia={member.socialMedia} />
         ))}
+      </div>
+
+      <div className="team-member">
+
+      <h2>other team</h2>
+
+         <p style={{fontWeight: "bold"}}>
+         Other team roles are currently outsourced  including legal/compliance  officer , technology & IT professionals ,  auditor, and data analysts. 
+         </p>
+
       </div>
 
     </div>
