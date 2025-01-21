@@ -276,7 +276,8 @@ color: white;
   flex-direction: column;
   width: 200px;
   height: 100vh;
-  background: blue;
+  background: skyblue;
+  color: white;
   gap: 20px;
   padding-top: 20px;
   font-weight: bold; 
@@ -288,7 +289,10 @@ color: white;
     text-transform: capitalize;
     position: fixed;
     top: 270px;
-    left: 8px;
+    left: 5px;
+}
+.headermenu .mobileauthActive a{
+  color: white !important;
 }
     .landingBarMenu{
         display: block;
@@ -305,6 +309,8 @@ gap: 40px;
 .herosectionimage{
 width: 50%;
 height: 400px;
+background-color: var(--bs-orange);
+border-radius: 10px;
 }
 
 .herosectioncontent{
@@ -349,7 +355,7 @@ width: 100%;
 .herosectionimage{
     width: 100%;
     margin-top: 20px;
-    height: 400px;
+    height: 200px;
     }
 }
 
@@ -522,6 +528,12 @@ margin: 0px 10px;
     background-color: #fff;
     border: 1px solid #ddd;
   border-radius: 10px;   
+  }
+  .team-member  > h2{
+    text-align: center;
+  }
+  .team-member  > p{
+    text-align: center;
   }
   .TeamProfileImage{
     width: 120px;

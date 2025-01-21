@@ -22,7 +22,7 @@ const FAQ = () => {
         },
         {
           question: 'How do I become an investor in the hedge fund?',
-          answer: 'To become an investor, you must be an accredited investor, review and sign the Subscription Agreement, complete KYC/AML verification, and transfer the minimum investment amount of $10,000 or its equivalent in stablecoins and Bitcoin.',
+          answer: 'To be a hedge fund client, you should follow the stipulated percentage allocation of savings for cryptocurrency investment that apply to your geographical location/ jurisdiction or an accredited investor by similar standards. Review and agree on registration  Terms and Conditions.Complete KYC/AML verification And fund your trading/investment account with a minimum of $10,000 or its equivalent in Bitcoin or Stablecoins.',
           icon: '',
         },
         {

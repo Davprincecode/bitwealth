@@ -1,7 +1,7 @@
 import React from 'react'
 import LandingPageHeader from './LandingPageHeader'
 import { NavLink } from 'react-router-dom'
-import heroImg from '../assets/images/heroImageNew.png'
+import heroImg from '../assets/images/heronewImage.png'
 import signalImg from '../assets/images/signal.svg'
 import { IoArrowForwardCircleSharp, IoHomeSharp } from 'react-icons/io5'
 import Carousel from 'react-multi-carousel'
@@ -124,7 +124,7 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction}) =>{
           <div className="herosectioncontent">
             <h1>BitWealthCapital is a cryptocurrency trade club and hedge fund management company</h1>
             <p>BitWealthCapital is a cryptocurrency trade club and hedge fund management company that has been serving its members and clients since 2018. Over the years, <p>we’ve rebranded twice to enhance our services and adapt to the evolving needs of our community. Originally named Bitcoin Money Badgers, we adopted the name BitWealthCapital in 2019 following a major review and upgrade.
-            We have maintained consistent profitability from the cryptocurrency market cycle of 2017/2018 to date. By applying unique strategies and risk management practices, we have thrived in both bull and bear markets. This commitment to excellence is why we proudly say, “We are forever stuck in profit.</p>
+            We have maintained consistent profitability from the cryptocurrency market cycle of 2017/2018 to date. By applying unique strategies and risk management practices, we have thrived in both bull and bear markets. This commitment to excellence is why we proudly say, "We are forever stuck in profit ".</p>
 
            <p> We deeply value the trust of our members and clients who look to us for guidance, education, and coaching on their journey to financial freedom. By leveraging opportunities in Bitcoin, cryptocurrency, blockchain, and associated technologies, we help our community achieve their goals in a realistic and sustainable way.</p>
              </p>
@@ -226,7 +226,7 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction}) =>{
                             
                             <div className="profitCon">
                               <p>
-                              We plan to diversify into carefully selected mid- and low-market-cap alternative cryptocurrencies to maximize returns for the 2025-2026 market cycle.
+                              We plan to diversify our cryptocurrency portfolios to maximise returns for the 2025-2025 market cycle.
                               </p>
                             </div>
                         </div>
@@ -324,7 +324,7 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction}) =>{
                 <img src={image2} alt="" />
                 </div>
                 <div className="eventContent">
-                <p>Educating the participants of Blockchain Digital Asset Conference 2018</p>
+                <p>Educating the participants of Blockchain Digital Asset Conference 2019</p>
                 </div>
             </div>
           </div>
@@ -363,7 +363,7 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction}) =>{
                 <img src={image5} alt="" />
                 </div>
                 <div className="eventContent">
-                <p>Educating the participants of Blockchain Digital Asset Conference 2018</p>
+                <p>BitWealthCapital masterclass by founder  during the Lagos,  Nigeria Blockchain and Artificial intelligence conference 2019</p>
                 </div>
             </div>
           </div>
@@ -389,7 +389,7 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction}) =>{
                 <img src={image7} alt="" />
                 </div>
                 <div className="eventContent">
-                <p>Educating the participants of Blockchain Digital Asset Conference 2018</p>
+                <p>Key speaker at the "Why Bitcoin " online conference in 2020.</p>
                 </div>
             </div>
           </div>
