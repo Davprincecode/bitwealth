@@ -50,10 +50,10 @@ const LandingPageHeader: React.FC<LandingProp> = ({ colorSwitchFunction, colorSw
 
             <div className= {mobileNav ? 'mobileauthActive' : 'auth'}>
                 <div className="loginauth">
-                  <NavLink to="#">login</NavLink>  
+                  <NavLink to="/login">login</NavLink>  
                 </div>
                 <div className="signupauth">
-                <NavLink to="#">sign up</NavLink>  
+                <NavLink to="/register">sign up</NavLink>  
                 </div>
             </div>
 

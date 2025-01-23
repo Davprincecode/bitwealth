@@ -19,7 +19,7 @@ li{
     --secondary2Color : #D6DF20;
     --mixedColor : #DE8B2D;
     --bck : rgb(188, 181, 181);
-    --tablecolor : #e26a2d;
+    --tablecolor : #00308F;
     --whiteBck :  white;
     --bckMixedColor: linear-gradient(135deg,#eb232d,#de8b2d);
     --bckReverdMixedColor :  linear-gradient(135deg,#de8b2d, #eb232d);
@@ -563,7 +563,7 @@ margin: 0px !important;
     border: none;
     width: 90%;
     padding: 9px;
-    color: gray;
+    color: black;
     outline: none;
 }
 .input {
@@ -577,8 +577,12 @@ margin: 0px !important;
     border: none;
     width: 90%;
     padding: 5px;
-    color: gray;
+    font-size: 18px;
+    color: black;
     outline: none;
+}
+.input select{
+    font-size: 18px;
 }
 .searchItem{
     padding: 10px;
@@ -934,10 +938,9 @@ form input, form select{
 width: 100%;
 border: none;
 outline: none;
-border: 1px solid var(--mixedColor);
-background-color: var(--bck);
+border: 2px solid;
 border-radius: 5px;
-padding: 5px;
+padding: 10px;
 }
 .btn{
 display: flex;
@@ -975,76 +978,7 @@ button:disabled {
 
 
 
-/* ============= login =================== */
-.login{
-    /* border: 2px solid; */
-    height: 100vh;
-    overflow: hidden;
-}
 
-.loginLogo{
-    padding: 20px 0px 20px 40px;
-    /* border: 2px solid; */
-}
-.loginLogo .img{
-    width: 60px;
-    height: 70px;
-}
-
-.formWrapper{
-display: flex;
-align-items: center;
-justify-content: center;
-margin-top: 20px;
-}
-.formCon{
-  width: 80%; 
-  text-align: center;
-}
-.formHeader{
-text-transform: capitalize;
-}
-.formHeader h2{
-
-}
-.formHeader p{
-
-}
-.formCon .input{
-width: 100% !important;
-}
-.formCon .input label{
-text-align: left;
-}
-.formCon .input input{
-width: 100%;
-margin-top: 0px !important;
-padding: 10px !important;
-border-radius: 5px !important;
-}
-.forgetpassword{
-    display: none;
-text-align: right;
-}
-.forgetpassword a{
-text-transform: capitalize;
-text-decoration: underline;
-}
-
-.input .btn button{
-    width: 100%;
-    text-transform: capitalize;
-}
-
-@media(max-width : 400px){
-    .formWrapper{
-        margin-top: 50px;
-        }
-        .formHeader h2 {
-            font-size: 20px;
-        }
-}
-/* ====================login end ==================== */
 
 /* =====================  modal start ================= */
 

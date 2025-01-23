@@ -1,8 +1,5 @@
 :root{
   --bPrimary : #0598fa;
-  /* --bPrimary : #ffaa00; */
-  /* #ffa800 */
-  /* --bs-orange: #fd7e14; */
   --bs-white : white;
   --bs-orange: #00308F;
 }
@@ -900,3 +897,205 @@ margin: 0px 10px;
         padding: 1px;
     }
 }
+
+
+
+
+/* ============================================================== */
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.card-header {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.form-label {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.form-control {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.default-select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+}
+
+/* ============= login =================== */
+.login{
+  overflow: auto;
+  height: 100vh;
+}
+.agreementflex{
+  display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.agreementflex input{
+  width: 20px;
+}
+.loginLogo{
+  padding: 20px 0px 20px 40px;
+  /* border: 2px solid; */
+}
+.loginLogo .img{
+  width: 90px;
+  height: 70px;
+}
+
+.formWrapper{
+display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 20px;
+}
+.formCon{
+width: 80%; 
+text-align: center;
+}
+.formHeader{
+text-transform: capitalize;
+}
+.formHeader h2{
+
+}
+.formHeader p{
+
+}
+.formCon .input{
+width: 100% !important;
+}
+.formCon .input label{
+text-align: left;
+}
+.formCon .input input{
+width: 100%;
+margin-top: 0px !important;
+padding: 10px !important;
+border-radius: 5px !important;
+border: 2px solid;
+}
+.forgetpassword{
+text-align: right;
+}
+.forgetpassword a{
+text-transform: capitalize;
+text-decoration: none;
+color: var(--bPrimary);
+}
+.belowbtn{
+  
+}
+.belowbtn a{
+color: var(--bPrimary);
+}
+.input .btn button{
+  width: 100%;
+  text-transform: capitalize;
+}
+/* ----------- confirm email ------- */
+.emailsucces{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  padding: 0px 20px;
+}
+.markIcon{
+margin-bottom: 20px;
+}
+.markIcon svg{
+  font-size: 50px;
+}
+.bottomBellow h1{
+margin-bottom: 10px;
+}
+.bottomBellow p{
+  margin-bottom: 20px;
+}
+.bottomBellow a{
+background-color: #00308F;
+padding: 10px;
+border-radius: 10px;
+color: white;
+}
+/* ------------ registration pop up */
+.registrationPop {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  background-color: #cccccc57;
+   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.registration{
+  padding:  40px;
+  text-align: center;
+ background-color: var(--bs-white);
+}
+.regIconFlex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.regIcon{
+  margin-bottom: 40px;
+  background: hsl(260deg 11% 85%);
+  border-radius: 50%;
+  width: fit-content;
+  padding: 10px;
+}
+.regIcon svg{
+  color: var(--bs-orange);
+  font-size: 25px;
+}
+.termfooter a{
+  color: var(--bPrimary);
+  text-transform: capitalize;
+}
+@media(max-width : 400px){
+  .formWrapper{
+      margin-top: 20px;
+      }
+      .formHeader h2 {
+          font-size: 20px;
+      }
+}
+/* ====================login end ==================== */

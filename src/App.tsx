@@ -61,6 +61,9 @@ import BinanceApi from "./pages/Binance";
 import TermsAndConditions from "./TermAndCondition";
 import Disclaimer from "./Disclamer";
 import { useState } from "react";
+import SignalForm from "./SignalForm";
+import Register from "./pages/Auth/Register";
+import ConfirmEmail from "./pages/ConfirmEmail";
 
 function App() {
   const {baseUrl, token} = userAuth();
@@ -98,27 +101,31 @@ function App() {
     <Route path="/" element={<LandingPage  colorSwitchFunction={colorSwitchFunction} colorSwitch={colorSwitch}/>} />
 
     <Route path="/crypto" element={<BinanceApi />} />
+    
     <Route path="/term" element={<TermsAndConditions />} />
     <Route path="/disclamer" element={<Disclaimer />} />
-      
-
+    <Route path="/signal" element={<SignalForm />} />
     <Route path="/login" element={<Login />} />
+    <Route path="/register" element={<Register />} />
+
+    <Route path="/emailconfirm/:token" element={<ConfirmEmail/>} />
+
 
 
     <Route path="/logout" element={<Logout />} /> 
 
     <Route path="/dashboard" element={<PosUiDesign  />} />
 
-
-
     <Route path="/pos-dashboard" element={<PosDashboard  />} />
+
+
 
     <Route path="/pr-dashboard" element={<PRDashboard  />} />
     <Route path="/mg-dashboard" element={<MgDashboard  />} />
     <Route path="/sendproduct" element={<SendProduct  />} />
 
     <Route path="/expenses" element={<Expenses/>} />
-    {/* <Route path="/addexpenses/:purchaseId" element={<AddExpenses/>} /> */}
+   
     <Route path="/showexpenses/:purchaseId" element={<AddExpenses/>} />
     
     <Route path="/purchasehistory" element={<PurchaseHistory/>} />

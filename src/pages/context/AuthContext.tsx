@@ -37,7 +37,7 @@ interface AuthProviderProps {
 
   const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const navigate = useNavigate();
-    const [baseUrl] = useState<string>('https://api.johntopfoods.com/api/v1');
+    const [baseUrl] = useState<string>('http://127.0.0.1:8000/api/v1');
     const [email, setEmail] = useState<string>('');
     const [userType, setUserType] = useState<string>('');
     const [userId, setUserID] = useState<string>('');

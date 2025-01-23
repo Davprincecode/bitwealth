@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import logo from '../../assets/images/johntopLogo.png';
+import logo from '../../assets/images/logo.png';
+
 import {toast } from 'react-toastify';
-import {useNavigate } from 'react-router-dom';
+import {NavLink, useNavigate } from 'react-router-dom';
 import { userAuth } from '../context/AuthContext';
 
 function Login() {
@@ -86,8 +87,8 @@ function Login() {
      <div className="formWrapper">
         <div className="formCon">
           <div className="formHeader">
-            <h2>welcome to Johntop Foods</h2>
-            <p>please signin to dashboard</p>
+            <h2>welcome to Bitwealth Capital</h2>
+            <p>Sign in to your account</p>
           </div>
             <form>
                 <div className="input">
@@ -102,6 +103,7 @@ function Login() {
                 value={password} onChange={(e) => setPassword(e.target.value)}
                 required/>
                 </div>
+
                 <div className="forgetpassword">
                     <a href="">forget password</a>
                 </div>
@@ -121,6 +123,14 @@ function Login() {
               }
                 </div>
                 </div>
+                
+                <div className="belowbtn">
+                    <p className="text-center">
+                      Not registered?  
+                    <span> <NavLink className="btn-link text-primary" to="/register">Register</NavLink></span>
+                    </p> 
+                </div>
+              
 
             </form>
         </div>

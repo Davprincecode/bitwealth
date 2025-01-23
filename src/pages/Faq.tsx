@@ -99,7 +99,7 @@ const FAQ = () => {
                  {
                   faq.getstarted && (
                     <div className="getstarted">
-                      <NavLink to="#">
+                      <NavLink to="/register">
                           {faq.getstarted}
                       </NavLink>
                       <div><IoArrowForwardCircleSharp /></div>

@@ -132,7 +132,7 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
            <p> We deeply value the trust of our members and clients who look to us for guidance, education, and coaching on their journey to financial freedom. By leveraging opportunities in Bitcoin, cryptocurrency, blockchain, and associated technologies, we help our community achieve their goals in a realistic and sustainable way.</p>
              </p>
                <div className="getstarted">
-                <NavLink to="#">
+                <NavLink to="/register">
                     get started
                 </NavLink>
                   <div><IoArrowForwardCircleSharp /></div>
