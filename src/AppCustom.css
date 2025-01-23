@@ -1069,6 +1069,7 @@ color: white;
   padding:  40px;
   text-align: center;
  background-color: var(--bs-white);
+ height: 100vh;
 }
 .regIconFlex{
   display: flex;

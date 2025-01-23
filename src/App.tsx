@@ -64,6 +64,7 @@ import { useState } from "react";
 import SignalForm from "./SignalForm";
 import Register from "./pages/Auth/Register";
 import ConfirmEmail from "./pages/ConfirmEmail";
+import RedirectForm from "./pages/Auth/RedirectForm";
 
 function App() {
   const {baseUrl, token} = userAuth();
@@ -101,12 +102,13 @@ function App() {
     <Route path="/" element={<LandingPage  colorSwitchFunction={colorSwitchFunction} colorSwitch={colorSwitch}/>} />
 
     <Route path="/crypto" element={<BinanceApi />} />
-    
+
     <Route path="/term" element={<TermsAndConditions />} />
     <Route path="/disclamer" element={<Disclaimer />} />
     <Route path="/signal" element={<SignalForm />} />
     <Route path="/login" element={<Login />} />
     <Route path="/register" element={<Register />} />
+    <Route path="/redirectform" element={<RedirectForm />} />
 
     <Route path="/emailconfirm/:token" element={<ConfirmEmail/>} />
 

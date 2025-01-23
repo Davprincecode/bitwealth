@@ -5,6 +5,7 @@ import {toast } from 'react-toastify';
 import {NavLink, useNavigate } from 'react-router-dom';
 import { userAuth } from '../context/AuthContext';
 import { ImCheckmark } from 'react-icons/im';
+import Country from './Country';
 
 function Register() {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ function Register() {
   const [acceptTerm, setAcceptTerm] = useState<boolean>(false);
   const [dob, setDob] = useState<Date | null>(null);
   const [membership, setMembership] = useState<string>('');
+  const [country, setCountry] = useState<string>('');
   
   const [loading, setLoading] = useState<boolean>(false);
   const {baseUrl} = userAuth();  
@@ -61,7 +63,6 @@ function Register() {
       },
       body: JSON.stringify(raw),
     };
-  
     try {
       const response = await fetch(`${baseUrl}/signupuser`, requestOptions);
       if (!response.ok) {
@@ -70,7 +71,8 @@ function Register() {
       }
       const responseJson = await response.json();
       setLoading(false);
-
+      navigate("/redirectform");
+      
     // if(responseJson.data.userRole === "manager"){
     //   toast.success("Logged in successfully!");
     //   loginAuth(responseJson.data.userId, responseJson.data.email, responseJson.token, responseJson.data.userRole, responseJson.data.fullName, responseJson.data.phoneNumber);
@@ -130,8 +132,8 @@ function Register() {
                    />
                 </div>
                 <div className="input">
-                    <label >other name</label>
-                    <input type="text" placeholder='other name'
+                    <label >First Name</label>
+                    <input type="text" placeholder='First Name'
                      value={otherName} onChange={(e) => setOtherName(e.target.value)}
                    />
                 </div>
@@ -142,12 +144,21 @@ function Register() {
                      value={email} onChange={(e) => setEmail(e.target.value)}
                    />
                 </div>
+
                 <div className="input">
                     <label >phone number</label>
                     <input type="number" placeholder='phone number'
                      value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}
                    />
                 </div>
+
+                <div className="input">
+                    <label >country</label>
+                    <select value={country} onChange={(e) => setCountry(e.target.value)}>
+                     <Country />
+                    </select>
+                </div>
+
                 <div className="input">
                     <label >date of birth</label>
                     <input 
@@ -199,7 +210,7 @@ function Register() {
                 <div className="input">
                 <div className="btn">
                 {
-                  surname && otherName && email && membership && password && age >= 18 && acceptTerm ? (
+                  surname && otherName && email && membership && phoneNumber && country && password && age >= 18 && acceptTerm ? (
                     <button onClick={handleLogin} disabled={loading}>
                       {loading ? 'Loading......' : 'Sign Up'}
                     </button>
@@ -223,27 +234,7 @@ function Register() {
             </form>
         </div>
         </div>
-     {
-       loading ? (
-        <div className="registrationPop">
-        <div className="registration">
-          <div className="regIconFlex">
-            <div className="regIcon">
-            <ImCheckmark />
-          </div>
-          </div>
-          
-          <div className="regContent">
-            <p>
-              A verification link has been sent to your registered email address. Please check your inbox or spam and click on the link to verify your account.
-            </p>
-          </div>
-        </div>
-     </div>
-       ) : (
-        ' '
-       )
-     }
+    
      
 
     </div>
