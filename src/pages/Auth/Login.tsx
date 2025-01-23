@@ -28,43 +28,42 @@ function Login() {
     };
   
     try {
-      const response = await fetch(`${baseUrl}/userlogin`, requestOptions);
-      const responseJson = await response.json();
-     
+      const response = await fetch(`${baseUrl}/signinuser`, requestOptions);
       if (!response.ok) {
         const errorResponse = await response.json();
         throw new Error(errorResponse.message);
       }
-      // const responseJson = await response.json();
+      const responseJson = await response.json();
       setLoading(false);
 
-    if(responseJson.data.userRole === "manager"){
-      toast.success("Logged in successfully!");
-      loginAuth(responseJson.data.userId, responseJson.data.email, responseJson.token, responseJson.data.userRole, responseJson.data.fullName, responseJson.data.phoneNumber);
-      logInUser();
-      navigate("/mg-dashboard");
-    }
-    if(responseJson.data.userRole === "procurement"){
-      toast.success("Logged in successfully!");
-      loginAuth(responseJson.data.userId, responseJson.data.email, responseJson.token, responseJson.data.userRole, responseJson.data.fullName, responseJson.data.phoneNumber);
-      logInUser();
-      navigate("/pr-dashboard");
-    }
-    
-    if(responseJson.data.userRole === "shopPos"){
-      toast.success("Logged in successfully!");
-      loginAuth(responseJson.data.userId, responseJson.data.email, responseJson.token, responseJson.data.userRole, responseJson.data.fullName, responseJson.data.phoneNumber);
-      logInUser();
-      navigate("/pos-dashboard");
-    }
+    // if(responseJson.data.userRole === "manager"){
+    //   toast.success("Logged in successfully!");
+    //   loginAuth(responseJson.data.userId, responseJson.data.email, responseJson.token, responseJson.data.userRole, responseJson.data.fullName, responseJson.data.phoneNumber);
+    //   logInUser();
+    //   navigate("/mg-dashboard");
+    // }
+
+    // if(responseJson.data.userRole === "procurement"){
+    //   toast.success("Logged in successfully!");
+    //   loginAuth(responseJson.data.userId, responseJson.data.email, responseJson.token, responseJson.data.userRole, responseJson.data.fullName, responseJson.data.phoneNumber);
+    //   logInUser();
+    //   navigate("/pr-dashboard");
+    // }
 
 
-    if(responseJson.data.userRole === "warehouse"){
-      toast.success("Logged in successfully!");
-      loginAuth(responseJson.data.userId, responseJson.data.email, responseJson.token, responseJson.data.userRole, responseJson.data.fullName, responseJson.data.phoneNumber);
-      logInUser();
-      navigate("/warehouse-dashboard");
-    }
+    // if(responseJson.data.userRole === "shopPos"){
+    //   toast.success("Logged in successfully!");
+    //   loginAuth(responseJson.data.userId, responseJson.data.email, responseJson.token, responseJson.data.userRole, responseJson.data.fullName, responseJson.data.phoneNumber);
+    //   logInUser();
+    //   navigate("/pos-dashboard");
+    // }
+
+    // if(responseJson.data.userRole === "warehouse"){
+    //   toast.success("Logged in successfully!");
+    //   loginAuth(responseJson.data.userId, responseJson.data.email, responseJson.token, responseJson.data.userRole, responseJson.data.fullName, responseJson.data.phoneNumber);
+    //   logInUser();
+    //   navigate("/warehouse-dashboard");
+    // }
 
     } catch (error) {
       setLoading(false);
@@ -105,7 +104,7 @@ function Login() {
                 </div>
 
                 <div className="forgetpassword">
-                    <a href="">forget password</a>
+                    <NavLink to="/forgetpassword">forget password</NavLink>
                 </div>
 
                 <div className="input">

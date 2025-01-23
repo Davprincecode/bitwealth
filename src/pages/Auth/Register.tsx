@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import logo from '../../assets/images/logo.png';
 
 import {toast } from 'react-toastify';
@@ -18,6 +18,8 @@ function Register() {
   const [dob, setDob] = useState<Date | null>(null);
   const [membership, setMembership] = useState<string>('');
   const [country, setCountry] = useState<string>('');
+  const [confirmpassword, setConfirmPassword] = useState<string>('');
+  const [matchPassword, setMatchPassword] = useState<boolean>(false);
   
   const [loading, setLoading] = useState<boolean>(false);
   const {baseUrl} = userAuth();  
@@ -50,6 +52,7 @@ function Register() {
       'otherName' : otherName,
       'email' : email,
       'phoneNumber' : phoneNumber,
+      'country' : country,
       'dob' : dob,
       'membership' :  membership,
       'password' : password,
@@ -73,33 +76,6 @@ function Register() {
       setLoading(false);
       navigate("/redirectform");
       
-    // if(responseJson.data.userRole === "manager"){
-    //   toast.success("Logged in successfully!");
-    //   loginAuth(responseJson.data.userId, responseJson.data.email, responseJson.token, responseJson.data.userRole, responseJson.data.fullName, responseJson.data.phoneNumber);
-    //   logInUser();
-    //   navigate("/mg-dashboard");
-    // }
-    // if(responseJson.data.userRole === "procurement"){
-    //   toast.success("Logged in successfully!");
-    //   loginAuth(responseJson.data.userId, responseJson.data.email, responseJson.token, responseJson.data.userRole, responseJson.data.fullName, responseJson.data.phoneNumber);
-    //   logInUser();
-    //   navigate("/pr-dashboard");
-    // }
-    
-    // if(responseJson.data.userRole === "shopPos"){
-    //   toast.success("Logged in successfully!");
-    //   loginAuth(responseJson.data.userId, responseJson.data.email, responseJson.token, responseJson.data.userRole, responseJson.data.fullName, responseJson.data.phoneNumber);
-    //   logInUser();
-    //   navigate("/pos-dashboard");
-    // }
-
-    // if(responseJson.data.userRole === "warehouse"){
-    //   toast.success("Logged in successfully!");
-    //   loginAuth(responseJson.data.userId, responseJson.data.email, responseJson.token, responseJson.data.userRole, responseJson.data.fullName, responseJson.data.phoneNumber);
-    //   logInUser();
-    //   navigate("/warehouse-dashboard");
-    // }
-
     } catch (error) {
       setLoading(false);
       if (typeof error === "object" && error !== null && "message" in error && typeof error.message === "string") {
@@ -110,6 +86,18 @@ function Register() {
     }
   };
 
+
+  useEffect(() => {
+    if (password === confirmpassword) {
+      setMatchPassword(true);
+    } else {
+      setMatchPassword(false);
+    }
+  }, [confirmpassword, password]);
+
+const handleConfirmPassword = (eventPassword: string) => {
+    setConfirmPassword(eventPassword);
+  };
   return (
     <div className='login'>
         <div className="loginLogo">
@@ -192,7 +180,20 @@ function Register() {
                 value={password} onChange={(e) => setPassword(e.target.value)}
                 required/>
                 </div>
-
+                
+                <div className="input">
+                    <label>Confirm Password</label>
+                    <input type="password" placeholder='confirm password'
+                     value={confirmpassword} onChange={(e) => handleConfirmPassword(e.target.value)}
+                   />
+                </div>
+                {
+                    confirmpassword && matchPassword == false ? (
+                      <p>password does not match</p> 
+                    ) : (
+                        ' '
+                    )
+                }
                 
                 <div className="agreementflex">
                 <input 
@@ -210,7 +211,7 @@ function Register() {
                 <div className="input">
                 <div className="btn">
                 {
-                  surname && otherName && email && membership && phoneNumber && country && password && age >= 18 && acceptTerm ? (
+                  surname && otherName && email && membership && phoneNumber && country && password && matchPassword &&  age >= 18 && acceptTerm ? (
                     <button onClick={handleLogin} disabled={loading}>
                       {loading ? 'Loading......' : 'Sign Up'}
                     </button>
@@ -226,7 +227,7 @@ function Register() {
                 <div className="belowbtn">
                     <p className="text-center">
                     Already have an account?   
-                    <span> <NavLink className="btn-link text-primary" to="/register">sign in</NavLink></span>
+                    <span> <NavLink className="btn-link text-primary" to="/login">sign in</NavLink></span>
                     </p> 
                 </div>
               

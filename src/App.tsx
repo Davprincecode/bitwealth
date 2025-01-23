@@ -55,7 +55,7 @@ import IssueToShop from "./pages/Warehouse/IssueToShop";
 import IssueToShopReport from "./pages/Warehouse/IssueToShopReport";
 import AddWareHouseEXpenses from "./pages/Warehouse/AddWareHouseEXpenses";
 import LandingPage from "./pages/LandingPage";
-import PosUiDesign from "./pages/user/PosUiDesign";
+import PosUiDesign from "./pages/tradeclub/PosUiDesign";
 import { userAuth } from "./pages/context/AuthContext";
 import BinanceApi from "./pages/Binance";
 import TermsAndConditions from "./TermAndCondition";
@@ -65,6 +65,8 @@ import SignalForm from "./SignalForm";
 import Register from "./pages/Auth/Register";
 import ConfirmEmail from "./pages/ConfirmEmail";
 import RedirectForm from "./pages/Auth/RedirectForm";
+import ForgetPassword from "./pages/Auth/ForgetPassword";
+import ChangePassword from "./pages/Auth/ChangePassword";
 
 function App() {
   const {baseUrl, token} = userAuth();
@@ -99,7 +101,7 @@ function App() {
 
     <Routes>
 
-    <Route path="/" element={<LandingPage  colorSwitchFunction={colorSwitchFunction} colorSwitch={colorSwitch}/>} />
+    <Route path="/" element={<LandingPage  colorSwitchFunction={colorSwitchFunction} colorSwitch={colorSwitch} />} />
 
     <Route path="/crypto" element={<BinanceApi />} />
 
@@ -109,19 +111,24 @@ function App() {
     <Route path="/login" element={<Login />} />
     <Route path="/register" element={<Register />} />
     <Route path="/redirectform" element={<RedirectForm />} />
-
     <Route path="/emailconfirm/:token" element={<ConfirmEmail/>} />
-
-
+    <Route path="/forgetpassword" element={<ForgetPassword/>} />
+    <Route path="/changepassword/:token" element={<ChangePassword/>} />
 
     <Route path="/logout" element={<Logout />} /> 
 
-    <Route path="/dashboard" element={<PosUiDesign  />} />
+    <Route path="/trade-dashboard" element={<PosUiDesign  />} />
+    <Route path="/hedge-dashboard" element={<PosUiDesign  />} />
+    <Route path="/admin-dashboard" element={<PosUiDesign  />} />
+
+
+
+
+
+
+
 
     <Route path="/pos-dashboard" element={<PosDashboard  />} />
-
-
-
     <Route path="/pr-dashboard" element={<PRDashboard  />} />
     <Route path="/mg-dashboard" element={<MgDashboard  />} />
     <Route path="/sendproduct" element={<SendProduct  />} />

@@ -1091,6 +1091,16 @@ color: white;
   color: var(--bPrimary);
   text-transform: capitalize;
 }
+.passwordChange p{
+  margin-bottom: 20px;
+}
+.passwordChange a{
+  background: blue;
+  color: white;
+  padding: 10px;
+  text-transform: capitalize;
+  border-radius: 10px;
+}
 @media(max-width : 400px){
   .formWrapper{
       margin-top: 20px;
