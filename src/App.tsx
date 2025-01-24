@@ -71,6 +71,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import Hedge from "./pages/hedge/Hedge";
 import TradeDashboard from "./pages/tradeclub/TradeDashboard";
 import CreateSignal from "./pages/admin/CreateSignal";
+import SendEmail from "./pages/admin/SendEmail";
 
 function App() {
   const {baseUrl, token} = userAuth();
@@ -127,7 +128,7 @@ function App() {
     {/* ============= admin ============= */}
     <Route path="/admin-dashboard" element={<AdminDashboard  />} />
     <Route path="/create-signal" element={<CreateSignal />} />
-    
+    <Route path="/send-email" element={<SendEmail />} />
     {/* ============ admin end ============= */}
 
 

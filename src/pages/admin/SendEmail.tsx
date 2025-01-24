@@ -9,11 +9,9 @@ import SideMenu from '../../component/SideMenu';
 import TopHeader from '../../component/TopHeader';
 
 
-function sendEmail() {
+function SendEmail() {
   const navigate = useNavigate();
-
   const [navBar, setNavBar] = useState<boolean>(false);
-
 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -78,7 +76,7 @@ function sendEmail() {
       body: JSON.stringify(raw),
     };
     try {
-      const response = await fetch(`${baseUrl}/signupuser`, requestOptions);
+      const response = await fetch(`${baseUrl}/senduseremail`, requestOptions);
       if (!response.ok) {
         const errorResponse = await response.json();
         throw new Error(errorResponse.message);
@@ -121,127 +119,66 @@ const handleConfirmPassword = (eventPassword: string) => {
 <div className="mainContainer">
 
   <div className="mainContainersHeader">
-      <TopHeader pageTitle='dashboard' handleToggle={handleToggle}/>
-  </div>
-
-    
-     
-     {/* ==========main container wrapper ============= */}
+      <TopHeader pageTitle='send email' handleToggle={handleToggle}/>
+  </div> 
+    {/* ==========main container wrapper ============= */}
    <div className="mainContainerWrapper">
-   <form>
-                <div className="input">
-                    <label >surname</label>
-                    <input type="text" placeholder='surname'
-                     value={surname} onChange={(e) => setSurname(e.target.value)}
-                   />
-                </div>
-                <div className="input">
-                    <label >First Name</label>
-                    <input type="text" placeholder='First Name'
-                     value={otherName} onChange={(e) => setOtherName(e.target.value)}
-                   />
-                </div>
 
-                <div className="input">
-                    <label >email</label>
-                    <input type="email" placeholder='email'
-                     value={email} onChange={(e) => setEmail(e.target.value)}
-                   />
-                </div>
+   <div className="formWrapper">
+   <div className="formCon">
+        <form>
+                      
+                    <div className="input">
+                        <label>user</label>
+                        <select value={membership} onChange={(e) => setMembership(e.target.value)}>
+                        <option value="">select user</option>
+                        <option value="all">all</option>
+                        <option value="david">david</option>
+                        </select>
+                    </div>
+                  
+                        <div className="input">
+                        <label >subject</label>
+                        <input type="text" name="" id="" />
+                        </div>
+                        
+                        <div className="input">
+                        <label >message</label>
+                        <textarea name="" id="">
 
-                <div className="input">
-                    <label >phone number</label>
-                    <input type="number" placeholder='phone number'
-                     value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}
-                   />
-                </div>
+                        </textarea>
+                        </div>
+                    
+                        
+        
 
-                <div className="input">
-                    <label >date of birth</label>
-                    <input 
-                      type="date" 
-                      placeholder='date of birth'
-                      value={dob ? dob.toISOString().split('T')[0] : ''}
-                      onChange={(e) => calculateAge(e.target.valueAsDate)}
-                    />
-                   {
-                    age < 18 ? (
-                     <p>Your age ({age}) is not allowed to sendEmail with us.</p>
-                    ) : (
-                        ' '
-                    )
-                   }     
-                </div>
-              
+                        <div className="input">
+                        <div className="btn">
+                        {
+                        surname && otherName && email && membership && phoneNumber && country && password && matchPassword &&  age >= 18 && acceptTerm ? (
+                            <button onClick={handleLogin} disabled={loading}>
+                            {loading ? 'Loading......' : 'Send'}
+                            </button>
+                        ) : (
+                            <button disabled={true}>
+                            {loading ? 'Loading......' : 'Send'}
+                            </button>
+                        )
+                    }
+                        </div>
+                        </div>
+                        
+                        <div className="belowbtn">
+                            <p className="text-center">
+                            Already have an account?   
+                            <span> <NavLink className="btn-link text-primary" to="/login">sign in</NavLink></span>
+                            </p> 
+                        </div>
+                    
 
-               <div className="input">
-                <label >membership</label>
-                <select value={membership} onChange={(e) => setMembership(e.target.value)}>
-                  <option value="">select membership</option>
-                  <option value="hedge fund">hedge fund</option>
-                  <option value="trade club">trade club</option>
-                </select>
-               </div>
-
-                <div className="input">
-                <label >password</label>
-                <input type="password" placeholder='password'
-                value={password} onChange={(e) => setPassword(e.target.value)}
-                required/>
-                </div>
-                
-                <div className="input">
-                    <label>Confirm Password</label>
-                    <input type="password" placeholder='confirm password'
-                     value={confirmpassword} onChange={(e) => handleConfirmPassword(e.target.value)}
-                   />
-                </div>
-                {
-                    confirmpassword && matchPassword == false ? (
-                      <p>password does not match</p> 
-                    ) : (
-                        ' '
-                    )
-                }
-                
-                <div className="agreementflex">
-                <input 
-                    type="checkbox" 
-                    checked={acceptTerm} 
-                    onChange={(e) => setAcceptTerm(e.target.checked)} 
-                  />
-
-                  <div className="termfooter">
-                 <p>I have agree to the <NavLink to="/term">terms & condition</NavLink> and <NavLink to="/disclamer">Disclaimer</NavLink> of BitwealthCapital.</p>
-                 </div>
-                 
-                </div>
-
-                <div className="input">
-                <div className="btn">
-                {
-                  surname && otherName && email && membership && phoneNumber && country && password && matchPassword &&  age >= 18 && acceptTerm ? (
-                    <button onClick={handleLogin} disabled={loading}>
-                      {loading ? 'Loading......' : 'Sign Up'}
-                    </button>
-                  ) : (
-                    <button disabled={true}>
-                      {loading ? 'Loading......' : 'Sign Up'}
-                    </button>
-                  )
-              }
-                </div>
-                </div>
-                
-                <div className="belowbtn">
-                    <p className="text-center">
-                    Already have an account?   
-                    <span> <NavLink className="btn-link text-primary" to="/login">sign in</NavLink></span>
-                    </p> 
-                </div>
-              
-
-            </form>
+        </form>
+    </div>
+    </div>
    </div>
 
 
@@ -251,4 +188,4 @@ const handleConfirmPassword = (eventPassword: string) => {
   )
 }
 
-export default sendEmail
+export default SendEmail

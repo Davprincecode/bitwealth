@@ -10,7 +10,7 @@ import { FaEyeSlash } from 'react-icons/fa';
     
 
 function AdminDashboard() {
-    const {baseUrl, token} = userAuth()
+    const {baseUrl, token} = userAuth();
     const [navBar, setNavBar] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
 
