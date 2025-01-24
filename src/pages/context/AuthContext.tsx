@@ -98,7 +98,7 @@ interface AuthProviderProps {
           console.log(error);
         }
       } else {
-        logout()
+        // logout()
       }
     };
     fetchData();
