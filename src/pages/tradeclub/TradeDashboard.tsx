@@ -10,7 +10,7 @@ import { FaEyeSlash } from 'react-icons/fa';
 
     
 
-function Tradeclubdashboard() {
+function TradeDashboard() {
     const {baseUrl, token} = userAuth()
     const [navBar, setNavBar] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
@@ -123,4 +123,4 @@ function Tradeclubdashboard() {
     )
 }
 
-export default Tradeclubdashboard
+export default TradeDashboard

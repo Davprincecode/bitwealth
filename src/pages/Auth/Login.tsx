@@ -36,19 +36,19 @@ function Login() {
       const responseJson = await response.json();
       setLoading(false);
 
-    // if(responseJson.data.userRole === "manager"){
-    //   toast.success("Logged in successfully!");
-    //   loginAuth(responseJson.data.userId, responseJson.data.email, responseJson.token, responseJson.data.userRole, responseJson.data.fullName, responseJson.data.phoneNumber);
-    //   logInUser();
-    //   navigate("/mg-dashboard");
-    // }
+    if(responseJson.data.userRole === "admin"){
+      toast.success("Logged in successfully!");
+      loginAuth(responseJson.data.userId, responseJson.data.email, responseJson.token, responseJson.data.userRole, responseJson.data.fullName, responseJson.data.phoneNumber);
+      logInUser();
+      navigate("/admin-dashboard");
+    }
 
-    // if(responseJson.data.userRole === "procurement"){
-    //   toast.success("Logged in successfully!");
-    //   loginAuth(responseJson.data.userId, responseJson.data.email, responseJson.token, responseJson.data.userRole, responseJson.data.fullName, responseJson.data.phoneNumber);
-    //   logInUser();
-    //   navigate("/pr-dashboard");
-    // }
+    if(responseJson.data.userRole === "trade club"){
+      toast.success("Logged in successfully!");
+      loginAuth(responseJson.data.userId, responseJson.data.email, responseJson.token, responseJson.data.userRole, responseJson.data.fullName, responseJson.data.phoneNumber);
+      logInUser();
+      navigate("/trade-dashboard");
+    }
 
 
     // if(responseJson.data.userRole === "shopPos"){

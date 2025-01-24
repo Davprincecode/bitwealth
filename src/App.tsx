@@ -67,6 +67,10 @@ import ConfirmEmail from "./pages/ConfirmEmail";
 import RedirectForm from "./pages/Auth/RedirectForm";
 import ForgetPassword from "./pages/Auth/ForgetPassword";
 import ChangePassword from "./pages/Auth/ChangePassword";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import Hedge from "./pages/hedge/Hedge";
+import TradeDashboard from "./pages/tradeclub/TradeDashboard";
+import CreateSignal from "./pages/admin/CreateSignal";
 
 function App() {
   const {baseUrl, token} = userAuth();
@@ -75,7 +79,6 @@ function App() {
   const [colorSwitch, setColorSwitch] = useState("white");
 
  const colorSwitchFunction = () => {
-  console.log("hello world");
   
   if(colorSwitch == "white"){
     setColorSwitch("black");
@@ -117,9 +120,15 @@ function App() {
 
     <Route path="/logout" element={<Logout />} /> 
 
-    <Route path="/trade-dashboard" element={<PosUiDesign  />} />
-    <Route path="/hedge-dashboard" element={<PosUiDesign  />} />
-    <Route path="/admin-dashboard" element={<PosUiDesign  />} />
+    <Route path="/trade-dashboard" element={<TradeDashboard />} />
+    <Route path="/hedge-dashboard" element={<Hedge  />} />
+    
+
+    {/* ============= admin ============= */}
+    <Route path="/admin-dashboard" element={<AdminDashboard  />} />
+    <Route path="/create-signal" element={<CreateSignal />} />
+    
+    {/* ============ admin end ============= */}
 
 
 

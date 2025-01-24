@@ -85,11 +85,14 @@ body{
     flex-direction: column;
     }
     .sideNavLogo{
-        width: 70px;
-        height: 70px;
-        border-radius: 50%;
-        background-color: var(--primaryColor);
+        width: 99px;
+        height: 65px;
+        border-radius: 40%;
+        background-color: #0598fa;
         padding: 10px;
+    }
+    .sideNavLogo img{
+        object-fit: cover !important;
     }
     .sideNavLogoContainer p{
         font-weight: bold;
@@ -108,8 +111,7 @@ body{
     background-image: var(--bckMixedColor);
     }
     .sideNavMenu ul li{
-    margin: 10px 0px;
-    padding: 7px 0px;
+    padding: 5px 0px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     cursor: pointer;
@@ -144,9 +146,8 @@ body{
     }
 
  .submenu{
-    /* position: absolute;
-    top: 0px; */
     background-color: #DE8B2D;
+    border-bottom-right-radius: 20px;
  }
 /* ==========================end of menu ============== */
 .upperContainerWrapper{

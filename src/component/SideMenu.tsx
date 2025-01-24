@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom';
-import logo from '../assets/images/johntopLogo.png';
+import logo from '../assets/images/logo.png';
 import { FiX } from 'react-icons/fi';
 import { RiHome2Fill } from "react-icons/ri";
 import { LuFileBarChart } from "react-icons/lu";
@@ -10,288 +10,180 @@ import { IoIosSettings, IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/i
 import { userAuth } from '../pages/context/AuthContext';
 
 interface Props {
-    navBar: boolean;
-    handleToggle: () => void;
-  }
+  navBar: boolean;
+  handleToggle: () => void;
+}
 
-  interface SubNavOptions {
-    "My Application": { title: string; path: string; }[];
-    Report: { title: string; path: string; }[];
-    "My Inventory": { title: string; path: string; }[];
-  }
-  
-  interface RoleSubNavOptions {
-    [key: string]: SubNavOptions;
-  }
+interface SubNavOptions {
+  [key: string]: { title: string; path: string; }[];
+}
 
+interface MenuItem {
+  title: string;
+  path: string;
+  icon?: JSX.Element;
+  subNavOption?: SubNavOptions;
+}
 
-  interface MenuItem {
-    title: string;
-    path: string;
-    icon?: JSX.Element;
-    subNavOption?: {
-      title: string;
-      path: string;
-    }[];
-  }
-  const SideMenu: React.FC<Props> = ({ navBar, handleToggle }) =>
-    {
+const SideMenu: React.FC<Props> = ({ navBar, handleToggle }) => {
 
-const {userType} = userAuth();
-    
-const role = userType;
+  const { userType } = userAuth();
 
-const roleSubNavOptions: RoleSubNavOptions = {
-manager : {
-        "My Application" : [
-          { 
-            title: 'Material Recieve', 
-            path: '/material' 
-          },
-          {
-            title : 'expenditure',
-            path : '/shopexpenditure'
-          }
-       
-        ],
-        "Report" : [
-               {
-                title : 'Transaction',
-                path : '/users/mg-transaction'
-                },
-                {
-                title : 'sales',
-                path : '/users/mg-sales'
-                },
-                {
-                title : 'Currency (cash)',
-                path : '/users/mg-cash'
-                },
-                {
-                title : 'E-Money (transfer or pos)',
-                path : '/users/mg-transfer'
-                }
-        ],
-        "My Inventory" : [
-               {
-                title : 'My warehouse',
-                path : '/myStock'
-                },
-                {
-                title : 'My expenses',
-                path : '/myexpenditure'
-               },
+  const role = userType;
 
-        ]
+  const menuItems: MenuItem[] = [];
+
+  if (role === 'admin') {
+    menuItems.push(
+      {
+        title: 'Dashboard',
+        path: '/admin-dashboard',
+        icon: <RiHome2Fill />
       },
-procurement : {
-    "My Application" : [
-
-        { 
-            title: 'new purchase', 
-            path: '/sendproduct' 
-        },
-        { 
-            title: 'new expenses', 
-            path: '/expenses' 
+      {
+        title: 'Trade Signal',
+        path: '/#',
+        icon: <IoIosSettings />,
+        subNavOption: {
+          "Create Signals": [{ title: 'Create Signal', path: '/create-signal' }],
+          "Signals": [{ title: 'Signals', path: '/signal' }],
+          "Trade Signals": [{ title: 'Signals', path: '/signal' }]
         }
-        
-      ],
-      "Report" : [
-        { 
-            title: 'purchase status', 
-            path: '/purchasestatus' 
+      },
+
+      {
+        title: 'admin Application',
+        path: '/#',
+        icon: <IoIosSettings />,
+        subNavOption: {
+          "admin mat": [{ title: 'Material Recieve', path: '/material' }],
+          "Expenditure": [{ title: 'Expenditure', path: '/shopexpenditure' }]
         }
-      ],
-      "My Inventory" : [
-           {
-              title : 'purchase history',
-              path : '/purchasehistory'
-              }
-      ]
-  },
-shopPos: {
-    "My Application" : [
-        { title: 'point of sales', path: '/pos' }
-      ],
-      "Report" : [
-             {
-              title : 'Transactions',
-              path : '/postransaction'
-              },
-              {
-              title : 'Currency (cash)',
-              path : '/poscash'
-              },
-              {
-              title : 'E-Money (transfer or pos)',
-              path : '/postransfer'
-              }
-      ],
-      "My Inventory" : [
-            //  {
-            //   title : 'stock',
-            //   path : '/myStockPos'
-            //   },
-              {
-              title : 'sales',
-              path : '/possales'
-              }
-      ]
-  },
-
-warehouse: {
-    "My Application" : [
-      {
-        title : 'New Product',
-        path : '/addtostock'
       },
       {
-        title : 'Issue Product',
-        path : '/issueProduct'
-      },
-      {
-        title : 'Issue To Shop',
-        path : '/issueToShop'
-      },
-      {
-        title : 'new expenses',
-        path : '/newexpenses'
-      },
-      {
-        title : 'minor sale',
-        path : '/minorsales'
-      },
-      
-      ],
-      "Report" : [
-        {
-          title : 'issued history',
-          path : '/myIssuedHistory'
-        },
-
-        {
-          title : 'minor sales history',
-          path : '/salesreport'
-        },
-
-        {
-          title : 'issue to shop history',
-          path : '/shopreport'
+        title: 'trade history',
+        path: '/#',
+        icon: <IoIosSettings />,
+        subNavOption: {
+          "admin mat": [{ title: 'Material Recieve', path: '/material' }],
+          "Expenditure": [{ title: 'Expenditure', path: '/shopexpenditure' }]
         }
-        
-      ],
-
-      "My Inventory" : [
-        {
-          title : 'stock',
-          path : '/mystockwarehouse'
-          },
-          {
-          title : 'expenditure',
-          path : '/myExpenditureWare'
-          }
-      ]
-  },
-
-};
-
-const menuItems: MenuItem[] = userType !== "" ? ([
-  {
-      title : 'Dashboard',
-      path : role == "manager" ? "/mg-dashboard" : role == "procurement" ? "/pr-dashboard" : role == "warehouse" ? "/warehouse-dashboard" : "/pos-dashboard",
-      icon : <RiHome2Fill />  
-  },
-  {
-    title : 'My Application',
-    path : '/#',
-    icon : <IoIosSettings />,
-    subNavOption : roleSubNavOptions[role]?.["My Application"]
-    },
-  {
-    title : 'Report',
-    path : '/#',
-    icon : <LuFileBarChart />,
-    subNavOption : roleSubNavOptions[role]["Report"]
-  },
-  {
-    title : 'My Inventory',
-    path : '/#',
-    icon : <MdInventory />,
-    subNavOption : roleSubNavOptions[role]["My Inventory"] 
-  },
-  {
-      title : 'signout',
-      path : '/logout',
-      icon : <TbLogout />
+      },
+      {
+        title: 'Report',
+        path: '/#',
+        icon: <LuFileBarChart />,
+        subNavOption: {
+          "Transaction": [{ title: 'Transaction', path: '/users/mg-transaction' }],
+          "Sales": [{ title: 'Sales', path: '/users/mg-sales' }],
+          "Currency (cash)": [{ title: 'Currency (cash)', path: '/users/mg-cash' }],
+          "E-Money (transfer or pos)": [{ title: 'E-Money (transfer or pos)', path: '/users/mg-transfer' }]
+        }
+      },
+      {
+        title: 'My Inventory',
+        path: '/#',
+        icon: <MdInventory />,
+        subNavOption: {
+          "My Warehouse": [{ title: 'My Warehouse', path: '/myStock' }],
+          "My Expenses": [{ title: 'My Expenses', path: '/myexpenditure' }]
+        }
+      }
+    );
+  } else if (role === 'trade club') {
+    menuItems.push(
+      {
+        title: 'Dashboard',
+        path: '/trade-club-dashboard',
+        icon: <RiHome2Fill />
+      },
+      {
+        title: 'My Trades',
+        path: '/#',
+        icon: <IoIosSettings />,
+        subNavOption: {
+          "Open Trades": [{ title: 'Open Trades', path: '/open-trades' }],
+          "Closed Trades": [{ title: 'Closed Trades', path: '/closed-trades' }]
+        }
+      },
+      {
+        title: 'Report',
+        path: '/#',
+        icon: <LuFileBarChart />,
+        subNavOption: {
+          "Trade History": [{ title: 'Trade History', path: '/trade-history' }],
+          "Performance": [{ title: 'Performance', path: '/performance' }]
+        }
+      }
+    );
   }
-]) :([]);
+
 
     const [openSubMenuIndex, setOpenSubMenuIndex] = useState<number | null>(null);
+
     const toggleSubMenu = (currentIndex: number) => {
         setOpenSubMenuIndex(prevIndex => (prevIndex === currentIndex ? null : currentIndex));
     };
 
 
-  return (
-
-<div className={navBar ? "sideNavActive" : "sideNav"}>
- <div className="harmburger" onClick={handleToggle}>
- <FiX />
-  <i className="fa-solid fa-bars-staggered"></i>
- </div>
-<div className="sideNavLogoContainer">
-{/* <NavLink to="{{ route('index') }}"> */}
- <div className="sideNavLogo">
-    <img src={logo} alt="" />
- </div>
-{/* </NavLink> */}
- <p>JohnTop Foods</p>
-</div>
- <div className="sideNavMenu">
-    <ul>
-{/* className="active" */}
-    {menuItems.map((menuItem, index) => (
-        <li  key={index} style={{backgroundImage : openSubMenuIndex === index ? 'linear-gradient(135deg,#eb232d,#de8b2d)' : 'none'}}>
-        {menuItem.subNavOption ? (
-            <div>
-        <div className="topmenu">
-         {menuItem.icon}
-          <NavLink to=" " className={({ isActive }) => (isActive ? 'active-link' : '')}>
-          <span>{menuItem.title}</span>
-          </NavLink>
-          {openSubMenuIndex === index ? (
-             <IoMdArrowDropdown onClick={() => toggleSubMenu(index)}/>
-            ) : (
-             <IoMdArrowDropup onClick={() => toggleSubMenu(index)}/>
-            )}  
+    return (
+        <div className={navBar ? "sideNavActive" : "sideNav"}>
+          <div className="harmburger" onClick={handleToggle}>
+            <FiX />
+            <i className="fa-solid fa-bars-staggered"></i>
           </div>
-        <ul className="submenu" style={{display : openSubMenuIndex === index ? 'block' : 'none'}}>
-        {menuItem.subNavOption.map((subItem, subIndex) => (
-                  <li key={subIndex}>
-                    <NavLink to={subItem.path} className={({ isActive }) => (isActive ? 'active-link' : '')}>
-                      <span>{subItem.title}</span>
-                    </NavLink>
-                  </li>
-            ))}
-        </ul>
+          <div className="sideNavLogoContainer">
+            <div className="sideNavLogo">
+              <img src={logo} alt="" />
+            </div>
+            <p>BitWealthCapital</p>
+          </div>
+          <div className="sideNavMenu">
+            <ul>
+              {menuItems.map((menuItem, index) => (
+                <li key={index} style={{ backgroundImage: openSubMenuIndex === index ? 'linear-gradient(135deg,#eb232d,#de8b2d)' : 'none' }}>
+                  {menuItem.subNavOption ? (
+                    <div>
+                      <div className="topmenu">
+                        {menuItem.icon}
+                        <span>{menuItem.title}</span>
+                        {openSubMenuIndex === index ? (
+                          <IoMdArrowDropdown onClick={() => toggleSubMenu(index)} />
+                        ) : (
+                          <IoMdArrowDropup onClick={() => toggleSubMenu(index)} />
+                        )}
+                      </div>
+
+                      <ul className="submenu" style={{ display: openSubMenuIndex === index ? 'block' : 'none' }}>
+                        {Object.keys(menuItem.subNavOption).map((subItemKey, subItemIndex) => (
+                          <li key={subItemIndex}>
+                            <ul className="submenu-subitems">
+                              {menuItem.subNavOption && menuItem.subNavOption[subItemKey] && menuItem.subNavOption[subItemKey].map((subItem, subIndex) => (
+                                <li key={subIndex}>
+                                  <NavLink to={subItem.path} className={({ isActive }) => (isActive ? 'active-link' : '')}>
+                                    <span>{subItem.title}</span>
+                                  </NavLink>
+                                </li>
+                              ))}
+                            </ul>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : (
+                    <div className="topmenu">
+                      {menuItem.icon}
+                      <NavLink to={menuItem.path} className={({ isActive }) => (isActive ? 'active-link' : '')}>
+                        <span>{menuItem.title}</span>
+                      </NavLink>
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-         ) : (
-         <div className="topmenu">
-         {menuItem.icon}
-          <NavLink to={menuItem.path} className={({ isActive }) => (isActive ? 'active-link' : '')}>
-          <span>{menuItem.title}</span>
-          </NavLink>
-          </div>
-        )}
-        </li>
-    ))}
-    </ul>
- </div>
-</div>
-
-
-  )
+      );
 }
 
 export default SideMenu
