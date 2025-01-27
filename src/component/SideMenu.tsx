@@ -7,7 +7,11 @@ import { LuFileBarChart } from "react-icons/lu";
 import { MdInventory } from "react-icons/md";
 import { TbLogout } from "react-icons/tb";
 import { IoIosSettings, IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
+
 import { userAuth } from '../pages/context/AuthContext';
+import { FaChartLine, FaUsers } from 'react-icons/fa';
+import { FcComboChart } from 'react-icons/fc';
+import { IoLogOut } from 'react-icons/io5';
 
 interface Props {
   navBar: boolean;
@@ -41,53 +45,47 @@ const SideMenu: React.FC<Props> = ({ navBar, handleToggle }) => {
         icon: <RiHome2Fill />
       },
       {
+        title: 'Users',
+        path: '/#',
+        icon: <FaUsers />,
+        subNavOption: {
+          "All Users": [{ title: 'All Users', path: '/all-users' }],
+          "Payments": [{ title: 'Payments', path: '/payments' }],
+          "Kyc": [{ title: 'Kyc', path: '/kyc' }],
+        }
+      },
+      {
         title: 'Trade Signal',
         path: '/#',
-        icon: <IoIosSettings />,
+        icon: <FaChartLine />,
         subNavOption: {
           "Create Signals": [{ title: 'Create Signal', path: '/create-signal' }],
-          "Signals": [{ title: 'Signals', path: '/signal' }],
-          "Trade Signals": [{ title: 'Signals', path: '/signal' }]
+          "All Signals": [{ title: 'All Signals', path: '/all-signal' }],
         }
       },
-
-      {
-        title: 'admin Application',
-        path: '/#',
-        icon: <IoIosSettings />,
-        subNavOption: {
-          "admin mat": [{ title: 'Material Recieve', path: '/material' }],
-          "Expenditure": [{ title: 'Expenditure', path: '/shopexpenditure' }]
-        }
-      },
-      {
-        title: 'trade history',
-        path: '/#',
-        icon: <IoIosSettings />,
-        subNavOption: {
-          "admin mat": [{ title: 'Material Recieve', path: '/material' }],
-          "Expenditure": [{ title: 'Expenditure', path: '/shopexpenditure' }]
-        }
-      },
+ 
+      // {
+      //   title: 'trade history',
+      //   path: '/#',
+      //   icon: <IoIosSettings />,
+      //   subNavOption: {
+      //     "admin mat": [{ title: 'Material Recieve', path: '/material' }],
+      //     "Expenditure": [{ title: 'Expenditure', path: '/shopexpenditure' }]
+      //   }
+      // },
       {
         title: 'Report',
         path: '/#',
         icon: <LuFileBarChart />,
         subNavOption: {
-          "Transaction": [{ title: 'Transaction', path: '/users/mg-transaction' }],
-          "Sales": [{ title: 'Sales', path: '/users/mg-sales' }],
-          "Currency (cash)": [{ title: 'Currency (cash)', path: '/users/mg-cash' }],
-          "E-Money (transfer or pos)": [{ title: 'E-Money (transfer or pos)', path: '/users/mg-transfer' }]
+          "Crypto News": [{ title: 'Crypto News', path: '/crypto-news' }],
+          "Trade History": [{ title: 'Trade History', path: '/trade-history' }]
         }
       },
       {
-        title: 'My Inventory',
-        path: '/#',
-        icon: <MdInventory />,
-        subNavOption: {
-          "My Warehouse": [{ title: 'My Warehouse', path: '/myStock' }],
-          "My Expenses": [{ title: 'My Expenses', path: '/myexpenditure' }]
-        }
+        title: 'Log out',
+        path: '/logout',
+        icon : <IoLogOut />
       }
     );
   } else if (role === 'trade club') {
@@ -98,14 +96,15 @@ const SideMenu: React.FC<Props> = ({ navBar, handleToggle }) => {
         icon: <RiHome2Fill />
       },
       {
-        title: 'My Trades',
+        title: 'Trade signal',
         path: '/#',
         icon: <IoIosSettings />,
         subNavOption: {
-          "Open Trades": [{ title: 'Open Trades', path: '/open-trades' }],
-          "Closed Trades": [{ title: 'Closed Trades', path: '/closed-trades' }]
+          "Trade new": [{ title: 'Trade new', path: '/open-trades' }],
+          "Trade history": [{ title: 'Trade history', path: '/closed-trades' }]
         }
       },
+
       {
         title: 'Report',
         path: '/#',
@@ -141,12 +140,20 @@ const SideMenu: React.FC<Props> = ({ navBar, handleToggle }) => {
           <div className="sideNavMenu">
             <ul>
               {menuItems.map((menuItem, index) => (
-                <li key={index} style={{ backgroundImage: openSubMenuIndex === index ? 'linear-gradient(135deg,#eb232d,#de8b2d)' : 'none' }}>
+                <li key={index}>
                   {menuItem.subNavOption ? (
                     <div>
-                      <div className="topmenu">
-                        {menuItem.icon}
-                        <span>{menuItem.title}</span>
+                      <div className="topmenu"  style={{ backgroundImage: openSubMenuIndex === index ? 'background: #0400ff26' : 'none' }}>
+                        <div className="topmenuItem">
+                         <div className="topmenuIcon">
+                         {menuItem.icon}
+                         </div>
+                         <div className="topmenuName">
+                          {menuItem.title}
+                         </div>
+                        </div>
+                        
+
                         {openSubMenuIndex === index ? (
                           <IoMdArrowDropdown onClick={() => toggleSubMenu(index)} />
                         ) : (
@@ -160,6 +167,7 @@ const SideMenu: React.FC<Props> = ({ navBar, handleToggle }) => {
                             <ul className="submenu-subitems">
                               {menuItem.subNavOption && menuItem.subNavOption[subItemKey] && menuItem.subNavOption[subItemKey].map((subItem, subIndex) => (
                                 <li key={subIndex}>
+                                  <span>-</span> 
                                   <NavLink to={subItem.path} className={({ isActive }) => (isActive ? 'active-link' : '')}>
                                     <span>{subItem.title}</span>
                                   </NavLink>
@@ -172,10 +180,21 @@ const SideMenu: React.FC<Props> = ({ navBar, handleToggle }) => {
                     </div>
                   ) : (
                     <div className="topmenu">
-                      {menuItem.icon}
-                      <NavLink to={menuItem.path} className={({ isActive }) => (isActive ? 'active-link' : '')}>
+                      <div className="topmenuItem">
+                         <div className="topmenuIcon">
+                         {menuItem.icon}
+                         </div>
+                        
+                      {/* {menuItem.icon} */}
+                      <div className="topmenuName">
+                          {/* {menuItem.title} */}
+                          <NavLink to={menuItem.path} className={({ isActive }) => (isActive ? 'active-link' : '')}>
                         <span>{menuItem.title}</span>
                       </NavLink>
+                      </div>
+                      
+                      
+                      </div>
                     </div>
                   )}
                 </li>

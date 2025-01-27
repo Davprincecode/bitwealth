@@ -1105,6 +1105,73 @@ color: white;
   text-transform: capitalize;
   border-radius: 10px;
 }
+
+.container-fluid {
+    border: 1px solid;
+    padding: 10px 0px;
+    border-radius: 10px;
+    overflow: auto;
+}
+.container-header{
+border-bottom: 1px solid;
+padding: 5px 10px;
+}
+.container-header h2{
+
+}
+.container-body{
+  padding: 10px 0px;
+}
+.container-body table{
+  width: 100%;
+  margin: 0 auto;
+  clear: both;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+thead, tbody, tfoot, tr, td, th {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+}
+.container-body table thead th {
+  border-bottom: 1px solid #111;
+}
+.container-body table thead th, .container-body table thead td {
+  padding: 10px 18px;
+}
+tbody{
+  margin: 10px 0px;
+}
+tbody td {
+  border-color: #eeee;
+}
+.d-flex{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.approveBtn, .rejectBtn{
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.approveBtn{
+  background-color: #00A389;
+  border-color: #00A389;
+  color: white;
+  border-radius: 10px;
+  padding: 5px 20px;
+  cursor: pointer;
+}
+.rejectBtn{
+  background-color: #a30000;
+  border-color: #a30008;
+  color: white;
+  border-radius: 10px;
+  padding: 5px 20px;
+  cursor: pointer;
+}
 @media(max-width : 400px){
   .formWrapper{
       margin-top: 20px;

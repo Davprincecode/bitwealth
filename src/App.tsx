@@ -3,8 +3,6 @@ import { Route, Routes} from "react-router-dom";
 import './App.css'
 import './AppCustom.css'
 import 'react-multi-carousel/lib/styles.css';
-import Blog from "./component/Blog";
-import BlogDetails from "./component/BlogDetails";
 
 import Homes from "./pages/inventory/Homes";
 import Pos from "./pages/Pos/Pos";
@@ -72,6 +70,8 @@ import Hedge from "./pages/hedge/Hedge";
 import TradeDashboard from "./pages/tradeclub/TradeDashboard";
 import CreateSignal from "./pages/admin/CreateSignal";
 import SendEmail from "./pages/admin/SendEmail";
+import KycUser from "./pages/admin/KycUser";
+import TradingHistory from "./pages/admin/TradingHistory";
 
 function App() {
   const {baseUrl, token} = userAuth();
@@ -129,6 +129,8 @@ function App() {
     <Route path="/admin-dashboard" element={<AdminDashboard  />} />
     <Route path="/create-signal" element={<CreateSignal />} />
     <Route path="/send-email" element={<SendEmail />} />
+    <Route path="/kyc" element={<KycUser />} />
+    <Route path="/trade-history" element={<TradingHistory />} />
     {/* ============ admin end ============= */}
 
 
@@ -200,9 +202,7 @@ function App() {
         <Route path="/chart" element={<Tchart  />} />
 
         
-          
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blogdetails/:blogId" element={<BlogDetails />} />
+        
     </Routes>
     {/* <ContactBtn /> */}
     {/* <MapUi /> */}

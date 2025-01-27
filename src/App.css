@@ -53,12 +53,10 @@ body{
     .mainContainer h1{
     font-size: 25px;
     padding-left: 3px;
-    
     border-left-width: 2px;
     border-left-style: solid;
     border-image: linear-gradient(135deg, #eb232d, #de8b2d) 1 100%;
     }
-
 
 .sideNav{
     position: fixed;
@@ -66,13 +64,14 @@ body{
     bottom: 0px;
     left: 0px;
     width: 220px;
-    /* height: 100vh; */
     text-align: center;
     padding-right: 10px;
     padding-top: 50px;
     transition: all 0.9s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: auto;
+    background: #0598fa;
     }
+
     .barMenu{
         display: none;
     }
@@ -85,8 +84,8 @@ body{
     flex-direction: column;
     }
     .sideNavLogo{
-        width: 99px;
-        height: 65px;
+        width: 119px;
+        height: 70px;
         border-radius: 40%;
         background-color: #0598fa;
         padding: 10px;
@@ -96,12 +95,13 @@ body{
     }
     .sideNavLogoContainer p{
         font-weight: bold;
-        font-size: 18px;
-        /* font-style: italic; */
-        margin-top: 5px;
+        font-size: 20px;
+    color: #111b8e;
+    font-style: oblique;
+    margin-top: 5px;
     }
     .sideNavMenu{
-    margin-top: 50px;
+    margin-top: 20px;
     padding-left: 20px;
     }
     /* .sideNavMenu ul{
@@ -141,13 +141,25 @@ body{
     .topmenu{
     display: flex;
     align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    justify-content: space-between;
     /* justify-content: center; */
     gap: 10px;
     }
-
+.topmenuItem{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
  .submenu{
-    background-color: #DE8B2D;
-    border-bottom-right-radius: 20px;
+    text-align: left;
+    padding-left: 30px;
+ }
+ .submenu-subitems span{
+padding-right: 10px;
  }
 /* ==========================end of menu ============== */
 .upperContainerWrapper{
@@ -339,7 +351,6 @@ left : -100%;
 border: 2px solid;
 z-index: 99;
 width: 220px;
-
 }
 .barMenu{
     display: block;
