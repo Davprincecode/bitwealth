@@ -7,6 +7,7 @@ import { TbBackslash } from 'react-icons/tb';
 import { ImBackward2, ImForward3 } from 'react-icons/im';
 import { userAuth } from '../context/AuthContext';
 import { MdAirplanemodeActive, MdAirplanemodeInactive, MdAutoDelete } from 'react-icons/md';
+import { toast } from 'react-toastify';
 
 
 interface usersInterface { 
@@ -50,14 +51,21 @@ function AllUser() {
             };
             try {
               const response = await fetch(`${baseUrl}/getalluser`, requestOptions);
-              
+              if (!response.ok) {
+                const errorResponse = await response.json();
+                throw new Error(errorResponse.message);
+              }
               const result = await response.json(); 
               setUsers(result.data);
               setLoading(false);
             } catch (error) {
-              console.log(error);
-              setLoading(false);
-            }
+                setLoading(false);
+                if (typeof error === "object" && error !== null && "message" in error && typeof error.message === "string") {
+                  toast.error(error.message);
+                } else {
+                  toast.error('An unknown error occurred.');
+                }
+              }
           
         };
     
@@ -92,7 +100,7 @@ function AllUser() {
                 <div className="table-responsive">
                    <table>
                     <thead>
-                    <tr role="row">
+                    <tr >
                         <th>No</th>
                         <th>Name</th>
                         <th>Email</th> 
@@ -162,12 +170,12 @@ function AllUser() {
 
             <div className="tableBottomNav">
                           <div className="entriesFlex">
-                            <p>showing</p>
+                            <p>Showing</p>
                             <div className="entriesNumber">
                                 <p>1 <span>to</span> 1</p>
                             </div>
                             <div className="entriesNumber">
-                                <p>of <span>1</span> entries</p>
+                                <p>of <span>1</span> Entries</p>
                             </div>
                           </div>
 
