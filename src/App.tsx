@@ -73,6 +73,9 @@ import SendEmail from "./pages/admin/SendEmail";
 import KycUser from "./pages/admin/KycUser";
 import TradingHistory from "./pages/admin/TradingHistory";
 import AllUser from "./pages/admin/AllUser";
+import Profile from "./pages/tradeclub/Profile";
+import EditProfile from "./pages/tradeclub/EditProfile";
+import KycVerification from "./pages/tradeclub/KycVerifcation";
 
 function App() {
   const {baseUrl, token} = userAuth();
@@ -137,7 +140,13 @@ function App() {
     /pendingpayments */}
     {/* ============ admin end ============= */}
 
+{/* =============== trade club =============== */}
+{/* /trade-signal */}
+<Route path="/profile" element={<Profile />} />
+<Route path="/editprofile" element={<EditProfile />} />
+<Route path="/kycverification" element={<KycVerification />} />
 
+{/* ============= trade club end ============== */}
 
 
 

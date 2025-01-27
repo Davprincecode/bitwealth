@@ -1268,3 +1268,123 @@ font-size: 20px;
       }
 }
 /* ====================login end ==================== */
+
+
+
+/* ================ profile ============== */
+.profileWrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profileContainer{
+text-transform: capitalize;
+border: 1px solid;
+padding-top: 20px;
+padding-bottom: 20px;
+padding-left: 10px;
+padding-right: 10px;
+display: flex;
+align-items: center;
+flex-direction: column;
+}
+
+.profileName{
+  text-align: left;
+  margin-bottom: 20px;
+}
+.profileName h1{
+  border: 0px;
+  text-transform: uppercase;
+}
+.profileName p{
+
+}
+.profileImage{
+  width: 100px;
+  height: 100px;
+  border: 2px solid;
+  background-color: var(--bs-orange);
+  border-radius: 50%;
+}
+.profileImage img{
+border-radius: 50%;
+object-fit: cover;
+}
+.upandedit{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.profileUpload{
+  margin-top: 5px;
+  background-color: var(--bs-orange);
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+.editProfile{
+  margin-top: 5px;
+  background-color: var(--bs-orange);
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+.editProfile a{
+  color: white;
+}
+.editProfile svg{
+color: white;
+}
+.profileDetails{
+  margin-top: 20px;
+  width: 100%;
+}
+.prd{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.profileBiostatus{
+margin-top: 10px;
+padding: 10px;
+background-color: var(--bs-orange);
+color: white;
+width: 100%;
+}
+.profileBiostatus a{
+  color: white;
+}
+.profileBiostatus svg{
+  color: white;
+}
+.kycStatus{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  border-bottom: 1px solid;
+}
+
+.kycIcon, .paymenticon{
+  text-align: center;
+}
+.paymentstatus{
+  border-bottom: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.editProfileBtn{
+  background-color: var(--bs-orange);
+  padding: 10px;
+  color: white;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+.userProfile button{
+border-radius: 0px;
+}
+/* =========== profile end ================== */

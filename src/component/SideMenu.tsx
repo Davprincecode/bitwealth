@@ -9,7 +9,7 @@ import { TbLogout } from "react-icons/tb";
 import { IoIosSettings, IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
 
 import { userAuth } from '../pages/context/AuthContext';
-import { FaChartLine, FaUsers } from 'react-icons/fa';
+import { FaChartLine, FaUserAlt, FaUsers } from 'react-icons/fa';
 import { FcComboChart } from 'react-icons/fc';
 import { IoLogOut } from 'react-icons/io5';
 
@@ -100,9 +100,20 @@ const SideMenu: React.FC<Props> = ({ navBar, handleToggle }) => {
         path: '/#',
         icon: <IoIosSettings />,
         subNavOption: {
+          "Trade Signals": [{ title: 'Trade Signals', path: '/trade-signal' }],
           "Trade new": [{ title: 'Trade new', path: '/open-trades' }],
           "Trade history": [{ title: 'Trade history', path: '/closed-trades' }]
         }
+      },
+      {
+        title: 'Profile',
+        path: '/profile',
+        icon: <FaUserAlt />,
+        // subNavOption: {
+        //   "Trade Signals": [{ title: 'Trade Signals', path: '/trade-signal' }],
+        //   "Trade new": [{ title: 'Trade new', path: '/open-trades' }],
+        //   "Trade history": [{ title: 'Trade history', path: '/closed-trades' }]
+        // }
       },
 
       {
