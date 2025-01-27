@@ -1106,45 +1106,63 @@ color: white;
   border-radius: 10px;
 }
 
+/* ========= container fluid =========== */
 .container-fluid {
     border: 1px solid;
     padding: 10px 0px;
     border-radius: 10px;
     overflow: auto;
+    margin-top: 10px;
+    max-height: 80vh;
 }
 .container-header{
-border-bottom: 1px solid;
+/* border-bottom: 1px solid; */
 padding: 5px 10px;
 }
 .container-header h2{
 
 }
 .container-body{
-  padding: 10px 0px;
+  padding-bottom: 10px;
 }
 .container-body table{
   width: 100%;
   margin: 0 auto;
   clear: both;
-  border-collapse: separate;
-  border-spacing: 0;
+  border-collapse: collapse;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
 }
 thead, tbody, tfoot, tr, td, th {
   border-color: inherit;
   border-style: solid;
   border-width: 0;
 }
-.container-body table thead th {
-  border-bottom: 1px solid #111;
-}
-.container-body table thead th, .container-body table thead td {
+
+
+.container-body table thead th{
   padding: 10px 18px;
+  border-bottom: 1px solid #111;
+  white-space: nowrap;
 }
-tbody{
+.container-body tbody{
   margin: 10px 0px;
 }
-tbody td {
-  border-color: #eeee;
+.container-body tbody td {
+  padding: 4px 18px;
+  white-space: nowrap;
+}
+.pending{
+  background-color: #f0a901;
+  padding: 7px;
+  border-radius: 5px;
+  color: white;
+}
+.approve{
+  background-color: green;
+  padding: 7px;
+  border-radius: 5px;
+  color: white;
 }
 .d-flex{
   display: flex;
@@ -1161,7 +1179,7 @@ gap: 10px;
   border-color: #00A389;
   color: white;
   border-radius: 10px;
-  padding: 5px 20px;
+  padding: 3px 6px;
   cursor: pointer;
 }
 .rejectBtn{
@@ -1169,8 +1187,74 @@ gap: 10px;
   border-color: #a30008;
   color: white;
   border-radius: 10px;
-  padding: 5px 20px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 8px;
   cursor: pointer;
+}
+.aprroveIcon svg{
+  margin-top: 5px;
+}
+.rejectIcon svg{
+  border: 1px solid;
+  border-radius: 50%;
+  font-size: 12px;
+  margin-top: 5px;
+}
+.tableBottomNav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  padding: 0px 10px;
+  text-transform: capitalize;
+}
+.entriesFlex{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tablefbArrowflex{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.backwardarrow, .forwardarrow{
+cursor: pointer;
+}
+.backwardarrow svg, .forwardarrow svg{
+font-size: 20px;
+}
+.backwardarrow:hover{
+  background-color: #9ab2e3;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  border-radius: 5px;
+  color: white;
+}
+.forwardarrow:hover{
+  background-color: #9ab2e3;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  border-radius: 5px;
+  color: white;
+}
+.tablePagginationValue{
+  background-color: #9ab2e3;
+  padding: 10px 30px;
+  border-radius: 5px;
+}
+@media(max-width : 440px){
+.tableBottomNav{
+  justify-content: center;
+  gap: 10px;
+}
 }
 @media(max-width : 400px){
   .formWrapper{

@@ -4,6 +4,7 @@ import TopHeader from '../../component/TopHeader'
 import { IoCheckmarkDoneSharp } from 'react-icons/io5';
 import { IoMdCheckmarkCircle } from 'react-icons/io';
 import { TbBackslash } from 'react-icons/tb';
+import { ImBackward2, ImForward3 } from 'react-icons/im';
 
 function KycUser() {
     const [navBar, setNavBar] = useState<boolean>(false); 
@@ -50,50 +51,119 @@ function KycUser() {
 
                     <tbody >
                                                                 
-                                <tr className="odd" role="row">
-                                    <td>Hamis Ahmed</td>
-                                    <td>hamisahmed10@gmail.com</td>
-                                    <td>
-                                        <span className="badge badge-lg badge-pill badge-warning">
-                                        Pending
-                                    </span>
-                                    </td>
-                                    <td>
-                                        <a href="https://bitwealthcapital.com/admin/kyc/1" target="_blank"><span className="badge badge-pill badge-info">View Document</span></a>
-                                    </td>
-                                    <td>
-                                          <div className="d-flex">
+                        <tr className="odd" role="row">
+                            <td>Hamis Ahmed</td>
+                            <td>hamisahmed10@gmail.com</td>
+                            <td>
+                                <span className="pending">
+                                Pending
+                            </span>
+                            </td>
+                            <td>
+                                <a href="https://bitwealthcapital.com/admin/kyc/1" target="_blank"><span className="badge badge-pill badge-info">View Document</span></a>
+                            </td>
+                            <td>
+                                    <div className="d-flex">
 
-                                                <div className="approveBtn">
-                                                    <p>
-                                                        Approve
-                                                    </p>
-                                                    <div className="aprroveIcon">
-                                                      <IoMdCheckmarkCircle />
-                                                    </div> 
-                                                </div>
+                                        <div className="approveBtn">
+                                           <div className="aprroveIcon">
+                                                <IoMdCheckmarkCircle />
+                                            </div> 
+                                            
+                                            <div className="approveText">
+                                                 Approve
+                                            </div>
+                                        </div>
 
-                                                <div className="rejectBtn">
-                                                    
-                                                    <p>
-                                                        Reject
-                                                    </p>
-                                                    <div className="rejectIcon">
-                                                    <TbBackslash />
-                                                    </div> 
-                                                </div>
-                                                
+                                        <div className="rejectBtn">
+                                            <div className="rejectIcon">
+                                            <TbBackslash />
+                                            </div> 
+                                            <div className="approveText">
+                                               Reject
+                                            </div>
+                                        </div>
                                         
-                                                
-                                           
-                                        </div>												
-                                    </td>
-                                </tr>
-                                </tbody>
+                                
+                                        
+                                    
+                                </div>												
+                            </td>
+                        </tr>
+
+                        <tr className="odd" role="row">
+                            <td>Hamis Ahmed</td>
+                            <td>hamisahmed10@gmail.com</td>
+                            <td>
+                            <span className="approve">
+                                Approve
+                            </span>
+                            </td>
+                            <td>
+                                <a href="https://bitwealthcapital.com/admin/kyc/1" target="_blank"><span className="badge badge-pill badge-info">View Document</span></a>
+                            </td>
+                            <td>
+                                    <div className="d-flex">
+
+                                        <div className="approveBtn">
+                                           <div className="aprroveIcon">
+                                                <IoMdCheckmarkCircle />
+                                            </div> 
+                                            
+                                             <div className='approveText'>
+                                                Approve
+                                            </div>
+                                            
+                                        </div>
+
+                                        <div className="rejectBtn">
+                                            <div className="rejectIcon">
+                                            <TbBackslash />
+                                            </div> 
+                                            <div className="approveText">
+                                               Reject
+                                            </div>
+                                        
+                                        </div>
+                                        
+                                
+                                        
+                                    
+                                </div>												
+                            </td>
+                        </tr>
+
+                       
+                    </tbody>
                     </table> 
-                </div>
+
                     
+                </div>
             </div>
+
+            <div className="tableBottomNav">
+                          <div className="entriesFlex">
+                            <p>showing</p>
+                            <div className="entriesNumber">
+                                <p>1 <span>to</span> 1</p>
+                            </div>
+                            <div className="entriesNumber">
+                                <p>of <span>1</span> entries</p>
+                            </div>
+                          </div>
+
+                        <div className="tablefbArrowflex">
+                            <div className="backwardarrow">
+                              <ImBackward2 />
+                            </div>
+                            <div className="tablePagginationValue">
+                                1
+                            </div>
+                            <div className="forwardarrow">
+                               <ImForward3 />
+                            </div>
+                        </div>
+                    </div> 
         </div>
     </div>
 {/* ==============main container header */}
