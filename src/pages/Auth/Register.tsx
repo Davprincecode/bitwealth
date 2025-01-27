@@ -67,7 +67,7 @@ function Register() {
       body: JSON.stringify(raw),
     };
     try {
-      const response = await fetch(`${baseUrl}/signupuser`, requestOptions);
+      const response = await fetch(`${baseUrl}/signupuser`, requestOptions);   
       if (!response.ok) {
         const errorResponse = await response.json();
         throw new Error(errorResponse.message);

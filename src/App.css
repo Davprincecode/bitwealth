@@ -38,11 +38,23 @@ body{
         display: none;
         transition: all 0.9s cubic-bezier(0.4, 0, 0.2, 1);
     }
+   .sideNav{
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    width: 220px;
+    text-align: center;
+    padding-right: 10px;
+    padding-top: 50px;
+    transition: all 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: auto;
+    background: #0598fa;
+    }
     .mainContainer{
         margin-left: 220px;
-        width: 100%;
+        width: calc(100% - 220px);
         padding: 10px 20px;
-        margin-top: 20px;
     }
     .mainContainerHeader{
     display: flex;
@@ -56,20 +68,6 @@ body{
     border-left-width: 2px;
     border-left-style: solid;
     border-image: linear-gradient(135deg, #eb232d, #de8b2d) 1 100%;
-    }
-
-.sideNav{
-    position: fixed;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    width: 220px;
-    text-align: center;
-    padding-right: 10px;
-    padding-top: 50px;
-    transition: all 0.9s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow: auto;
-    background: #0598fa;
     }
 
     .barMenu{
@@ -122,12 +120,13 @@ body{
     .sideNavMenu ul li a{
     text-transform: capitalize;
     }
-    .sideNavMenu ul li ul li:hover{
+    
+    /* .sideNavMenu ul li ul li:hover{
     background-image: var(--bckMixedColor);
     }
     .sideNavMenu ul li ul li a:hover{
       color: var(--whiteBck);
-    }
+    } */
     .topmenu:has(>.active-link) {
         background-color: var(--tablecolor);
         color: var(--whiteBck);
@@ -391,6 +390,8 @@ width: 220px;
 .mainContainer {
     margin-left: 1px !important;
     margin-right: 1px !important;
+    margin-top: 0px;
+    width: 100%;
     overflow-x: hidden;
 }
 }
@@ -469,6 +470,22 @@ text-transform: uppercase;
 }
 table  div {
 margin: 0px !important;
+}
+.actionwrap{
+    text-align: center;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+.actionwrap svg{
+    margin-bottom: -5px;
+    font-size: 14px;
+}
+.actionActive{
+    color: #e26a2d;
+}
+
+.actionDeactive{
+    color: #855841;
 }
 .productCount{
     display: flex;
@@ -840,6 +857,7 @@ gap: 20px;
 
 .delete{
 cursor: pointer;
+text-align: center;
 }
 .delete svg{
     color: var(--primaryColor);

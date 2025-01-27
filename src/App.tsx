@@ -72,6 +72,7 @@ import CreateSignal from "./pages/admin/CreateSignal";
 import SendEmail from "./pages/admin/SendEmail";
 import KycUser from "./pages/admin/KycUser";
 import TradingHistory from "./pages/admin/TradingHistory";
+import AllUser from "./pages/admin/AllUser";
 
 function App() {
   const {baseUrl, token} = userAuth();
@@ -131,6 +132,9 @@ function App() {
     <Route path="/send-email" element={<SendEmail />} />
     <Route path="/kyc" element={<KycUser />} />
     <Route path="/trade-history" element={<TradingHistory />} />
+    <Route path="/all-users" element={<AllUser />} />
+    {/* /pendingkyc
+    /pendingpayments */}
     {/* ============ admin end ============= */}
 
 

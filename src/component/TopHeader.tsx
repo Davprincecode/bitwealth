@@ -29,19 +29,19 @@ const TopHeader : React.FC<modalPopUp> = ({pageTitle, handleToggle}) => {
         <h4>{pageTitle}</h4> 
     </div>
     <div className="prnot">
-        <div className="not">
+        {/* <div className="not">
         <NavLink to="">
             <IoIosNotificationsOutline />
         </NavLink>
             <div className="dot"></div>
-        </div>
+        </div> */}
         <div className="profile">
             <div className="profileImg">
             <img src={profile} alt="Profile Picture" />
             </div>
             <div className="profileName">
                 <p className="surName">
-                    obafemi desk
+                    obafemi
                 </p>
                 <p className="firstName">
                     david adeniyi
@@ -86,7 +86,7 @@ const TopHeader : React.FC<modalPopUp> = ({pageTitle, handleToggle}) => {
                 </div>
                 <div className="profileName">
                     <p className="surName">
-                        obafemi  moile
+                        obafemi
                     </p>
                     <p className="firstName">
                         david adeniyi

@@ -50,8 +50,8 @@ const SideMenu: React.FC<Props> = ({ navBar, handleToggle }) => {
         icon: <FaUsers />,
         subNavOption: {
           "All Users": [{ title: 'All Users', path: '/all-users' }],
-          "Payments": [{ title: 'Payments', path: '/payments' }],
-          "Kyc": [{ title: 'Kyc', path: '/kyc' }],
+          "Pending Kyc": [{ title: 'pending kyc', path: '/pendingkyc' }],
+          "Pending Payments": [{ title: 'Pending Payments', path: '/pendingpayments' }],
         }
       },
       {
@@ -60,7 +60,7 @@ const SideMenu: React.FC<Props> = ({ navBar, handleToggle }) => {
         icon: <FaChartLine />,
         subNavOption: {
           "Create Signals": [{ title: 'Create Signal', path: '/create-signal' }],
-          "All Signals": [{ title: 'All Signals', path: '/all-signal' }],
+          "All Signals": [{ title: 'All Signals', path: '/trade-history' }],
         }
       },
  

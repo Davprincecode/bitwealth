@@ -1148,8 +1148,11 @@ thead, tbody, tfoot, tr, td, th {
 .container-body tbody{
   margin: 10px 0px;
 }
+.container-body tbody tr:nth-child(even){
+  background-color: #9ab2e3;
+}
 .container-body tbody td {
-  padding: 4px 18px;
+  padding: 10px 18px;
   white-space: nowrap;
 }
 .pending{

@@ -80,6 +80,26 @@ function CreateSignal() {
       }
       const responseJson = await response.json();
       toast.success(responseJson.message);
+      setAsset(''); 
+      setTradeType('');
+      setTimeFrame('');
+      setRiskLevel('');
+      setLeverage('');
+      setRecommendedPositionSize('');
+      setDuration('');
+      setCurrentPrice('');
+      setEntryPrice('');
+      setStopLoss('');
+      setTrailingStopLoss('');
+      setTakeProfit1('');
+      setTakeProfit2('');
+      setTakeProfit3('');
+      setMarketCondition('');
+      setSignalMessage('');
+      setDate('');
+      setTime('');
+      setProjectedDateOfClosure('');
+
       setLoading(false);
     
     } catch (error) {

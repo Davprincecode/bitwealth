@@ -21,8 +21,7 @@ price :  number;
 quantity :  number;
 totalAmount :  number;
 userId :  string;
-
-    }
+}
 
 function MgTransaction() {
     const { userId } = useParams();
