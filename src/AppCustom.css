@@ -1387,4 +1387,43 @@ width: 100%;
 .userProfile button{
 border-radius: 0px;
 }
+
+.paymentContent{
+  margin-bottom: 50px;
+}
+.paymentContent p{
+
+}
+.walletflex{
+  display: flex;
+  align-items: center;
+  padding: 0px 10px;
+  gap: 20px;
+  margin: 10px 0px;
+  border: 1px solid
+  
+}
+.btcName{
+margin-bottom: 5px;
+}
+.btcaddresss{
+color: gray;
+
+}
+.walletaddress{
+/* border: 1px solid; */
+}
+.copy{
+background-color: var(--bPrimary);
+padding: 5px 10px;
+border-radius: 20px;
+color: white;
+}
+.paymentMade{
+  text-transform: capitalize;
+  background-color: var(--bs-orange);
+  color: white;
+  padding: 10px;
+  margin-top: 20px;
+}
 /* =========== profile end ================== */

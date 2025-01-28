@@ -76,6 +76,7 @@ import AllUser from "./pages/admin/AllUser";
 import Profile from "./pages/tradeclub/Profile";
 import EditProfile from "./pages/tradeclub/EditProfile";
 import KycVerification from "./pages/tradeclub/KycVerifcation";
+import PaymentStatus from "./pages/tradeclub/PaymentStatus";
 
 function App() {
   const {baseUrl, token} = userAuth();
@@ -145,6 +146,7 @@ function App() {
 <Route path="/profile" element={<Profile />} />
 <Route path="/editprofile" element={<EditProfile />} />
 <Route path="/kycverification" element={<KycVerification />} />
+<Route path="/subscriptionpayment" element={<PaymentStatus />} />
 
 {/* ============= trade club end ============== */}
 
