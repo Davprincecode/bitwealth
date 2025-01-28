@@ -6,7 +6,7 @@ import { RiHome2Fill } from "react-icons/ri";
 import { LuFileBarChart } from "react-icons/lu";
 import { MdInventory } from "react-icons/md";
 import { TbLogout } from "react-icons/tb";
-import { IoIosSettings, IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
+import { IoIosLogOut, IoIosSettings, IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
 
 import { userAuth } from '../pages/context/AuthContext';
 import { FaChartLine, FaUserAlt, FaUsers } from 'react-icons/fa';
@@ -109,13 +109,7 @@ const SideMenu: React.FC<Props> = ({ navBar, handleToggle }) => {
         title: 'Profile',
         path: '/profile',
         icon: <FaUserAlt />,
-        // subNavOption: {
-        //   "Trade Signals": [{ title: 'Trade Signals', path: '/trade-signal' }],
-        //   "Trade new": [{ title: 'Trade new', path: '/open-trades' }],
-        //   "Trade history": [{ title: 'Trade history', path: '/closed-trades' }]
-        // }
       },
-
       {
         title: 'Report',
         path: '/#',
@@ -124,7 +118,13 @@ const SideMenu: React.FC<Props> = ({ navBar, handleToggle }) => {
           "Trade History": [{ title: 'Trade History', path: '/trade-history' }],
           "Performance": [{ title: 'Performance', path: '/performance' }]
         }
-      }
+      },
+      {
+        title: 'Log Out',
+        path: '/logout',
+        icon: <IoIosLogOut />,
+      },
+
     );
   }
 

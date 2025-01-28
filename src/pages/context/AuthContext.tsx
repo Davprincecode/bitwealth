@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import {useNavigate } from 'react-router-dom';
+import {useLocation, useNavigate } from 'react-router-dom';
 
 interface AuthProviderProps {
     children: ReactNode;
@@ -37,6 +37,8 @@ interface AuthProviderProps {
 
   const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const navigate = useNavigate();
+    const location = useLocation();
+   
     const [baseUrl] = useState<string>('http://127.0.0.1:8000/api/v1');
     const [email, setEmail] = useState<string>('');
     const [userType, setUserType] = useState<string>('');
@@ -70,10 +72,11 @@ interface AuthProviderProps {
     }
 
     const logout = () => {
-      navigate("/");
+      navigate("/login");
     };
 
    useEffect(() => {
+    const exemptedPaths = ['/register', '/', '/term', '/disclamer', '/forgetpassword', '/changepassword/:token', '/emailconfirm/:token', '/redirectform ', '/login'];
     const fetchData = async () => {
       if (loggedIn) {
         const storedToken: string | null = localStorage.getItem('myToken');
@@ -93,15 +96,21 @@ interface AuthProviderProps {
           if (response.ok) {
             loginAuth(result.data.userId, result.data.email, tokens, result.data.userRole, result.data.fullName, result.data.phoneNumber)
           }
-          
         } catch (error) {
           console.log(error);
         }
       } else {
-        logout()
+        location.pathname
+        if (!exemptedPaths.includes(location.pathname)) {
+          logout()
+        }
+        
       }
+
     };
+
     fetchData();
+
   }, [loggedIn]);
   
     return (
