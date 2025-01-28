@@ -114,40 +114,59 @@ function PaymentStatus() {
    <div className="mainContainerWrapper">
 
 <div className="profileWrapper">
-<div className="profileContainer">
+<div className="profileContainer paymenStatus">
 
     <div className="paymentContent">
     <p>
-     Thank you for your interest in Bitweath Capital. 
-     </p>
-     <p>
-     To enjoy our signals, you need to make a membership payment of $50 as part of our TradeClub. 
-     </p>
-     <p>
+     Thank you for your interest in BitweathCapital. 
+    </p>
+    
+    <p>
+    To enjoy our trade signals and educational resources.
+    </p>
+
+    <p>
+    You need to make our trade club membership payment of $50 
+    </p>
+
+     <p className='payAddress'>
      Please copy the wallet address below and send the equivalent amount. After making the payment,
       click the button below.
      </p>
      <p>
-     Our team will review your payment and notify you of its approval or rejection.
+     Our team will review your payment and notify you of its approval.
      </p>
     </div>
      
-     <div className="walletflex">
+   <div className="walletflex">
      <div className="walletaddress">
         <div className='btcName'>
             BTC Address
         </div>
         <div className="btcaddresss">
-            Lorem ipsum, dolor sit amet consectetur
-         adipisicing elit....
+        1MLvQ95DBwmbzkWCNm2RBcVSmoxFDCo42L
         </div>
-        
      </div>
 
     <div onClick={handleCopy} className='copy'>
       {copied ? 'Copied!' : 'Copy'}
     </div>   
+   </div>
+
+   <div className="walletflex">
+     <div className="walletaddress">
+        <div className='btcName'>
+         USDT(Trc20) Address
+        </div>
+        <div className="btcaddresss">
+        TK3Hj3sa6TeprpbGcxNUifvnjUUMsJEmns
+        </div>
      </div>
+
+    <div onClick={handleCopy} className='copy'>
+      {copied ? 'Copied!' : 'Copy'}
+    </div>   
+   </div>
      
 
         <div className="paymentMade">

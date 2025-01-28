@@ -1387,7 +1387,9 @@ width: 100%;
 .userProfile button{
 border-radius: 0px;
 }
-
+.paymenStatus{
+  text-transform: none !important;
+}
 .paymentContent{
   margin-bottom: 50px;
 }
@@ -1425,5 +1427,8 @@ color: white;
   color: white;
   padding: 10px;
   margin-top: 20px;
+}
+.payAddress{
+  margin-top: 50px;
 }
 /* =========== profile end ================== */
