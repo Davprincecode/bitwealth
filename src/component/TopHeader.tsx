@@ -5,6 +5,8 @@ import profile  from '../assets/images/profile.jpg'
 import { FiAlignRight } from 'react-icons/fi'
 import { NavLink } from 'react-router-dom'
 import { FaArrowLeft } from 'react-icons/fa'
+import { MdVerified } from 'react-icons/md'
+import { GoUnverified } from 'react-icons/go'
 
 interface modalPopUp {
     pageTitle : string,
@@ -36,9 +38,16 @@ const TopHeader : React.FC<modalPopUp> = ({pageTitle, handleToggle}) => {
             <div className="dot"></div>
         </div> */}
         <div className="profile">
+      <div className="profileImgCon">
             <div className="profileImg">
             <img src={profile} alt="Profile Picture" />
-            </div>
+            </div> 
+            <div className="prfverified">
+                <MdVerified />
+            </div> 
+    </div>
+            
+
             <div className="profileName">
                 <p className="surName">
                     obafemi
@@ -81,9 +90,20 @@ const TopHeader : React.FC<modalPopUp> = ({pageTitle, handleToggle}) => {
 {/* ============= mobile profile =================== */}
        <div className='mobileProfile'>
        <div className="profile">
+             <div className="profileImgCon">
                 <div className="profileImg">
                 <img src={profile} alt="Profile Picture" />
                 </div>
+
+                <div className="prfverified">
+                <MdVerified />
+               </div>
+               
+               {/* <div className="prfunverified">
+               <GoUnverified />
+                </div>  */}
+                
+            </div>
                 <div className="profileName">
                     <p className="surName">
                         obafemi

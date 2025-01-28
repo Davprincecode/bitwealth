@@ -95,6 +95,20 @@ position: relative;
     gap: 10px;
     text-transform: capitalize;
 }
+.profileImgCon{
+  position: relative;
+}
+.prfverified, .prfunverified{
+  position: absolute;
+  top: 27px;
+  left: 35px;
+}
+.prfverified svg{
+  color: blue;
+}
+.prfunverified svg{
+  color: red; 
+}
 .profileImg{
     width: 40px;
     height: 40px;
