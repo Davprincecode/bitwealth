@@ -33,37 +33,26 @@ function Login() {
         const errorResponse = await response.json();
         throw new Error(errorResponse.message);
       }
-      const responseJson = await response.json();
+      const result = await response.json();
       setLoading(false);
 
-    if(responseJson.data.userRole === "admin"){
+     
+     
+
+    if(result.data.userRole === "admin"){
       toast.success("Logged in successfully!");
-      loginAuth(responseJson.data.userId, responseJson.data.email, responseJson.token, responseJson.data.userRole, responseJson.data.fullName, responseJson.data.phoneNumber);
+      loginAuth(result.data.userId, result.data.email, result.data.fullName, result.data.phoneNumber, result.data.country, result.data.dob, result.data.membership, result.data.kycStatus, result.data.paymentStatus, result.data.image_url, result.data.userRole, result.token);
       logInUser();
       navigate("/admin-dashboard");
     }
 
-    if(responseJson.data.userRole === "trade club"){
+    if(result.data.userRole === "trade club"){
       toast.success("Logged in successfully!");
-      loginAuth(responseJson.data.userId, responseJson.data.email, responseJson.token, responseJson.data.userRole, responseJson.data.fullName, responseJson.data.phoneNumber);
+      loginAuth(result.data.userId, result.data.email, result.data.fullName, result.data.phoneNumber, result.data.country, result.data.dob, result.data.membership, result.data.kycStatus, result.data.paymentStatus, result.data.image_url, result.data.userRole, result.token);
       logInUser();
       navigate("/trade-dashboard");
     }
 
-
-    // if(responseJson.data.userRole === "shopPos"){
-    //   toast.success("Logged in successfully!");
-    //   loginAuth(responseJson.data.userId, responseJson.data.email, responseJson.token, responseJson.data.userRole, responseJson.data.fullName, responseJson.data.phoneNumber);
-    //   logInUser();
-    //   navigate("/pos-dashboard");
-    // }
-
-    // if(responseJson.data.userRole === "warehouse"){
-    //   toast.success("Logged in successfully!");
-    //   loginAuth(responseJson.data.userId, responseJson.data.email, responseJson.token, responseJson.data.userRole, responseJson.data.fullName, responseJson.data.phoneNumber);
-    //   logInUser();
-    //   navigate("/warehouse-dashboard");
-    // }
 
     } catch (error) {
       setLoading(false);

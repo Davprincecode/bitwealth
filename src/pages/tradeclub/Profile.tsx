@@ -44,7 +44,8 @@ function Profile() {
   const [navBar, setNavBar] = useState<boolean>(false); 
   const [products, setProducts] = useState<productsInterface[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const {baseUrl, token} = userAuth();
+
+  const {baseUrl, token, fullName, kycStatus, paymentStatus, membership, image_url, phoneNumber, dob, email, country} = userAuth();
   
   const handleToggle = () => {
       setNavBar(!navBar);
@@ -107,12 +108,12 @@ function Profile() {
 
        <div className="profileWrapper">
         <div className="profileContainer">
-            <div className="profileName">
-                <h1>Obafemi David adeniyi</h1>
-                <p>membership : <span>trade club</span></p>
+            <div className="profileNamee">
+                <h1>{fullName}</h1>
+                <p>membership : <span>{membership}</span></p>
             </div>
             <div className="profileImage">
-                <img src={profile} alt="" />
+                <img src={image_url ? image_url :profile} alt="" />
             </div>
             <div className="upandedit">
                <div className="profileUpload">
@@ -128,20 +129,24 @@ function Profile() {
 
             <div className="profileDetails">
                <div className="prd">
+                <p>Name : </p>
+                <p>{fullName}</p>
+               </div>
+               <div className="prd">
                 <p>email : </p>
-                <p>obafemi david</p>
+                <p>{email}</p>
                </div>
                <div className="prd">
                 <p>mobile : </p>
-                <p>08138457885</p>
+                <p>{phoneNumber}</p>
                </div>
                <div className="prd">
                 <p>country : </p>
-                <p>nigeria</p>
+                <p>{country}</p>
                </div>
                <div className="prd">
                 <p>dob : </p>
-                <p>18-01-1994</p>
+                <p>{dob}</p>
                </div>
                <div className="prd">
                 <p>subscription date : </p>
@@ -159,30 +164,62 @@ function Profile() {
                 <div className="kycName">
                   kyc status
                 </div>
-                <div className="kycIcon">
+
+                {
+                    kycStatus == '0' && (
+                    <div className="kycIcon">
+                    <GoUnverified />
+                    <div className="ver">
+                        unverified
+                    </div> 
+                   
+                    </div>
+                      )
+              }
+
+              {
+                   kycStatus == '1' &&  (
+                    <div className="kycIcon">
                    <MdVerified />
                     <div className="ver">
-                        verified
+                    verified
                     </div> 
-                   {/* <GoUnverified /> */}
-                </div>
+                    </div>
+                    )
+              }    
               </div>  
              </NavLink>
               
              <NavLink to="#">
-
+                
                 <div className="paymentstatus">
                 <div className="paymentName">
                     subscription
                 </div>
-                <div className="paymenticon">
-                 
-                   <MdVerifiedUser />
-                    <div className="pay">
-                        subscribed
-                    </div>
-                   {/* <IoIosWarning /> */}
-                </div>
+                  {
+                    paymentStatus == "0" && (
+                      <div className="paymenticon">
+                      <IoIosWarning />
+                      <div className="pay">
+                      subscribed
+                      </div>
+                      </div>
+                    )
+                  }
+
+                  {
+                    paymentStatus == "1" && (
+                      <div className="paymenticon">
+                       <MdVerifiedUser />
+                      <div className="pay">
+                       
+                      </div>
+                      </div>
+                    )
+                  }
+                
+
+
               </div>
             </NavLink>
               

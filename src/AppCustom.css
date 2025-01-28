@@ -1307,12 +1307,13 @@ flex-direction: column;
   text-align: left;
   margin-bottom: 20px;
 }
-.profileName h1{
+.profileNamee h1{
   border: 0px;
   text-transform: uppercase;
 }
 .profileName p{
-
+  width: 60px;
+  line-height: 1.0;
 }
 .profileImage{
   width: 100px;

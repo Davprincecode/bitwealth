@@ -11,13 +11,19 @@ interface AuthProviderProps {
     logInUser: Function;
     logout: Function;
     setLoggedIn: Function;
-    baseUrl: string;
-    userId: string;
-    email: string;
+    baseUrl: string; 
+    userId : string;
+    email : string;
+    fullName : string;
+    phoneNumber : string;
+    country : string;
+    dob : string;
+    membership : string;
+    kycStatus : string;
+    paymentStatus : string;
+    image_url : string;
+    role : string;
     token: string;
-    userType: string;
-    fullName: string;
-    phoneNumber :  string;
   }
   
   const AuthContext = createContext<AuthContextType>({
@@ -27,12 +33,18 @@ interface AuthProviderProps {
     logout: () => {},
     setLoggedIn: () => {},
     baseUrl: '',
-    userId: '',
-    email: '',
+    userId : '',
+    email : '',
+    fullName : '',
+    phoneNumber : '',
+    country : '',
+    dob : '',
+    membership : '',
+    kycStatus : '',
+    paymentStatus : '',
+    role : '',
+    image_url : '',
     token: '',
-    userType: '',
-    fullName: '',
-    phoneNumber: '',
   });
 
   const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
@@ -40,35 +52,51 @@ interface AuthProviderProps {
     const location = useLocation();
    
     const [baseUrl] = useState<string>('http://127.0.0.1:8000/api/v1');
-    const [email, setEmail] = useState<string>('');
-    const [userType, setUserType] = useState<string>('');
+  
     const [userId, setUserID] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
     const [fullName, setFullName] = useState<string>('');
     const [phoneNumber, setPhoneNumber] = useState<string>('');
+    const [country, setCountry] = useState<string>('');
+    const [dob, setDob] = useState<string>('');
+    const [membership, setMembership] = useState<string>('');
+    const [kycStatus, setKycStatus] = useState<string>('');
+    const [paymentStatus, setPaymentStatus] = useState<string>('');
+    const [image_url, setImage_url] = useState<string>('');
+    const [role, setRole] = useState<string>('');
+   
+     const [token, setToken] = useState<string>(() => {
+      const storedToken = localStorage.getItem('myToken');
+      return storedToken ? storedToken : '';
+    });   
   
     const [loggedIn, setLoggedIn] = useState<boolean>(() => {
       const storedState = localStorage.getItem('myState');
       return storedState ? JSON.parse(storedState) : false;
     });
   
-    const [token, setToken] = useState<string>(() => {
-      const storedToken = localStorage.getItem('myToken');
-      return storedToken ? storedToken : '';
-    });
-
     const logInUser = () => {
       setLoggedIn(true);
       localStorage.setItem('myState', JSON.stringify(true));
     };
   
-    const loginAuth = (userId: string, email: string, token: string, userType: string, fullName : string, phoneNumber : string) => {
+    const loginAuth = (userId: string, email: string, fullName : string, phoneNumber : string, country: string, dob: string, membership:string, kycStatus:string, paymentStatus:string, image_url: string, role : string,  token?: string) => {
+      setRole(role);
       setUserID(userId);
       setEmail(email);
-      setUserType(userType);
-      localStorage.setItem('myToken', token);
-      setToken(token);
       setFullName(fullName);
       setPhoneNumber(phoneNumber);
+      setCountry(country);
+      setDob(dob);
+      setMembership(membership);
+      setKycStatus(kycStatus);
+      setPaymentStatus(paymentStatus);
+      setImage_url(image_url);
+      if(token){
+          localStorage.setItem('myToken', token);
+          setToken(token);
+      }
+      
     }
 
     const logout = () => {
@@ -92,9 +120,8 @@ interface AuthProviderProps {
         try {
           const response = await fetch(`${baseUrl}/getuser`, requestOptions);
           const result = await response.json(); 
-        
-          if (response.ok) {
-            loginAuth(result.data.userId, result.data.email, tokens, result.data.userRole, result.data.fullName, result.data.phoneNumber)
+          if(response.ok){
+            loginAuth(result.data.userId, result.data.email, result.data.fullName, result.data.phoneNumber, result.data.country, result.data.dob, result.data.membership, result.data.kycStatus, result.data.paymentStatus, result.data.image_url, result.data.userRole);
           }
         } catch (error) {
           console.log(error);
@@ -104,17 +131,14 @@ interface AuthProviderProps {
         if (!exemptedPaths.includes(location.pathname)) {
           logout()
         }
-        
       }
-
     };
-
     fetchData();
-
   }, [loggedIn]);
   
     return (
-      <AuthContext.Provider value={{ loggedIn, loginAuth, logInUser, logout, setLoggedIn,  baseUrl, userId, email, token, userType, fullName, phoneNumber }}>
+      <AuthContext.Provider value={{ loggedIn, loginAuth, logInUser, logout, setLoggedIn,  baseUrl, userId, email, fullName, phoneNumber, country, dob, membership, kycStatus, paymentStatus, image_url, role, token
+      }}>
         {children}
       </AuthContext.Provider>
     );

@@ -30,13 +30,8 @@ interface MenuItem {
 }
 
 const SideMenu: React.FC<Props> = ({ navBar, handleToggle }) => {
-
-  const { userType } = userAuth();
-
-  const role = userType;
-
+  const { role } = userAuth();  
   const menuItems: MenuItem[] = [];
-
   if (role === 'admin') {
     menuItems.push(
       {

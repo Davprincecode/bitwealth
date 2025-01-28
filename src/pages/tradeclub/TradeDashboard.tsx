@@ -26,7 +26,7 @@ function TradeDashboard() {
     };
 
     useEffect(() => {
-        fetchData();
+        // fetchData();
         }, []);
 
         const fetchData = async () => {
@@ -51,6 +51,10 @@ function TradeDashboard() {
             //   console.log(error);
             }
         };  
+
+
+
+
     return (
       <div>
         <div className="mainWrapper">

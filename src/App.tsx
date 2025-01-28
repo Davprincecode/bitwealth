@@ -126,9 +126,6 @@ function App() {
 
     <Route path="/logout" element={<Logout />} /> 
 
-    <Route path="/trade-dashboard" element={<TradeDashboard />} />
-    <Route path="/hedge-dashboard" element={<Hedge  />} />
-    
 
     {/* ============= admin ============= */}
     <Route path="/admin-dashboard" element={<AdminDashboard  />} />
@@ -143,15 +140,17 @@ function App() {
 
 {/* =============== trade club =============== */}
 {/* /trade-signal */}
+<Route path="/trade-dashboard" element={<TradeDashboard />} />
 <Route path="/profile" element={<Profile />} />
 <Route path="/editprofile" element={<EditProfile />} />
 <Route path="/kycverification" element={<KycVerification />} />
 <Route path="/subscriptionpayment" element={<PaymentStatus />} />
-
 {/* ============= trade club end ============== */}
 
 
-
+{/* ============ hedge ============= */}
+<Route path="/hedge-dashboard" element={<Hedge  />} />
+{/* ============ hedge end ============== */}
 
 
 

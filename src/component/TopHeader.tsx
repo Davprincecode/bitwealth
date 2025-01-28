@@ -14,7 +14,8 @@ interface modalPopUp {
 }
 
 const TopHeader : React.FC<modalPopUp> = ({pageTitle, handleToggle}) => {
-    const {baseUrl, token} = userAuth();
+    const {baseUrl, token, fullName, kycStatus, image_url} = userAuth();
+    
     const [navBar, setNavBar] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
 
@@ -39,21 +40,29 @@ const TopHeader : React.FC<modalPopUp> = ({pageTitle, handleToggle}) => {
         </div> */}
         <div className="profile">
       <div className="profileImgCon">
-            <div className="profileImg">
-            <img src={profile} alt="Profile Picture" />
-            </div> 
-            <div className="prfverified">
-                <MdVerified />
-            </div> 
+      <div className="profileImg">
+                <img src={ image_url ? image_url :  profile} alt="Profile Picture" />
+                </div>
+                {
+                    kycStatus == '0' && (
+                        <div className="prfunverified">
+                        <GoUnverified />
+                        </div> 
+                    )
+                }
+                {
+                    kycStatus == '1' && (
+                        <div className="prfverified">
+                        <MdVerified />
+                        </div>
+                    )
+                }
     </div>
             
 
             <div className="profileName">
                 <p className="surName">
-                    obafemi
-                </p>
-                <p className="firstName">
-                    david adeniyi
+                   {fullName}
                 </p>
             </div>
         </div>
@@ -74,13 +83,13 @@ const TopHeader : React.FC<modalPopUp> = ({pageTitle, handleToggle}) => {
         </div>
 
         <div className="prnot">
-            <div className="not">
+            {/* <div className="not">
         <NavLink to="">
             <IoIosNotificationsOutline />
         </NavLink>
               <div className="dot"></div>
             </div>
-            
+             */}
             <p className='barMenu' onClick={handleToggle}>
               <FiAlignRight />
             </p>
@@ -92,25 +101,28 @@ const TopHeader : React.FC<modalPopUp> = ({pageTitle, handleToggle}) => {
        <div className="profile">
              <div className="profileImgCon">
                 <div className="profileImg">
-                <img src={profile} alt="Profile Picture" />
+                <img src={ image_url ? image_url :  profile} alt="Profile Picture" />
                 </div>
-
-                <div className="prfverified">
-                <MdVerified />
-               </div>
-               
-               {/* <div className="prfunverified">
-               <GoUnverified />
-                </div>  */}
+                {
+                    kycStatus == '0' && (
+                        <div className="prfunverified">
+                        <GoUnverified />
+                        </div> 
+                    )
+                }
+                {
+                    kycStatus == '1' && (
+                        <div className="prfverified">
+                        <MdVerified />
+                        </div>
+                    )
+                }
                 
             </div>
                 <div className="profileName">
-                    <p className="surName">
-                        obafemi
-                    </p>
-                    <p className="firstName">
-                        david adeniyi
-                    </p>
+                <p className="surName">
+                   {fullName}
+                </p>
                 </div>
             </div>
        </div>
