@@ -11,10 +11,21 @@ interface AuthProviderProps {
     logInUser: Function;
     logout: Function;
     setLoggedIn: Function;
+    setEmail: Function;
+    setPhoneNumber: Function; 
+    setDob: Function; 
+    setMembership: Function; 
+    setCountry: Function; 
+    setFullName: Function;
+    setSurName: Function;
+    setOtherName: Function;
+    setImage_url: Function;
     baseUrl: string; 
     userId : string;
     email : string;
     fullName : string;
+    surName : string;
+    otherName : string;
     phoneNumber : string;
     country : string;
     dob : string;
@@ -32,10 +43,21 @@ interface AuthProviderProps {
     logInUser: () => {},
     logout: () => {},
     setLoggedIn: () => {},
+    setEmail: () => {},
+    setPhoneNumber:  () => {}, 
+    setDob:  () => {}, 
+    setMembership:  () => {}, 
+    setCountry:  () => {}, 
+    setFullName:  () => {},
+    setSurName:  () => {},
+    setOtherName:  () => {},
+    setImage_url:  () => {},
     baseUrl: '',
     userId : '',
     email : '',
     fullName : '',
+    surName : '',
+    otherName : '',
     phoneNumber : '',
     country : '',
     dob : '',
@@ -64,6 +86,8 @@ interface AuthProviderProps {
     const [paymentStatus, setPaymentStatus] = useState<string>('');
     const [image_url, setImage_url] = useState<string>('');
     const [role, setRole] = useState<string>('');
+    const [surName, setSurName] = useState<string>('');
+    const [otherName, setOtherName] = useState<string>('');
    
      const [token, setToken] = useState<string>(() => {
       const storedToken = localStorage.getItem('myToken');
@@ -80,11 +104,13 @@ interface AuthProviderProps {
       localStorage.setItem('myState', JSON.stringify(true));
     };
   
-    const loginAuth = (userId: string, email: string, fullName : string, phoneNumber : string, country: string, dob: string, membership:string, kycStatus:string, paymentStatus:string, image_url: string, role : string,  token?: string) => {
+    const loginAuth = (userId: string, email: string, fullName : string, surName : string, otherName : string, phoneNumber : string, country: string, dob: string, membership:string, kycStatus:string, paymentStatus:string, image_url: string, role : string,  token?: string) => {
       setRole(role);
       setUserID(userId);
       setEmail(email);
       setFullName(fullName);
+      setSurName(surName);
+      setOtherName(otherName);
       setPhoneNumber(phoneNumber);
       setCountry(country);
       setDob(dob);
@@ -109,6 +135,7 @@ interface AuthProviderProps {
       if (loggedIn) {
         const storedToken: string | null = localStorage.getItem('myToken');
         const tokens: string = storedToken || '';
+        
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         myHeaders.append("Authorization", tokens);
@@ -121,7 +148,7 @@ interface AuthProviderProps {
           const response = await fetch(`${baseUrl}/getuser`, requestOptions);
           const result = await response.json(); 
           if(response.ok){
-            loginAuth(result.data.userId, result.data.email, result.data.fullName, result.data.phoneNumber, result.data.country, result.data.dob, result.data.membership, result.data.kycStatus, result.data.paymentStatus, result.data.image_url, result.data.userRole);
+            loginAuth(result.data.userId, result.data.email, result.data.fullName, result.data.surName, result.data.otherName, result.data.phoneNumber, result.data.country, result.data.dob, result.data.membership, result.data.kycStatus, result.data.paymentStatus, result.data.image_url, result.data.userRole);
           }
         } catch (error) {
           console.log(error);
@@ -137,7 +164,7 @@ interface AuthProviderProps {
   }, [loggedIn]);
   
     return (
-      <AuthContext.Provider value={{ loggedIn, loginAuth, logInUser, logout, setLoggedIn,  baseUrl, userId, email, fullName, phoneNumber, country, dob, membership, kycStatus, paymentStatus, image_url, role, token
+      <AuthContext.Provider value={{ loggedIn, loginAuth, logInUser, logout, setLoggedIn,  baseUrl, userId, email, fullName, surName, otherName, phoneNumber, country, dob, membership, kycStatus, paymentStatus, image_url, role, token, setEmail, setPhoneNumber, setDob, setMembership, setCountry, setFullName, setSurName, setOtherName, setImage_url
       }}>
         {children}
       </AuthContext.Provider>

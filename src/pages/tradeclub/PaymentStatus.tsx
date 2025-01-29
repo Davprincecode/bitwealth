@@ -2,73 +2,42 @@ import React, { useEffect, useState } from 'react'
 import SideMenu from '../../component/SideMenu'
 import TopHeader from '../../component/TopHeader'
 import { userAuth } from '../context/AuthContext';
-import { IoCheckmarkDoneSharp } from 'react-icons/io5';
-import { IoIosWarning, IoMdCheckmarkCircle } from 'react-icons/io';
-import { TbBackslash } from 'react-icons/tb';
 import { toast } from 'react-toastify';
-import { ImBackward2, ImForward3 } from 'react-icons/im';
-import profile  from '../../assets/images/profile.jpg'
-import { MdOutlineVerifiedUser, MdVerified, MdVerifiedUser } from 'react-icons/md';
-import { GoUnverified } from 'react-icons/go';
-import { FaEdit } from 'react-icons/fa';
-import { NavLink } from 'react-router-dom';
-
-
-
-
-interface productsInterface { 
-  status :  string;
-  asset :  string;
-currentPrice :  string;
-date :  string;
-duration :  string;
-entryPrice :  string;
-leverage :  string;
-marketCodition :  string;
-projectedDateOfClosure :  string;
-recommendedPositionSize :  string;
-riskLevel :  string;
-signalMessage :  string;
-stopLoss :  string;
-takeProfit1 :  string;
-takeProfit2 :  string;
-takeProfit3 :  string;
-time :  string;
-timeFrame :  string;
-tradeId :  string;
-tradeType :  string;
-trailingStopLoss :  string;
-}
 
 function PaymentStatus() {
   const [navBar, setNavBar] = useState<boolean>(false); 
-  const [products, setProducts] = useState<productsInterface[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const {baseUrl, token} = userAuth();
+  const {baseUrl, token, membership} = userAuth();
   
   const handleToggle = () => {
       setNavBar(!navBar);
     };
 
-    useEffect(() => {
+
       const fetchData = async () => {
-          setLoading(true);
-          const myHeaders = new Headers();
-          myHeaders.append("Content-Type", "application/json");
-          myHeaders.append("Authorization", token);
-          const requestOptions: RequestInit = {
-            method: 'GET',
-            headers: myHeaders,
-            redirect: 'follow'
-          };
+
+        setLoading(true);
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", token);
+
+        const raw = {
+        'membership' :  membership,
+        'amount' : 50
+        };
+
+        const requestOptions: RequestInit = {
+        method: 'POST',
+        headers: myHeaders,
+        body: JSON.stringify(raw),
+        };
           try {
-            const response = await fetch(`${baseUrl}/getsignal`, requestOptions);
+            const response = await fetch(`${baseUrl}/createpayment`, requestOptions);       
             if (!response.ok) {
               const errorResponse = await response.json();
               throw new Error(errorResponse.message);
             }
-            const result = await response.json();
-            setProducts(result.data);
+             toast.success("Payment success apply wait for approval");
             setLoading(false);
           } catch (error) {
             setLoading(false);
@@ -81,17 +50,24 @@ function PaymentStatus() {
         
       };
   
-    //   fetchData();
-    }, []);
+    const [btcCopied, setBtcCopied] = useState(false);
+    const [usdtCopied, setUsdtCopied] = useState(false);
+  const btc = '1MLvQ95DBwmbzkWCNm2RBcVSmoxFDCo42L'; 
+  const usdt = 'TK3Hj3sa6TeprpbGcxNUifvnjUUMsJEmns'; 
 
-    const [copied, setCopied] = useState(false);
-  const textToCopy = 'Hello, World!'; // replace with your text
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(textToCopy);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000); // reset after 2 seconds
+  const handleBtc = () => {
+    navigator.clipboard.writeText(btc);
+    setBtcCopied(true);
+    setTimeout(() => setBtcCopied(false), 2000); 
   };
+
+  const handleUsdt = () => {
+    navigator.clipboard.writeText(usdt);
+    setUsdtCopied(true);
+    setTimeout(() => setUsdtCopied(false), 2000); 
+  };
+
+
   return (
     <div>
       
@@ -148,8 +124,8 @@ function PaymentStatus() {
         </div>
      </div>
 
-    <div onClick={handleCopy} className='copy'>
-      {copied ? 'Copied!' : 'Copy'}
+    <div onClick={handleBtc} className='copy'>
+      {btcCopied ? 'Copied!' : 'Copy'}
     </div>   
    </div>
 
@@ -163,15 +139,23 @@ function PaymentStatus() {
         </div>
      </div>
 
-    <div onClick={handleCopy} className='copy'>
-      {copied ? 'Copied!' : 'Copy'}
+    <div onClick={handleUsdt} className='copy'>
+      {usdtCopied? 'Copied!' : 'Copy'}
     </div>   
    </div>
      
-
+      {
+        loading ? (
         <div className="paymentMade">
-            payment made
+          loading.......
         </div>
+        ) : (
+          <div className="paymentMade" onClick={fetchData}>
+          payment made
+      </div>
+        )
+      }
+       
 </div>
 </div>
     </div>

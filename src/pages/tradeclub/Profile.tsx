@@ -42,49 +42,53 @@ trailingStopLoss :  string;
 
 function Profile() {
   const [navBar, setNavBar] = useState<boolean>(false); 
-  const [products, setProducts] = useState<productsInterface[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const {baseUrl, token, fullName, kycStatus, paymentStatus, membership, image_url, phoneNumber, dob, email, country} = userAuth();
+  const {baseUrl, token, fullName, kycStatus, paymentStatus, membership, image_url, phoneNumber, dob, email, country, setImage_url} = userAuth();
   
   const handleToggle = () => {
       setNavBar(!navBar);
     };
 
-    useEffect(() => {
-      const fetchData = async () => {
-          setLoading(true);
-          const myHeaders = new Headers();
-          myHeaders.append("Content-Type", "application/json");
-          myHeaders.append("Authorization", token);
-          const requestOptions: RequestInit = {
-            method: 'GET',
-            headers: myHeaders,
-            redirect: 'follow'
-          };
-          try {
-            const response = await fetch(`${baseUrl}/getsignal`, requestOptions);
-            if (!response.ok) {
-              const errorResponse = await response.json();
-              throw new Error(errorResponse.message);
-            }
-            const result = await response.json();
-            setProducts(result.data);
-            setLoading(false);
-          } catch (error) {
-            setLoading(false);
-            if (typeof error === "object" && error !== null && "message" in error && typeof error.message === "string") {
-              toast.error(error.message);
-            } else {
-              toast.error('An unknown error occurred.');
-            }
-          }
-        
-      };
+  const  handleUploadImg = async(imgFile: FileList | null) => {
   
-    //   fetchData();
-    }, []);
+    setLoading(true);
+    const formData = new FormData();
 
+        formData.append('profileImg', imgFile![0]);
+
+    const requestOptions: RequestInit = {
+      method: 'POST',
+      headers: {
+        Authorization: token,
+      },
+      body: formData,
+    };
+      try {
+        const response = await fetch(`${baseUrl}/profileImg`, requestOptions);
+       
+        if (!response.ok) {
+          const errorResponse = await response.json();
+          throw new Error(errorResponse.message);
+        }
+        const result = await response.json();
+      
+        setImage_url(result.data.profileImage);
+        toast.success("Profile Image Uploaded");
+        
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+        if (typeof error === "object" && error !== null && "message" in error && typeof error.message === "string") {
+          toast.error(error.message);
+        } else {
+          toast.error('An unknown error occurred.');
+        }
+      }
+    
+
+
+   }
   return (
     <div>
       
@@ -116,11 +120,25 @@ function Profile() {
                 <img src={image_url ? image_url :profile} alt="" />
             </div>
             <div className="upandedit">
-               <div className="profileUpload">
-                upload an image
-            </div> 
+              
+
+
+<label htmlFor="file-input" style={{
+  backgroundColor: '#00308f',
+  color: '#fff',
+  padding: '10px',
+  borderRadius: '5px',
+  cursor: 'pointer'
+}}>
+
+  {
+    loading ? "loading....." : "Upload Image"
+  }
+ 
+  <input type="file" id="file-input" onChange={(e) => {handleUploadImg(e.target.files)}} style={{ display: 'none' }} />
+</label>
             <div className="editProfile">
-                <NavLink to="#">
+                <NavLink to="/editprofile">
                    edit profile < span> <FaEdit /> </span> 
                 </NavLink>
             </div> 
@@ -159,26 +177,26 @@ function Profile() {
             </div>
            
            <div className="profileBiostatus">
-             <NavLink to="#">
+
+              <NavLink to={kycStatus === null ? "/kycverification" : "#"}>
               <div className="kycStatus">
                 <div className="kycName">
-                  kyc status
+                  kyc status 
                 </div>
 
                 {
-                    kycStatus == '0' && (
+                    (kycStatus === 'pending' || !kycStatus || kycStatus === 'rejected') && (
                     <div className="kycIcon">
                     <GoUnverified />
                     <div className="ver">
-                        unverified
-                    </div> 
-                   
+                    {kycStatus === null ? "unverified" : kycStatus}
                     </div>
-                      )
-              }
+                    </div>
+                    )
+                }
 
               {
-                   kycStatus == '1' &&  (
+                   kycStatus === 'approved' &&  (
                     <div className="kycIcon">
                    <MdVerified />
                     <div className="ver">
@@ -187,32 +205,33 @@ function Profile() {
                     </div>
                     )
               }    
+
               </div>  
              </NavLink>
               
-             <NavLink to="#">
+             <NavLink to={paymentStatus === null ? "/subscriptionpayment" : "#"} >
                 
                 <div className="paymentstatus">
                 <div className="paymentName">
                     subscription
                 </div>
                   {
-                    paymentStatus == "0" && (
+                    (paymentStatus === 'pending' || !paymentStatus || paymentStatus === 'rejected') && (
                       <div className="paymenticon">
                       <IoIosWarning />
                       <div className="pay">
-                      subscribed
+                      {paymentStatus === null ? "Not Subscribed" : paymentStatus}
                       </div>
                       </div>
                     )
                   }
 
                   {
-                    paymentStatus == "1" && (
+                    paymentStatus == "approved" && (
                       <div className="paymenticon">
                        <MdVerifiedUser />
                       <div className="pay">
-                       
+                       subscribed
                       </div>
                       </div>
                     )

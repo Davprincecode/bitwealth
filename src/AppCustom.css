@@ -62,6 +62,9 @@ display: flex;
 align-items: center;
 justify-content: space-between
 }
+.backArrow svg{
+ color: #e1712d; 
+} 
 .pageTitle{
 text-transform: capitalize;
 }
@@ -94,6 +97,10 @@ position: relative;
     align-items: center;
     gap: 10px;
     text-transform: capitalize;
+}
+.profile a{
+  display: flex;
+  gap: 10px;
 }
 .profileImgCon{
   position: relative;
@@ -1445,5 +1452,10 @@ color: white;
 }
 .payAddress{
   margin-top: 50px;
+}
+@media(max-width : 350px){
+  .prd{
+    display: block;
+  }
 }
 /* =========== profile end ================== */

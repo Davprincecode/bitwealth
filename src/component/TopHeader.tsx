@@ -3,7 +3,7 @@ import { userAuth } from '../pages/context/AuthContext'
 import { IoIosArrowBack, IoIosNotifications, IoIosNotificationsOutline } from 'react-icons/io'
 import profile  from '../assets/images/profile.jpg'
 import { FiAlignRight } from 'react-icons/fi'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { FaArrowLeft } from 'react-icons/fa'
 import { MdVerified } from 'react-icons/md'
 import { GoUnverified } from 'react-icons/go'
@@ -14,6 +14,12 @@ interface modalPopUp {
 }
 
 const TopHeader : React.FC<modalPopUp> = ({pageTitle, handleToggle}) => {
+    const navigate = useNavigate();
+
+    const goBack = () => {
+      navigate(-1);
+    };
+
     const {baseUrl, token, fullName, kycStatus, image_url} = userAuth();
     
     const [navBar, setNavBar] = useState<boolean>(false);
@@ -23,11 +29,13 @@ const TopHeader : React.FC<modalPopUp> = ({pageTitle, handleToggle}) => {
     <div>
        
     <div className="topHeader desktopview"> 
-    <div className="backArrow">
-        <NavLink to="">
+
+    <div className="backArrow" onClick={goBack}>
+        {/* <NavLink to=""> */}
             <FaArrowLeft />
-        </NavLink>
-       </div>      
+        {/* </NavLink> */}
+       </div>   
+
     <div className="pageTitle">
         <h4>{pageTitle}</h4> 
     </div>
@@ -39,32 +47,33 @@ const TopHeader : React.FC<modalPopUp> = ({pageTitle, handleToggle}) => {
             <div className="dot"></div>
         </div> */}
         <div className="profile">
-      <div className="profileImgCon">
-      <div className="profileImg">
-                <img src={ image_url ? image_url :  profile} alt="Profile Picture" />
-                </div>
-                {
-                    kycStatus == '0' && (
-                        <div className="prfunverified">
-                        <GoUnverified />
-                        </div> 
-                    )
-                }
-                {
-                    kycStatus == '1' && (
-                        <div className="prfverified">
-                        <MdVerified />
-                        </div>
-                    )
-                }
-    </div>
-            
-
-            <div className="profileName">
-                <p className="surName">
-                   {fullName}
-                </p>
+            <NavLink to="/profile">
+<div className="profileImgCon">
+            <div className="profileImg">
+                    <img src={ image_url ? image_url :  profile} alt="Profile Picture" />
+                    </div>
+                    {
+                        (kycStatus === 'pending'  || !kycStatus || kycStatus === 'rejected') && (
+                            <div className="prfunverified">
+                            <GoUnverified />
+                            </div> 
+                        )
+                    }
+                    {
+                        kycStatus === 'approved' && (
+                            <div className="prfverified">
+                            <MdVerified />
+                            </div>
+                        )
+                    }
             </div>
+            <div className="profileName">
+            <p className="surName">
+                {fullName}
+            </p>
+            </div>
+            </NavLink>
+            
         </div>
     </div>
 
@@ -73,10 +82,10 @@ const TopHeader : React.FC<modalPopUp> = ({pageTitle, handleToggle}) => {
 {/* ===============mobile view========= */}
 
 <div className="topHeader mobileview">
-       <div className="backArrow">
-        <NavLink to="">
+       <div className="backArrow" onClick={goBack}>
+        {/* <NavLink to=""> */}
             <FaArrowLeft />
-        </NavLink>
+        {/* </NavLink> */}
        </div>
         <div className="pageTitle">
            <h4>{pageTitle}</h4> 
@@ -99,19 +108,21 @@ const TopHeader : React.FC<modalPopUp> = ({pageTitle, handleToggle}) => {
 {/* ============= mobile profile =================== */}
        <div className='mobileProfile'>
        <div className="profile">
-             <div className="profileImgCon">
+
+        <NavLink to="/profile">
+            <div className="profileImgCon">
                 <div className="profileImg">
                 <img src={ image_url ? image_url :  profile} alt="Profile Picture" />
                 </div>
                 {
-                    kycStatus == '0' && (
+                    (kycStatus === 'pending'  || !kycStatus || kycStatus === 'rejected') && (
                         <div className="prfunverified">
                         <GoUnverified />
                         </div> 
                     )
                 }
                 {
-                    kycStatus == '1' && (
+                    kycStatus === 'approved' && (
                         <div className="prfverified">
                         <MdVerified />
                         </div>
@@ -119,12 +130,16 @@ const TopHeader : React.FC<modalPopUp> = ({pageTitle, handleToggle}) => {
                 }
                 
             </div>
-                <div className="profileName">
-                <p className="surName">
-                   {fullName}
-                </p>
-                </div>
+            <div className="profileName">
+            <p className="surName">
+                {fullName}
+            </p>
             </div>
+        </NavLink>
+             
+
+
+        </div>
        </div>
 
 {/* ===============mobile view end========= */}
