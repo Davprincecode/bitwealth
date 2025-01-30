@@ -81,6 +81,11 @@ import UserTradeHistory from "./pages/tradeclub/UserTradeHistory";
 import UserPerformance from "./pages/tradeclub/UserPerformance";
 import UserTradeSignal from "./pages/tradeclub/UserTradeSignal";
 import TradeNews from "./pages/tradeclub/TradeNews";
+import CryptoNews from "./pages/admin/CrytoNew";
+import TradeHistories from "./pages/admin/TradeHistries";
+import PendingKyc from "./pages/admin/PendingKyc";
+import PaymentPending from "./pages/admin/PaymentPending";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   const {baseUrl, token} = userAuth();
@@ -136,10 +141,17 @@ function App() {
     <Route path="/create-signal" element={<CreateSignal />} />
     <Route path="/send-email" element={<SendEmail />} />
     <Route path="/kyc" element={<KycUser />} />
-    <Route path="/trade-history" element={<TradingHistory />} />
+    <Route path="/all-signal" element={<TradingHistory />} />
+    <Route path="/trade-history" element={<TradeHistories />} />
     <Route path="/all-users" element={<AllUser />} />
-    {/* /pendingkyc
-    /pendingpayments */}
+    <Route path="/crypto-news" element={<CryptoNews />} />
+    <Route path="/pendingkyc" element={<PendingKyc />} />
+    <Route path="/pendingpayments" element={<PaymentPending />} />
+
+
+
+    <Route path="/dashboard" element={<Dashboard />} />
+  
     {/* ============ admin end ============= */}
 
 {/* =============== trade club =============== */}

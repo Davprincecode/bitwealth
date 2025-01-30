@@ -7,6 +7,7 @@ import { IoMdCheckmarkCircle } from 'react-icons/io';
 import { TbBackslash } from 'react-icons/tb';
 import { toast } from 'react-toastify';
 import { ImBackward2, ImForward3 } from 'react-icons/im';
+import { useNavigate } from 'react-router-dom';
 
 interface productsInterface { 
   status :  string;
@@ -34,10 +35,12 @@ trailingStopLoss :  string;
 }
 
 function UserTradeSignal() {
+  const navigate = useNavigate();
+
   const [navBar, setNavBar] = useState<boolean>(false); 
   const [products, setProducts] = useState<productsInterface[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const {baseUrl, token} = userAuth();
+  const {baseUrl, token, role, paymentStatus} = userAuth();
   
   const handleToggle = () => {
       setNavBar(!navBar);
@@ -73,8 +76,14 @@ function UserTradeSignal() {
           }
         
       };
-  
-      fetchData();
+      
+      if(paymentStatus === "approved"){
+          fetchData();
+          }else{
+          if(role === "trade club"){
+              navigate('/trade-dashboard')
+            };
+          }
     }, []);
 
   return (

@@ -12,6 +12,7 @@ import { userAuth } from '../pages/context/AuthContext';
 import { FaChartLine, FaUserAlt, FaUsers } from 'react-icons/fa';
 import { FcComboChart } from 'react-icons/fc';
 import { IoLogOut } from 'react-icons/io5';
+import { toast } from 'react-toastify';
 
 interface Props {
   navBar: boolean;
@@ -30,7 +31,12 @@ interface MenuItem {
 }
 
 const SideMenu: React.FC<Props> = ({ navBar, handleToggle }) => {
-  const { role } = userAuth();  
+  const { role, paymentStatus} = userAuth();  
+
+const handleSub = () => {
+  toast.error("To access trade signals, you must be a subscribed member.   Please visit your profile to complete your payment and unlock this feature.");
+}
+
   const menuItems: MenuItem[] = [];
   if (role === 'admin') {
     menuItems.push(
@@ -55,7 +61,7 @@ const SideMenu: React.FC<Props> = ({ navBar, handleToggle }) => {
         icon: <FaChartLine />,
         subNavOption: {
           "Create Signals": [{ title: 'Create Signal', path: '/create-signal' }],
-          "All Signals": [{ title: 'All Signals', path: '/trade-history' }],
+          "All Signals": [{ title: 'All Signals', path: '/all-signal' }],
         }
       },
  
@@ -87,7 +93,7 @@ const SideMenu: React.FC<Props> = ({ navBar, handleToggle }) => {
     menuItems.push(
       {
         title: 'Dashboard',
-        path: '/trade-club-dashboard',
+        path: '/trade-dashboard',
         icon: <RiHome2Fill />
       },
       {
@@ -96,6 +102,7 @@ const SideMenu: React.FC<Props> = ({ navBar, handleToggle }) => {
         icon: <IoIosSettings />,
         subNavOption: {
           "Trade Signals": [{ title: 'Trade Signals', path: '/user-trade-signal' }],
+
           "Trade new": [{ title: 'Trade new', path: '/trade-news' }]
         }
       },
@@ -149,6 +156,7 @@ const SideMenu: React.FC<Props> = ({ navBar, handleToggle }) => {
                   {menuItem.subNavOption ? (
                     <div>
                       <div className="topmenu"  style={{ backgroundImage: openSubMenuIndex === index ? 'background: #0400ff26' : 'none' }}>
+
                         <div className="topmenuItem">
                          <div className="topmenuIcon">
                          {menuItem.icon}
@@ -171,12 +179,35 @@ const SideMenu: React.FC<Props> = ({ navBar, handleToggle }) => {
                           <li key={subItemIndex}>
                             <ul className="submenu-subitems">
                               {menuItem.subNavOption && menuItem.subNavOption[subItemKey] && menuItem.subNavOption[subItemKey].map((subItem, subIndex) => (
-                                <li key={subIndex}>
-                                  <span>-</span> 
-                                  <NavLink to={subItem.path} className={({ isActive }) => (isActive ? 'active-link' : '')}>
-                                    <span>{subItem.title}</span>
-                                  </NavLink>
-                                </li>
+                                 
+                                  subItem.path === "/user-trade-signal" ? (
+                                    paymentStatus === "approved" ? (
+                                      <li key={subIndex}>
+                                      <span>-</span>
+                                          <NavLink to={subItem.path} className={({ isActive }) => (isActive ? 'active-link' : '')}>
+                                            <span>{subItem.title}</span>
+                                          </NavLink>
+                                        </li>
+                                    ) : (
+                                      <li key={subIndex} onClick={handleSub}>
+                                      <span>-</span>
+                                          {/* <NavLink to={subItem.path} className={({ isActive }) => (isActive ? 'active-link' : '')}> */}
+                                            <span>{subItem.title}</span>
+                                          {/* </NavLink> */}
+                                        </li>
+                                    )
+                                        
+                                  ) : (
+                                    <li key={subIndex}>
+                                    <span>-</span>
+                                    <NavLink to={subItem.path} className={({ isActive }) => (isActive ? 'active-link' : '')}>
+                                      <span>{subItem.title}</span>
+                                    </NavLink>
+                                  </li>
+                                  )
+                                 
+                                
+
                               ))}
                             </ul>
                           </li>

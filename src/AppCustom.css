@@ -134,6 +134,9 @@ position: relative;
     display: none;
 }
 @media(max-width : 550px){
+  .mainCon{
+    margin-top: -70px;
+  }
     .desktopview{
         display: none;
     }
@@ -148,9 +151,11 @@ position: relative;
 }
 /* top header end */
 .mainCon{
-    border-radius: 50px;
+  
+  
+    /* border-radius: 50px;
     margin-top: 50px;
-    padding: 10px;
+    padding: 10px; */
 }
 
 .mainBalance{
@@ -1459,8 +1464,30 @@ color: white;
   }
 }
 /* =========== profile end ================== */
-
-
+.actionwrapdiv{
+  display: flex;
+  gap: 10px;
+  text-align: center;
+  text-transform: capitalize;
+}
+.approvediv{
+border: 2px solid;
+border-radius: 10px;
+padding: 4px;
+cursor: pointer;
+color: var(--bs-orange);
+}
+.rejectdiv{
+ border: 2px solid; 
+ border-radius: 10px;
+ padding: 4px;
+ cursor: pointer;
+ color: red;
+}
+.kycImg{
+  height: 80px;
+  width: 80px;
+}
 /* ============ upcoming ============ */
 
 .upcoming{
@@ -1472,4 +1499,73 @@ color: white;
 }
 .upcoming h1{
   color: #00308F;
+}
+
+
+
+
+/* ============================ dashboard =========== */
+
+.dashboard-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.column-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.column {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+  width: calc(30.33% - 20px);
+}
+
+.icon-container {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.column-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.column-number {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Responsive design */
+
+@media (max-width: 768px) {
+  .column {
+    width: calc(40% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .column {
+    width: 100%;
+  }
+}
+
+.firstcontainer{
+  border: 2px solid;
+  border-radius: 10px;
+  width: 100%;
+  padding: 10px;
+}
+.icon-container svg{
+  color: black;
 }

@@ -1,34 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import SideMenu from '../../component/SideMenu'
 import TopHeader from '../../component/TopHeader'
-import { IoCheckmarkDoneSharp } from 'react-icons/io5';
-import { IoMdCheckmarkCircle } from 'react-icons/io';
-import { TbBackslash } from 'react-icons/tb';
-import { ImBackward2, ImForward3 } from 'react-icons/im';
+
+import { ImBackward2, ImCancelCircle, ImForward3 } from 'react-icons/im';
 import { userAuth } from '../context/AuthContext';
-import { MdAirplanemodeActive, MdAirplanemodeInactive, MdAutoDelete } from 'react-icons/md';
+
 import { toast } from 'react-toastify';
+import { MdAirplanemodeActive, MdAirplanemodeInactive } from 'react-icons/md';
+import { FcApproval } from 'react-icons/fc';
 
 
 interface usersInterface { 
-    userId :  string;
-    email :  string;
-    surName :  string;
-    firstName :  string;
-    country :  string;
-    createdDate :  string;
-    createdTime :  string;
-    dob :  string;
-    kycStatus: string;
-    membership :  string;
-    paymentStatus: string;
-    phoneNumber :  string;
-    profileImg :  string;
-    role :  string;
-    status :  string;
+   userId :  string;
+   fullname :  string;
+   membership :  string;
+   amount :  string;
+   status :  string;
 }
 
-function AllUser() {
+function PaymentPending() {
     const [navBar, setNavBar] = useState<boolean>(false); 
     const [users, setUsers] = useState<usersInterface[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
@@ -50,13 +40,13 @@ function AllUser() {
               redirect: 'follow'
             };
             try {
-              const response = await fetch(`${baseUrl}/getalluser`, requestOptions);  
+              const response = await fetch(`${baseUrl}/getpendingpayment`, requestOptions);  
               if (!response.ok) {
                 const errorResponse = await response.json();
                 throw new Error(errorResponse.message);
               }
               const result = await response.json(); 
-              setUsers(result.data);
+              setUsers(result.data);     
               setLoading(false);
             } catch (error) {
                 setLoading(false);
@@ -72,7 +62,7 @@ function AllUser() {
       }, []);
 
 
-      const changeStatus = async(userId: string) => {
+      const approve = async(userId: string) => {
         setLoading(true);
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -83,7 +73,7 @@ function AllUser() {
           redirect: 'follow'
         };
         try {
-          const response = await fetch(`${baseUrl}/userstatus/${userId}`, requestOptions);  
+          const response = await fetch(`${baseUrl}/approvepayment/${userId}`, requestOptions);  
           if (!response.ok) {
             const errorResponse = await response.json();
             throw new Error(errorResponse.message);
@@ -102,18 +92,18 @@ function AllUser() {
       
       }
 
-      const deleteUser = async(userId: string) => {
+      const reject = async(userId: string) => {
         setLoading(true);
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         myHeaders.append("Authorization", token);
         const requestOptions: RequestInit = {
-          method: 'DELETE',
+          method: 'GET',
           headers: myHeaders,
           redirect: 'follow'
         };
         try {
-          const response = await fetch(`${baseUrl}/deleteuser/${userId}`, requestOptions);  
+          const response = await fetch(`${baseUrl}/rejectpayment/${userId}`, requestOptions);  
           if (!response.ok) {
             const errorResponse = await response.json();
             throw new Error(errorResponse.message);
@@ -144,7 +134,7 @@ function AllUser() {
 <div className="mainContainer">
 
   <div className="mainContainersHeader">
-      <TopHeader pageTitle='All User' handleToggle={handleToggle}/>
+      <TopHeader pageTitle='Pending Payment' handleToggle={handleToggle}/>
   </div>
 
     
@@ -153,7 +143,7 @@ function AllUser() {
    <div className="mainContainerWrapper">
         <div className="container-fluid">
             <div className="container-header">
-                 <h2>All User</h2>
+                 <h2>Pending Payment</h2>
             </div>
             <div className="container-body">
                 <div className="table-responsive">
@@ -162,14 +152,8 @@ function AllUser() {
                     <tr >
                         <th>No</th>
                         <th>Name</th>
-                        <th>Email</th> 
-                        <th>Phone Number</th>
-                        <th>Country</th>
-                        <th>Dob</th>
                         <th>Membership</th>
-                        <th>Created date</th>
-                        <th>Kyc Status</th>
-                        <th>Payment Status</th>
+                        <th>amount</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -179,46 +163,35 @@ function AllUser() {
                 {
                     users.map((user, id) => (
                         <tr  key={id}>
-                           <td>{id + 1}</td>
-                           <td>{user.surName} {user.firstName}</td>
-                           <td>{user.email}</td>
-                           <td>{user.phoneNumber}</td>
-                           <td>{user.country}</td>
-                           <td>{user.dob.split('T')[0]}</td>
-                           <td>{user.membership}</td>
-                           <td>{user.createdDate}</td>
-                           <td>{user.kycStatus}</td>
-                           <td>{user.paymentStatus}</td>
+                           <td>{id + 1}</td> 
+                            <td>{user.fullname}</td> 
+                            <td>{user.membership}</td> 
+                            <td>{user.amount}</td> 
+                            <td>{user.status}</td>
                            <td>
-                            { 
-                            user.status == "active" ? (
-                                <div className="actionwrap" onClick={() => {changeStatus(user.userId)}}>
-                                <div className="actionActive">
-                                    <div className="actionActiveIcon">
-                                     <MdAirplanemodeActive />   
-                                    </div>
-                                    {user.status} 
-                                </div>
-                                </div>
-                            ) : (
-                                <div className="actionwrap"  onClick={() => {changeStatus(user.userId)}}>
-                                    <div className="actionDeactive">
-                                      <div className="actionDeactiveIcon">
-                                        <MdAirplanemodeInactive />
-                                      </div>
-                        
-                                        {user.status}
-                                    </div>
-                                </div>
-                            )
-                            }
+                          <div className="actionwrapdiv">
+                            <div className="approvediv" onClick={(e)=>{approve(user.userId)}}>
+                             <FcApproval />
+                             <p>
+                                {
+                                    loading ? "loading...." : "approve"
+                                }
+                                </p>
+                            </div>
+
+                            <div className="rejectdiv"  onClick={(e)=>{reject(user.userId)}}>
+                             <ImCancelCircle />
+                             <p>
+                             {
+                                loading ? "loading...." : "reject"
+                                }
+                             </p>
+                            </div>
+                          </div>
+                             
                            
                            </td>
-                           <td>
-                                <div className="delete" onClick={(e) => {deleteUser(user.userId)}}>
-                                <MdAutoDelete />   
-                                </div>
-                            </td>
+                           
                         </tr>
                     ))
                 }                        
@@ -260,4 +233,4 @@ function AllUser() {
   )
 }
 
-export default AllUser
+export default PaymentPending
