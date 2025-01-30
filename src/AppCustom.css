@@ -1459,3 +1459,17 @@ color: white;
   }
 }
 /* =========== profile end ================== */
+
+
+/* ============ upcoming ============ */
+
+.upcoming{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  height: 100vh;
+}
+.upcoming h1{
+  color: #00308F;
+}

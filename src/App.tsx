@@ -77,6 +77,10 @@ import Profile from "./pages/tradeclub/Profile";
 import EditProfile from "./pages/tradeclub/EditProfile";
 import KycVerification from "./pages/tradeclub/KycVerifcation";
 import PaymentStatus from "./pages/tradeclub/PaymentStatus";
+import UserTradeHistory from "./pages/tradeclub/UserTradeHistory";
+import UserPerformance from "./pages/tradeclub/UserPerformance";
+import UserTradeSignal from "./pages/tradeclub/UserTradeSignal";
+import TradeNews from "./pages/tradeclub/TradeNews";
 
 function App() {
   const {baseUrl, token} = userAuth();
@@ -139,12 +143,15 @@ function App() {
     {/* ============ admin end ============= */}
 
 {/* =============== trade club =============== */}
-{/* /trade-signal */}
+<Route path="/user-trade-signal" element={<UserTradeSignal />} />
+<Route path="/trade-news" element={<TradeNews />} />
 <Route path="/trade-dashboard" element={<TradeDashboard />} />
 <Route path="/profile" element={<Profile />} />
 <Route path="/editprofile" element={<EditProfile />} />
 <Route path="/kycverification" element={<KycVerification />} />
 <Route path="/subscriptionpayment" element={<PaymentStatus />} />
+<Route path="/user-trade-history" element={<UserTradeHistory />} />
+<Route path="/performance" element={<UserPerformance />} />
 {/* ============= trade club end ============== */}
 
 

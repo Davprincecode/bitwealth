@@ -95,9 +95,8 @@ const SideMenu: React.FC<Props> = ({ navBar, handleToggle }) => {
         path: '/#',
         icon: <IoIosSettings />,
         subNavOption: {
-          "Trade Signals": [{ title: 'Trade Signals', path: '/trade-signal' }],
-          "Trade new": [{ title: 'Trade new', path: '/open-trades' }],
-          "Trade history": [{ title: 'Trade history', path: '/closed-trades' }]
+          "Trade Signals": [{ title: 'Trade Signals', path: '/user-trade-signal' }],
+          "Trade new": [{ title: 'Trade new', path: '/trade-news' }]
         }
       },
       {
@@ -110,7 +109,7 @@ const SideMenu: React.FC<Props> = ({ navBar, handleToggle }) => {
         path: '/#',
         icon: <LuFileBarChart />,
         subNavOption: {
-          "Trade History": [{ title: 'Trade History', path: '/trade-history' }],
+          "Trade History": [{ title: 'Trade History', path: '/user-trade-history' }],
           "Performance": [{ title: 'Performance', path: '/performance' }]
         }
       },
