@@ -127,6 +127,41 @@ const handleSub = () => {
       },
 
     );
+  } else if (role === 'hedge fund'){
+    menuItems.push(
+      {
+        title: 'Dashboard',
+        path: '/hedge-dashboard',
+        icon: <RiHome2Fill />
+      },
+      {
+        title: 'Trade news',
+        path: '/trade-news',
+        icon: <IoIosSettings />,
+        
+      },
+      {
+        title: 'Profile',
+        path: '/profile',
+        icon: <FaUserAlt />,
+      },
+      {
+        title: 'Report',
+        path: '/#',
+        icon: <LuFileBarChart />,
+        subNavOption: {
+          "Trade History": [{ title: 'Trade History', path: '/user-trade-history' }],
+          "Performance": [{ title: 'Performance', path: '/performance' }]
+        }
+      },
+      {
+        title: 'Log Out',
+        path: '/logout',
+        icon: <IoIosLogOut />,
+      },
+
+    );
+
   }
 
 

@@ -299,6 +299,9 @@ gap: 10px;
 }
 
 @media(max-width : 550px){
+    .container{
+        margin-top: -45px !important;
+    }
     .mainContainerHeader{
     justify-content: space-between;
     flex-direction: row-reverse;
@@ -1412,5 +1415,84 @@ cursor: pointer;
       margin-top: 0;
     }
   }
+
+
+
+  /* ===================================================== */
+
+
+  /* CryptoLandingPage.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  @media (min-width: 1024px) {
+    .grid-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .asset-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .asset-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f1f1f1;
+  }
+  
+  .recent-trades {
+    margin-top: 20px;
+    overflow-x: auto;
+  }
+  
 
   

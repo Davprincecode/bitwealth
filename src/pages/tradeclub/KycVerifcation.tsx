@@ -9,7 +9,7 @@ function KycVerification() {
 
   const [navBar, setNavBar] = useState<boolean>(false); 
   const [loading, setLoading] = useState<boolean>(false);
-  const {baseUrl, token} = userAuth();
+  const {baseUrl, token, membership} = userAuth();
   const [idCard, setIdCard] = useState<File | null>(null);
   const [address, setAddress] = useState<string>('');
   const [binanceApiKey, setBinanceApiKey] = useState<string>('');
@@ -128,9 +128,25 @@ function KycVerification() {
                    />
                 </div>
 
-
-
+{ membership === "hedge fund" ? (
+    <>
+<div className="input">
+                    <label >Binance Login</label>
+                    <input type="text" placeholder='Email'
+                    value={binanceApiKey} onChange={(e) => setBinanceApiKey(e.target.value)}
+                   />
+                </div>
                 <div className="input">
+                    <label >Password</label>
+                    <input type="text" placeholder='Password'
+                    value={okxApiKey} onChange={(e) => setOkxApiKey(e.target.value)}
+                   />
+                </div>
+                </>
+  ) : (
+      <>
+
+<div className="input">
                     <label >Binance Api Key</label>
                     <input type="text" placeholder='Binance Api Key'
                     value={binanceApiKey} onChange={(e) => setBinanceApiKey(e.target.value)}
@@ -143,8 +159,10 @@ function KycVerification() {
                    />
                 </div>
 
-            
-  
+      </>
+  )
+}
+
                 <div className="input">
                 <div className="btn">
                 {

@@ -56,7 +56,7 @@ function Register() {
       'dob' : dob,
       'membership' :  membership,
       'password' : password,
-      'role' : "admin"
+      'role' : membership
     };
   
     const requestOptions: RequestInit = {

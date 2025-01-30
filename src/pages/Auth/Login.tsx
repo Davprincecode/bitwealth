@@ -36,9 +36,6 @@ function Login() {
       const result = await response.json();
       setLoading(false);
 
-     
-     
-
     if(result.data.userRole === "admin"){
       toast.success("Logged in successfully!");
       loginAuth(result.data.userId, result.data.email, result.data.fullName, result.data.surName, result.data.otherName, result.data.phoneNumber, result.data.country, result.data.dob, result.data.membership, result.data.kycStatus, result.data.paymentStatus, result.data.image_url, result.data.userRole, result.token);
@@ -51,6 +48,13 @@ function Login() {
       loginAuth(result.data.userId, result.data.email, result.data.fullName, result.data.surName, result.data.otherName, result.data.phoneNumber, result.data.country, result.data.dob, result.data.membership, result.data.kycStatus, result.data.paymentStatus, result.data.image_url, result.data.userRole, result.token);
       logInUser();
       navigate("/trade-dashboard");
+    }
+
+    if(result.data.userRole === "hedge fund"){
+      toast.success("Logged in successfully!");
+      loginAuth(result.data.userId, result.data.email, result.data.fullName, result.data.surName, result.data.otherName, result.data.phoneNumber, result.data.country, result.data.dob, result.data.membership, result.data.kycStatus, result.data.paymentStatus, result.data.image_url, result.data.userRole, result.token);
+      logInUser();
+      navigate("/hedge-dashboard");
     }
 
 

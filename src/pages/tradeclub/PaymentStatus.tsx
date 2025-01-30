@@ -23,7 +23,7 @@ function PaymentStatus() {
 
         const raw = {
         'membership' :  membership,
-        'amount' : 50
+        'amount' : membership === "hedge fund" ? 20 : 50
         };
 
         const requestOptions: RequestInit = {
@@ -67,7 +67,6 @@ function PaymentStatus() {
     setTimeout(() => setUsdtCopied(false), 2000); 
   };
 
-
   return (
     <div>
       
@@ -102,7 +101,10 @@ function PaymentStatus() {
     </p>
 
     <p>
-    You need to make our trade club membership payment of $50 
+    You need to make our {
+      membership === "hedge fund" ? "hedge fund membership payment of $20" :
+      "trade club membership payment of $50"
+    }  
     </p>
 
      <p className='payAddress'>

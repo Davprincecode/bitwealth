@@ -86,6 +86,7 @@ import TradeHistories from "./pages/admin/TradeHistries";
 import PendingKyc from "./pages/admin/PendingKyc";
 import PaymentPending from "./pages/admin/PaymentPending";
 import Dashboard from "./pages/Dashboard";
+import CryptoLandingPage from "./pages/CryptoLandingPage";
 
 function App() {
   const {baseUrl, token} = userAuth();
@@ -151,6 +152,9 @@ function App() {
 
 
     <Route path="/dashboard" element={<Dashboard />} />
+
+
+
   
     {/* ============ admin end ============= */}
 
