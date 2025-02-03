@@ -171,7 +171,6 @@ const handleSub = () => {
         setOpenSubMenuIndex(prevIndex => (prevIndex === currentIndex ? null : currentIndex));
     };
 
-
     return (
         <div className={navBar ? "sideNavActive" : "sideNav"}>
           <div className="harmburger" onClick={handleToggle}>
@@ -190,7 +189,7 @@ const handleSub = () => {
                 <li key={index}>
                   {menuItem.subNavOption ? (
                     <div>
-                      <div className="topmenu"  style={{ backgroundImage: openSubMenuIndex === index ? 'background: #0400ff26' : 'none' }}>
+                      <div className="topmenu"  style={{ backgroundImage: openSubMenuIndex === index ? 'background: #0400ff26' : 'none' }}    onClick={() => toggleSubMenu(index)} >
 
                         <div className="topmenuItem">
                          <div className="topmenuIcon">
@@ -203,9 +202,9 @@ const handleSub = () => {
                         
 
                         {openSubMenuIndex === index ? (
-                          <IoMdArrowDropdown onClick={() => toggleSubMenu(index)} />
+                          <IoMdArrowDropdown />
                         ) : (
-                          <IoMdArrowDropup onClick={() => toggleSubMenu(index)} />
+                          <IoMdArrowDropup />
                         )}
                       </div>
 
@@ -256,15 +255,11 @@ const handleSub = () => {
                          {menuItem.icon}
                          </div>
                         
-                      {/* {menuItem.icon} */}
                       <div className="topmenuName">
-                          {/* {menuItem.title} */}
-                          <NavLink to={menuItem.path} className={({ isActive }) => (isActive ? 'active-link' : '')}>
-                        <span>{menuItem.title}</span>
-                      </NavLink>
+                        <NavLink to={menuItem.path} className={({ isActive }) => (isActive ? 'active-link' : '')}>
+                          <span>{menuItem.title}</span>
+                        </NavLink>
                       </div>
-                      
-                      
                       </div>
                     </div>
                   )}
