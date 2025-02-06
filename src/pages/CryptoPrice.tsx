@@ -1,48 +1,32 @@
 import React, { useState, useEffect } from 'react';
 
-interface BinanceKlineData {
-  stream: string;
-  data: {
-    e: string;
-    E: number;
-    s: string;
-    k: {
-      t: number;
-      T: number;
-      s: string;
-      i: string;
-      f: number;
-      L: number;
-      o: string;
-      c: string;
-      h: string;
-      l: string;
-      v: string;
-      n: number;
-      x: boolean;
-      q: string;
-      V: string;
-      Q: string;
-      B: string;
-    };
-  };
+
+interface AltcoinPair {
+  symbol: string;
+  price: number;
+  priceChange: number;
 }
 
 function CryptoPrice() {
-  const [data, setData] = useState<BinanceKlineData | null>(null);
+  const [data, setData] = useState<AltcoinPair[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [ws, setWs] = useState<WebSocket | null>(null);
 
+ 
   useEffect(() => {
-    const socket = new WebSocket('wss://data-stream.binance.vision:443/ws/btcusdt@kline_1m');
+    const socket = new WebSocket('wss://data-stream.binance.vision:443/ws/!ticker@arr');
 
     socket.onmessage = (event) => {
-      setData(JSON.parse(event.data) as BinanceKlineData);
+      const data = JSON.parse(event.data);
+      const altcoinPairs: AltcoinPair[] = data
+        .filter((item: any) => item.s.endsWith('USDT')) 
+        .map((item: any) => ({
+          symbol: item.s,
+          price: parseFloat(item.c),
+          priceChange: parseFloat(item.P),
+        }));
+      setData(altcoinPairs);
     };
-
-    // socket.onerror = (event) => {
-    //   setError(event.message);
-    // };
 
     socket.onclose = () => {
       setWs(null);
@@ -63,10 +47,31 @@ function CryptoPrice() {
     return <div>Loading...</div>;
   }
 
+console.log(data.length);
+
   return (
-    <div>
-      <h1>BTCUSDT Kline Data</h1>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+    <div className="scroll-container">
+
+      <div className="scroll-content">
+
+        {data.map((pair, index) => (
+          <div key={index} className="altcoin-pair">
+            <div className="symbol">{pair.symbol}</div>
+              
+              <div className="priceCon">
+                <div className="priceSymbol">$</div>
+                <div className="price">{pair.price.toFixed(8)}</div>
+              </div>
+            
+             <div className="percentage">
+                <span className={`price-change ${pair.priceChange > 0 ? 'green' : 'red'}`}>{pair.priceChange.toFixed(2)}%
+                </span>
+             </div>
+
+            
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

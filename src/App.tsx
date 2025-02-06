@@ -132,8 +132,8 @@ function App() {
 <Route path="/performance" element={<UserPerformance />} />
 
 
-<Route path="/tradeview" element={<TradingViewNews />} />
-<Route path="/cryptoprice" element={<CryptoPrice />} />
+{/* <Route path="/tradeview" element={<TradingViewNews />} />
+<Route path="/cryptoprice" element={<CryptoPrice />} /> */}
 {/* ============= trade club end ============== */}
 
 

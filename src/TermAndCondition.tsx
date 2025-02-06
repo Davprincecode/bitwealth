@@ -30,7 +30,7 @@ function TermsAndConditions() {
 
       <section>
         <h2>1. Membership and Eligibility</h2>
-        <p>Membership in the trading club is available to individuals aged 18 and older, subject to adherence to community rules.</p>
+        <p>Membership in the trading club is available to individuals aged 18 and above with any trade capital size of choice and upon registration with a one-time  $50 subscription fee, subject to adherence to community rules.</p>
         <p>Participation in the hedge fund is exclusive to members with capital of $10,000 and above, and this amount must equate the maximum percentage allocation allowed in their jurisdiction [applicable regulatory body, subject to location].</p>
       </section>
 

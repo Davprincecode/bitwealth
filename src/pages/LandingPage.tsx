@@ -23,10 +23,11 @@ import { GoLaw } from "react-icons/go";
 
 import FAQ from './Faq'
 import TeamMember from '../TeamMember'
-import { FaChartPie, FaFacebook, FaInstagramSquare, FaWhatsappSquare } from 'react-icons/fa'
+import { FaArrowCircleRight, FaChartPie, FaFacebook, FaInstagramSquare, FaWhatsappSquare } from 'react-icons/fa'
 import { MdOutlineEmail } from 'react-icons/md'
 import { RiCommunityFill, RiTwitterXLine } from 'react-icons/ri'
 import { FcSalesPerformance } from 'react-icons/fc'
+import CryptoPrice from './CryptoPrice'
 
 interface LandingProp {
   colorSwitchFunction: () => void;
@@ -122,8 +123,11 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
     <div className='homeLandingPage' id='home'>
       <div className="herosection">
        <LandingPageHeader colorSwitchFunction={colorSwitchFunction} colorSwitch={colorSwitch} />
+       <div className="usdtPrice">
+             <CryptoPrice />
+           </div>
        <div className="herosectioncon">
-
+              
           <div className="herosectioncontent">
             <h1>BitWealthCapital is a cryptocurrency trade club and hedge fund management company</h1>
             <p>BitWealthCapital is a cryptocurrency trade club and hedge fund management company that has been serving its members and clients since 2018. Over the years, <p>we’ve rebranded twice to enhance our services and adapt to the evolving needs of our community. Originally named Bitcoin Money Badgers, we adopted the name BitWealthCapital in 2019 following a major review and upgrade.
@@ -419,7 +423,8 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
 </div>
   {/* ======================events end=============== */}
 
-    <div className="founderProfile" id='team'>
+{/* ============= team start ======== */}
+<div className="founderProfile" id='team'>
        
     <div className="founderCon">
 
@@ -445,14 +450,75 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
     </div>
     </div>              
 </div>
-                
+{/* ========= team end ========== */}
+
+{/* ============== term and condition ======= */}
+<div className="terms-and-conditions">
+<h1>Terms and Conditions</h1>
+<section>
+        <h2>1. Membership and Eligibility</h2>
+        <p>Membership in the trading club is available to individuals aged 18 and above with any trade capital size of choice and upon registration with a one-time  $50 subscription fee, subject to adherence to community rules.</p>
+        <p>Participation in the hedge fund is exclusive to members with capital of $10,000 and above, and this amount must equate the maximum percentage allocation allowed in their jurisdiction [applicable regulatory body, subject to location].</p>
+</section>
+
+<section>
+        <h2>2. Risk Acknowledgment</h2>
+        <p>Cryptocurrency trading and investments are speculative and involve high risks, including market volatility, probability, and potential loss of all invested capital.</p>
+        <p>Members and investors accept full responsibility for their decisions and outcomes. No guarantees of profit are provided.</p>
+      </section>
+
+      <div className="read-more">
+      <NavLink to='/term'>
+        <button>Read More</button>
+        <div>
+          <FaArrowCircleRight />
+        </div>
+      </NavLink>
+        </div>
+
+
+</div>
+{/* ============== term and condition end ======= */}
+
 {/* ======= faq === */}
 <div className="faqCon">
   <FAQ /> 
 </div>
 {/* ===== faq end ============ */}
 
-                <div className="footer">
+
+{/* ============== disclamer ======= */}
+<div className="terms-and-conditions">
+<h1>Disclaimer</h1>
+<section>
+        <h2>1. Educational Purpose Only</h2>
+        <p>The information provided by BitWealthCapital is strictly for educational and informational purposes. We aim to equip individuals with knowledge about the cryptocurrency market, including historical data, market trends, and potential projections to guide their decision-making process.</p>
+      </section>
+
+      <section>
+        <h2>2. No Financial Advice</h2>
+        <p>We are not licensed financial advisors, and the content we provide should not be interpreted as personalized investment advice. Always consult with a professional before making any financial decisions.</p>
+      </section>
+
+      <section>
+        <h2>3. No Guarantees on Returns</h2>
+        <p>Cryptocurrency investments are highly volatile and speculative. We do not guarantee any fixed returns or outcomes from decisions made based on the information we provide.</p>
+      </section>
+
+      <div className="read-more">
+      <NavLink to='/disclamer'>
+        <button>Read More</button>
+        <div>
+          <FaArrowCircleRight />
+        </div>
+      </NavLink>
+        </div>
+
+
+</div>
+{/* ============== disclamer end ======= */}
+
+<div className="footer">
                 <div className="footerCon">
 
                   <div className="contactus">
