@@ -98,7 +98,7 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
       profileImg: profileImg2,
     },
     {
-      name: 'Mr. Iwojamo Emmanuel',
+      name: 'Mr. Iwajomo Emmanuel',
       position : "Marketing, Client Relations and Communication - Unit Member",
       socialMedia : false,
       portfolio: [

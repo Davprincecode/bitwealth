@@ -40,6 +40,12 @@ import TradeHistories from "./pages/admin/TradeHistries";
 import PendingKyc from "./pages/admin/PendingKyc";
 import PaymentPending from "./pages/admin/PaymentPending";
 import Dashboard from "./pages/Dashboard";
+import BinanceAccountInfo from "./pages/Binance/BinanceAccountInfo";
+import BinanceLib from "./pages/Binance/BinanceLib";
+
+import tradingViewNews from './pages/tradingViewNews'
+import TradingViewNews from "./pages/tradingViewNews";
+import CryptoPrice from "./pages/CryptoPrice";
 
 
 function App() {
@@ -75,6 +81,11 @@ function App() {
     <Routes>
 
     <Route path="/" element={<LandingPage  colorSwitchFunction={colorSwitchFunction} colorSwitch={colorSwitch} />} />
+
+
+    <Route path="/binance" element={<BinanceAccountInfo />} />
+    <Route path="/binancelib" element={<BinanceLib />} />
+
 
     <Route path="/crypto" element={<BinanceApi />} />
 
@@ -119,6 +130,10 @@ function App() {
 <Route path="/subscriptionpayment" element={<PaymentStatus />} />
 <Route path="/user-trade-history" element={<UserTradeHistory />} />
 <Route path="/performance" element={<UserPerformance />} />
+
+
+<Route path="/tradeview" element={<TradingViewNews />} />
+<Route path="/cryptoprice" element={<CryptoPrice />} />
 {/* ============= trade club end ============== */}
 
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import SideMenu from '../../component/SideMenu';
 import TopHeader from '../../component/TopHeader';
 import Upcoming from '../../component/Upcoming';
+import TradingViewNews from '../tradingViewNews';
 
 function CryptoNews() {
     const [navBar, setNavBar] = useState<boolean>(false);
@@ -25,7 +26,9 @@ function CryptoNews() {
     <div className="mainContainersHeader">
         <TopHeader pageTitle='Trade New' handleToggle={handleToggle}/>
     </div>
-          <Upcoming/>
+    <div className="tradeNewsCon">
+          <TradingViewNews />
+    </div>
         </div>
         </div>
         </div>

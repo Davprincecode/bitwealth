@@ -1569,3 +1569,16 @@ color: var(--bs-orange);
 .icon-container svg{
   color: black;
 }
+
+
+/* =========== trade news ====== */
+
+.tradeNewsCon{
+  margin-top: 40px;
+  border: 2px solid;
+  /* overflow: auto; */
+}
+#trading-view-timeline > div{
+  width: 100% !important;
+}
+
