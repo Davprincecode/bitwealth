@@ -24,7 +24,7 @@ const TeamMember: React.FC<TeamMemberProps> = ({ name, portfolio, profileImg, po
         <img src={profileImg} alt={name} className="profile-img" />
       </div>
       <h2>{name}</h2>
-      <p style={{fontWeight: "bold"}}>{position}</p>
+      <p style={{fontWeight: "bold", textTransform : 'capitalize'}}>{position}</p>
       {
       socialMedia && (
           <div className="socialMedia">

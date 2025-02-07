@@ -65,7 +65,7 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
       portfolio: [
         'BitWealthCapital was founded by Dr. Shadrach Egbokwu in May 2018. He leads the company’s operations alongside a team of skilled professionals, ensuring the delivery of exceptional services to clients and members.',
         'Dr. Shadrach has been actively involved in the Bitcoin, cryptocurrency, and blockchain space since the third quarter of 2016. He made his initial Bitcoin purchases when 1 BTC was valued at less than $800.',
-        'As a prolific educator, advocate, and coach, Dr. Shadrach is deeply committed to advancing the growth and adoption of Bitcoin and its associated technologies both in Africa and globally. His efforts have earned him recognition as a key figure in the industry.',
+        'As a prolific educator, advocate, and coach, Dr. Shadrach is deeply committed to advancing the growth and adoption of Bitcoin and its associated technologies both in Africa and globally. His efforts have earned him recognition as a key figure in this financial ecosystem.',
         'Highlights of His Contributions:',
         'Speaker at numerous cryptocurrency conferences worldwide (onsite and online) since 2018.',
         'Actively led individuals to become knowledgeable and profitable within the cryptocurrency ecosystem.',
@@ -82,7 +82,7 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
       position : "Head of Marketing & Client Relations.",
       socialMedia : false,
       portfolio: [
-        'Studied Business and Computer Information Systems. Major Former Faster Payments Council Member Sponsored by Federal Reserve Bank of Boston Authorised Blockchain Payments Distributor for Pundix LTD Singapore Jan 2019 - December 2021 Providing a borderless payment ecosystem beyond fiat.',
+        'Studied Business and Computer Information Systems. Major Former Faster Payments Council Member Sponsored by Federal Reserve Bank of Boston Authorised Blockchain Payments, Distributor for Pundix LTD Singapore Jan 2019 - December 2021 Providing a borderless payment ecosystem beyond fiat.',
         'Mr. Duncan is a Techprenuer and travels the world consulting corporations and governments on how to develop real-world use cases with blockchain technology.',
         'A leader in global payments and fintech as a delegate  RSPA,  the largest Pundit sales association in America.',
       ],
@@ -130,7 +130,7 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
               
           <div className="herosectioncontent">
             <h1>BitWealthCapital is a cryptocurrency trade club and hedge fund management company</h1>
-            <p>BitWealthCapital is a cryptocurrency trade club and hedge fund management company that has been serving its members and clients since 2018. Over the years, <p>we’ve rebranded twice to enhance our services and adapt to the evolving needs of our community. Originally named Bitcoin Money Badgers, we adopted the name BitWealthCapital in 2019 following a major review and upgrade.
+            <p>BitWealthCapital is a cryptocurrency trade club and hedge fund management company that has been serving its members and clients since 2018. Over the years, <p>we have rebranded twice to enhance our services and adapt to the evolving needs of our community. Originally named Bitcoin Money Badgers, we adopted the name BitWealthCapital in 2019 following a major review and upgrade.
             We have maintained consistent profitability from the cryptocurrency market cycle of 2017/2018 to date. By applying unique strategies and risk management practices, we have thrived in both bull and bear markets. This commitment to excellence is why we proudly say, "We are forever stuck in profit ".</p>
 
            <p> We deeply value the trust of our members and clients who look to us for guidance, education, and coaching on their journey to financial freedom. By leveraging opportunities in Bitcoin, cryptocurrency, blockchain, and associated technologies, we help our community achieve their goals in a realistic and sustainable way.</p>
@@ -454,18 +454,14 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
 
 {/* ============== term and condition ======= */}
 <div className="terms-and-conditions">
-<h1>Terms and Conditions</h1>
+<h2>Terms and Conditions</h2>
 <section>
         <h2>1. Membership and Eligibility</h2>
-        <p>Membership in the trading club is available to individuals aged 18 and above with any trade capital size of choice and upon registration with a one-time  $50 subscription fee, subject to adherence to community rules.</p>
-        <p>Participation in the hedge fund is exclusive to members with capital of $10,000 and above, and this amount must equate the maximum percentage allocation allowed in their jurisdiction [applicable regulatory body, subject to location].</p>
+        <p>Membership in the trading club is available to individuals aged 18 and above with any trade capital size of choice and upon registration with a one-time  $50 subscription fee......</p>
+        
 </section>
 
-<section>
-        <h2>2. Risk Acknowledgment</h2>
-        <p>Cryptocurrency trading and investments are speculative and involve high risks, including market volatility, probability, and potential loss of all invested capital.</p>
-        <p>Members and investors accept full responsibility for their decisions and outcomes. No guarantees of profit are provided.</p>
-      </section>
+
 
       <div className="read-more">
       <NavLink to='/term'>
@@ -489,22 +485,13 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
 
 {/* ============== disclamer ======= */}
 <div className="terms-and-conditions">
-<h1>Disclaimer</h1>
-<section>
+<h2>Disclaimer</h2>
+      <section>
         <h2>1. Educational Purpose Only</h2>
-        <p>The information provided by BitWealthCapital is strictly for educational and informational purposes. We aim to equip individuals with knowledge about the cryptocurrency market, including historical data, market trends, and potential projections to guide their decision-making process.</p>
+        <p>The information provided by BitWealthCapital is strictly for educational and informational purposes......</p>
       </section>
 
-      <section>
-        <h2>2. No Financial Advice</h2>
-        <p>We are not licensed financial advisors, and the content we provide should not be interpreted as personalized investment advice. Always consult with a professional before making any financial decisions.</p>
-      </section>
-
-      <section>
-        <h2>3. No Guarantees on Returns</h2>
-        <p>Cryptocurrency investments are highly volatile and speculative. We do not guarantee any fixed returns or outcomes from decisions made based on the information we provide.</p>
-      </section>
-
+      
       <div className="read-more">
       <NavLink to='/disclamer'>
         <button>Read More</button>
@@ -525,12 +512,12 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
                        <h1>community</h1>
                        <div className="contactFlexicon">
                         <div className="icon"> 
-                        <NavLink to="#">
+                        <NavLink to="https://www.facebook.com/profile.php?id=61573069074384">
                         <FaFacebook />
                         </NavLink> 
                         </div>
                         <div className="icon"> 
-                        <NavLink to="#">
+                        <NavLink to="https://chat.whatsapp.com/K1VoVtRnuTHF3054jI1bga"  target="_blank">
                           <FaWhatsappSquare />
                         </NavLink> 
                         </div>
@@ -545,7 +532,7 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
                         </NavLink> 
                         </div>
                         <div className="icon"> 
-                        <NavLink to="#">
+                        <NavLink to="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=bitwealthcapital@gmail.com" target="_blank">
                           <MdOutlineEmail />
                         </NavLink> 
                         </div>

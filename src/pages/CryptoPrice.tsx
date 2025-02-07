@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 
+
 interface AltcoinPair {
   symbol: string;
   price: number;
@@ -13,9 +14,9 @@ function CryptoPrice() {
   const [ws, setWs] = useState<WebSocket | null>(null);
 
  
+
   useEffect(() => {
     const socket = new WebSocket('wss://data-stream.binance.vision:443/ws/!ticker@arr');
-
     socket.onmessage = (event) => {
       const data = JSON.parse(event.data);
       const altcoinPairs: AltcoinPair[] = data
@@ -46,8 +47,6 @@ function CryptoPrice() {
   if (!data) {
     return <div>Loading...</div>;
   }
-
-console.log(data.length);
 
   return (
     <div className="scroll-container">
