@@ -1,24 +1,36 @@
 import React, { useEffect, useState } from 'react'
 import SideMenu from '../../component/SideMenu'
 import TopHeader from '../../component/TopHeader'
-
+import { IoCheckmarkDoneSharp } from 'react-icons/io5';
+import { IoMdCheckmarkCircle } from 'react-icons/io';
+import { TbBackslash } from 'react-icons/tb';
 import { ImBackward2, ImCancelCircle, ImForward3 } from 'react-icons/im';
 import { userAuth } from '../context/AuthContext';
-
+import { MdAirplanemodeActive, MdAirplanemodeInactive, MdAutoDelete } from 'react-icons/md';
 import { toast } from 'react-toastify';
-import { MdAirplanemodeActive, MdAirplanemodeInactive } from 'react-icons/md';
 import { FcApproval } from 'react-icons/fc';
+import { NavLink } from 'react-router-dom';
 
 
 interface usersInterface { 
-   userId :  string;
-   fullname :  string;
-   membership :  string;
-   amount :  string;
-   status :  string;
+    userId :  string;
+    email :  string;
+    surName :  string;
+    firstName :  string;
+    country :  string;
+    createdDate :  string;
+    createdTime :  string;
+    dob :  string;
+    kycStatus: string;
+    membership :  string;
+    paymentStatus: string;
+    phoneNumber :  string;
+    profileImg :  string;
+    role :  string;
+    status :  string;
 }
 
-function PaymentPending() {
+function UserList() {
     const [navBar, setNavBar] = useState<boolean>(false); 
     const [users, setUsers] = useState<usersInterface[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
@@ -40,13 +52,13 @@ function PaymentPending() {
               redirect: 'follow'
             };
             try {
-              const response = await fetch(`${baseUrl}/getpendingpayment`, requestOptions);  
+              const response = await fetch(`${baseUrl}/getalluser`, requestOptions);  
               if (!response.ok) {
                 const errorResponse = await response.json();
                 throw new Error(errorResponse.message);
               }
               const result = await response.json(); 
-              setUsers(result.data);     
+              setUsers(result.data);
               setLoading(false);
             } catch (error) {
                 setLoading(false);
@@ -62,7 +74,7 @@ function PaymentPending() {
       }, []);
 
 
-      const approve = async(userId: string) => {
+      const changeStatus = async(userId: string) => {
         setLoading(true);
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -73,7 +85,7 @@ function PaymentPending() {
           redirect: 'follow'
         };
         try {
-          const response = await fetch(`${baseUrl}/approvepayment/${userId}`, requestOptions);  
+          const response = await fetch(`${baseUrl}/userstatus/${userId}`, requestOptions);  
           if (!response.ok) {
             const errorResponse = await response.json();
             throw new Error(errorResponse.message);
@@ -92,18 +104,18 @@ function PaymentPending() {
       
       }
 
-      const reject = async(userId: string) => {
+      const deleteUser = async(userId: string) => {
         setLoading(true);
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         myHeaders.append("Authorization", token);
         const requestOptions: RequestInit = {
-          method: 'GET',
+          method: 'DELETE',
           headers: myHeaders,
           redirect: 'follow'
         };
         try {
-          const response = await fetch(`${baseUrl}/rejectpayment/${userId}`, requestOptions);  
+          const response = await fetch(`${baseUrl}/deleteuser/${userId}`, requestOptions);  
           if (!response.ok) {
             const errorResponse = await response.json();
             throw new Error(errorResponse.message);
@@ -134,7 +146,7 @@ function PaymentPending() {
 <div className="mainContainer">
 
   <div className="mainContainersHeader">
-      <TopHeader pageTitle='Pending Payment' handleToggle={handleToggle}/>
+      <TopHeader pageTitle='All User' handleToggle={handleToggle}/>
   </div>
 
     
@@ -143,7 +155,7 @@ function PaymentPending() {
    <div className="mainContainerWrapper">
         <div className="container-fluid">
             <div className="container-header">
-                 <h2>Pending Payment</h2>
+                 <h2>All Users</h2>
             </div>
             <div className="container-body">
                 <div className="table-responsive">
@@ -152,9 +164,9 @@ function PaymentPending() {
                     <tr >
                         <th>No</th>
                         <th>Name</th>
-                        <th>Membership</th>
-                        <th>amount</th>
-                        <th>Status</th>
+                        <th>Email</th> 
+                        <th>Phone Number</th>
+                       
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -163,33 +175,26 @@ function PaymentPending() {
                 {
                     users.map((user, id) => (
                         <tr  key={id}>
-                           <td>{id + 1}</td> 
-                            <td>{user.fullname}</td> 
-                            <td>{user.membership}</td> 
-                            <td>{user.amount}</td> 
-                            <td>{user.status}</td>
+                           <td>{id + 1}</td>
+                           <td>{user.surName} {user.firstName}</td>
+                           <td>{user.email}</td>
+                           <td>{user.phoneNumber}</td>
                            <td>
+
                           <div className="actionwrapdiv">
-                            <div className="approvediv" onClick={(e)=>{approve(user.userId)}}>
+
+                            <NavLink to="#">
+                            <div className="approvediv">
                              <FcApproval />
                              <p>
-                                {
-                                    loading ? "loading...." : "approve"
-                                }
-                                </p>
+                                view trade
+                            </p>
                             </div>
+                            </NavLink>
 
-                            <div className="rejectdiv"  onClick={(e)=>{reject(user.userId)}}>
-                             <ImCancelCircle />
-                             <p>
-                             {
-                                loading ? "loading...." : "reject"
-                                }
-                             </p>
-                            </div>
                           </div>
                           </td>
-                           
+                          
                         </tr>
                     ))
                 }                        
@@ -231,4 +236,4 @@ function PaymentPending() {
   )
 }
 
-export default PaymentPending
+export default UserList

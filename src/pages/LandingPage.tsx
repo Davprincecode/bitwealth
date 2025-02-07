@@ -260,7 +260,7 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
 
 {/* ============ historical and portfolio end========== */}
        <div className="aboutSection" id="about">
-        <h1>why choose use</h1>
+        <h1>why choose us</h1>
         <div className="aboutSectionCon">
         <div className="aboutSectionContentCon">
 

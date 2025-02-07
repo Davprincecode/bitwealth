@@ -46,6 +46,7 @@ import BinanceLib from "./pages/Binance/BinanceLib";
 import tradingViewNews from './pages/tradingViewNews'
 import TradingViewNews from "./pages/tradingViewNews";
 import CryptoPrice from "./pages/CryptoPrice";
+import UserList from "./pages/admin/UserList";
 
 
 function App() {
@@ -113,6 +114,10 @@ function App() {
     <Route path="/crypto-news" element={<CryptoNews />} />
     <Route path="/pendingkyc" element={<PendingKyc />} />
     <Route path="/pendingpayments" element={<PaymentPending />} />
+
+
+
+    <Route path="/userlist" element={<UserList />} />
 
 
 

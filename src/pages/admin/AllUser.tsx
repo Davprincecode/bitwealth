@@ -153,7 +153,7 @@ function AllUser() {
    <div className="mainContainerWrapper">
         <div className="container-fluid">
             <div className="container-header">
-                 <h2>All User</h2>
+                 <h2>All Users</h2>
             </div>
             <div className="container-body">
                 <div className="table-responsive">

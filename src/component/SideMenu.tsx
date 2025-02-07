@@ -53,6 +53,7 @@ const handleSub = () => {
           "All Users": [{ title: 'All Users', path: '/all-users' }],
           "Pending Kyc": [{ title: 'pending kyc', path: '/pendingkyc' }],
           "Pending Payments": [{ title: 'Pending Payments', path: '/pendingpayments' }],
+          "Users Trade": [{ title: 'Users Trade', path: '/userlist' }],
         }
       },
       {
