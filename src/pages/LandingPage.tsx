@@ -79,7 +79,7 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
     },
     {
       name: 'Mr. Dee Duncan',
-      position : "Head of Marketing & Client Relations.",
+      position : "Head of Marketing & Client Relations",
       socialMedia : false,
       portfolio: [
         'Studied Business and Computer Information Systems. Major Former Faster Payments Council Member Sponsored by Federal Reserve Bank of Boston Authorised Blockchain Payments, Distributor for Pundix LTD Singapore Jan 2019 - December 2021 Providing a borderless payment ecosystem beyond fiat.',
@@ -90,7 +90,7 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
     },
     {
       name: 'Mr. Okoro Osinachi',
-      position : "Data analyst/community manager.",
+      position : "Data analyst/community manager",
       socialMedia : false,
       portfolio: [
        'A cryptocurrency enthusiast since 2016. Involved in blockchain research, cryptocurrency fundamental analysis, and tokenomics.',
