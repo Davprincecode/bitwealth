@@ -15,6 +15,7 @@ interface usersInterface {
    fullname :  string;
    membership :  string;
    amount :  string;
+   proofOfPayment :  string;
    status :  string;
 }
 
@@ -154,6 +155,7 @@ function PaymentPending() {
                         <th>Name</th>
                         <th>Membership</th>
                         <th>amount</th>
+                        <th>proof of payment</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -166,8 +168,14 @@ function PaymentPending() {
                            <td>{id + 1}</td> 
                             <td>{user.fullname}</td> 
                             <td>{user.membership}</td> 
-                            <td>{user.amount}</td> 
+                            <td>{user.amount}</td>
+                            <td>
+                                <div className="kycImg">
+                                    <img src={user.proofOfPayment} alt="" />
+                                </div>     
+                            </td>  
                             <td>{user.status}</td>
+                            
                            <td>
                           <div className="actionwrapdiv">
                             <div className="approvediv" onClick={(e)=>{approve(user.userId)}}>

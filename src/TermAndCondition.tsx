@@ -2,7 +2,7 @@
 import React from 'react';
 import logo from './assets/images/logo.png'
 import { MdArrowCircleLeft } from 'react-icons/md';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 function TermsAndConditions() {
 
@@ -16,9 +16,12 @@ function TermsAndConditions() {
     <div>
 
     <div className="topNav">
+    <NavLink to="/">
         <div className="headerLogo">
             <img src={logo} alt="" />
         </div>
+    </NavLink>
+    
          <p>Terms and Condition</p>
         <div className="backArrow" onClick={handleGoBack}>
            <MdArrowCircleLeft />

@@ -45,6 +45,7 @@ function Profile() {
   const [loading, setLoading] = useState<boolean>(false);
 
   const {baseUrl, token, fullName, kycStatus, paymentStatus, membership, image_url, phoneNumber, dob, email, country, setImage_url} = userAuth();
+ 
   
   const handleToggle = () => {
       setNavBar(!navBar);
@@ -55,7 +56,7 @@ function Profile() {
     setLoading(true);
     const formData = new FormData();
 
-        formData.append('profileImg', imgFile![0]);
+    formData.append('profileImg', imgFile![0]);
 
     const requestOptions: RequestInit = {
       method: 'POST',

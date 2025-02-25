@@ -99,11 +99,13 @@ const handleConfirmPassword = (eventPassword: string) => {
   };
   return (
     <div className='login'>
+      <NavLink to="/">
         <div className="loginLogo">
             <div className="img">
                 <img src={logo} alt="" />
             </div>
         </div>
+        </NavLink>
      
      <div className="formWrapper">
         <div className="formCon">

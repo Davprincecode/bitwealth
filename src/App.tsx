@@ -4,7 +4,6 @@ import './App.css'
 import './AppCustom.css'
 import 'react-multi-carousel/lib/styles.css';
 import Login from "./pages/Auth/Login";
-import Logout from "./pages/Auth/Logout";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import LandingPage from "./pages/LandingPage";
@@ -100,8 +99,7 @@ function App() {
     <Route path="/forgetpassword" element={<ForgetPassword/>} />
     <Route path="/changepassword/:token" element={<ChangePassword/>} />
 
-    <Route path="/logout" element={<Logout />} /> 
-
+    
 
     {/* ============= admin ============= */}
     <Route path="/admin-dashboard" element={<AdminDashboard  />} />

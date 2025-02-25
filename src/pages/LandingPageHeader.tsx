@@ -4,15 +4,15 @@ import { NavLink } from 'react-router-dom'
 import { FiAlignRight } from 'react-icons/fi'
 import { IoSunnyOutline } from 'react-icons/io5';
 import { IoIosMoon } from 'react-icons/io';
+import { userAuth } from './context/AuthContext';
 
 interface LandingProp {
   colorSwitchFunction: () => void;
   colorSwitch : string;
 }
 const LandingPageHeader: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch}) =>  {
-
+  const {loggedIn, role} = userAuth();
   const [mobileNav, setMobileNav] = useState(false);
-
   const   mobileNavToggle = () => { 
     setMobileNav(!mobileNav);
   }
@@ -50,7 +50,10 @@ const LandingPageHeader: React.FC<LandingProp> = ({ colorSwitchFunction, colorSw
 
             <div className= {mobileNav ? 'mobileauthActive' : 'auth'}>
                 <div className="loginauth">
-                  <NavLink to="/login">login</NavLink>  
+                <NavLink to={ loggedIn && role == "admin" ? '/admin-dashboard' :  
+                loggedIn && role == "trade club" ? "/trade-dashboard" : 
+                loggedIn && role == "hedge fund" ?  "/hedge-dashboard" : "/login"
+                  }>login</NavLink> 
                 </div>
                 <div className="signupauth">
                 <NavLink to="/register">sign up</NavLink>  

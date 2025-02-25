@@ -8,7 +8,7 @@ import Country from '../Auth/Country';
 
 function EditProfile() {
 
-  const {baseUrl, token, surName, otherName, kycStatus, paymentStatus, membership,  image_url, phoneNumber, dob, email, country,  setEmail, setPhoneNumber, setDob, setMembership, setCountry, setSurName, setOtherName} = userAuth();
+  const {baseUrl, token, surName, otherName, kycStatus, paymentStatus, membership,  image_url, phoneNumber, dob, email, country,  setEmail, setPhoneNumber, setDob, setMembership, setCountry, setSurName, setOtherName, setFullName} = userAuth();
 
     // const [age, setAge] = useState(19);
   const [navBar, setNavBar] = useState<boolean>(false); 
@@ -42,7 +42,9 @@ function EditProfile() {
               throw new Error(errorResponse.message);
             }
             const result = await response.json();
+            setFullName(result.data.fullName);
              toast.success(result.message);
+
             setLoading(false);
           } catch (error) {
             setLoading(false);

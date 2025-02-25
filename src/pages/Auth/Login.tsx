@@ -75,7 +75,7 @@ function Login() {
 'fullName' : "obafemi david",
 'phoneNumber' : "033939",
 'userName' : "davprince31",
-'password' : "12345"
+'password' : "123"
   };
 
   const requestOptions: RequestInit = {
@@ -127,12 +127,15 @@ function Login() {
 }
 
   return (
+
     <div className='login'>
+      <NavLink to="/">
         <div className="loginLogo">
             <div className="img">
                 <img src={logo} alt="" />
             </div>
         </div>
+        </NavLink>
      
      <div className="formWrapper">
         <div className="formCon">

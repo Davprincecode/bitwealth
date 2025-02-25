@@ -29,6 +29,7 @@ import { RiCommunityFill, RiTwitterXLine } from 'react-icons/ri'
 import { FcSalesPerformance } from 'react-icons/fc'
 import CryptoPrice from './CryptoPrice'
 
+
 interface LandingProp {
   colorSwitchFunction: () => void;
   colorSwitch : string;
@@ -36,6 +37,8 @@ interface LandingProp {
 
 const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }) =>{
 
+  
+  
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.

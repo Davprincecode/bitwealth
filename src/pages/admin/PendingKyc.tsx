@@ -178,8 +178,7 @@ function PendingKyc() {
                             <td>
                                 <div className="kycImg">
                                     <img src={user.idCard} alt="" />
-                                </div>
-                                
+                                </div>     
                             </td> 
                             <td>
                                 <div className="kycImg">

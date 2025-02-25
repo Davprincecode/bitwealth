@@ -73,8 +73,8 @@ interface AuthProviderProps {
     const navigate = useNavigate();
     const location = useLocation();
    
-    const [baseUrl] = useState<string>('http://127.0.0.1:8000/api/v1');
-    // const [baseUrl] = useState<string>('https://api.bitwealthcapital.com/api/v1');
+    // const [baseUrl] = useState<string>('http://127.0.0.1:8000/api/v1');
+    const [baseUrl] = useState<string>('https://api.bitwealthcapital.com/api/v1');
   
     const [userId, setUserID] = useState<string>('');
     const [email, setEmail] = useState<string>('');
@@ -127,11 +127,14 @@ interface AuthProviderProps {
     }
 
     const logout = () => {
+      localStorage.removeItem("myState");
+      localStorage.removeItem("myToken");
       navigate("/login");
     };
 
    useEffect(() => {
     const exemptedPaths = ['/register', '/', '/term', '/disclamer', '/forgetpassword', '/changepassword/:token', '/emailconfirm/:token', '/redirectform ', '/login'];
+
     const fetchData = async () => {
       if (loggedIn) {
         const storedToken: string | null = localStorage.getItem('myToken');
@@ -153,6 +156,10 @@ interface AuthProviderProps {
           }
         } catch (error) {
           console.log(error);
+          location.pathname
+          if (!exemptedPaths.includes(location.pathname)) {
+            logout()
+          }
         }
       } else {
         location.pathname

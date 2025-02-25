@@ -8,28 +8,27 @@ function PaymentStatus() {
   const [navBar, setNavBar] = useState<boolean>(false); 
   const [loading, setLoading] = useState<boolean>(false);
   const {baseUrl, token, membership} = userAuth();
+  const [proofOfPayment, setProofOfPayment] = useState<File | null>(null);
   
   const handleToggle = () => {
       setNavBar(!navBar);
     };
 
-
       const fetchData = async () => {
-
         setLoading(true);
-        const myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", token);
-
-        const raw = {
-        'membership' :  membership,
-        'amount' : membership === "hedge fund" ? 20 : 50
-        };
-
-        const requestOptions: RequestInit = {
-        method: 'POST',
-        headers: myHeaders,
-        body: JSON.stringify(raw),
+        const formData = new FormData();
+        const member = membership === "hedge fund" ? 20 : 50;
+        formData.append('membership', membership);
+        formData.append('amount', member.toString());
+        if (proofOfPayment) {
+          formData.append('proofOfPayment', proofOfPayment);
+        }
+       const requestOptions: RequestInit = {
+          method: 'POST',
+          headers: {
+            Authorization: token,
+          },
+          body: formData,
         };
           try {
             const response = await fetch(`${baseUrl}/createpayment`, requestOptions);       
@@ -38,7 +37,8 @@ function PaymentStatus() {
               throw new Error(errorResponse.message);
             }
              toast.success("Payment success apply wait for approval");
-            setLoading(false);
+             setProofOfPayment(null);
+             setLoading(false);
           } catch (error) {
             setLoading(false);
             if (typeof error === "object" && error !== null && "message" in error && typeof error.message === "string") {
@@ -108,8 +108,7 @@ function PaymentStatus() {
     </p>
 
      <p className='payAddress'>
-     Please copy the wallet address below and send the equivalent amount. After making the payment,
-      click the button below.
+     Please copy the wallet address below and send the equivalent amount. After making the payment, upload your proof of payment and click the button below.
      </p>
      <p>
      Our team will review your payment and notify you of its approval.
@@ -145,16 +144,32 @@ function PaymentStatus() {
       {usdtCopied? 'Copied!' : 'Copy'}
     </div>   
    </div>
-     
+
+  <form action="">
+<div>
+<div className="input">
+<label>Proof Of Payment</label>
+  <input type="file" placeholder='Proof of payment' style={{ border : "2px solid" }} onChange={(e) => { if (e.target.files) { setProofOfPayment(e.target.files![0]); } else { setProofOfPayment(null);}} }
+  />
+</div>
+</div>
+</form>
+
       {
         loading ? (
         <div className="paymentMade">
           loading.......
         </div>
         ) : (
-          <div className="paymentMade" onClick={fetchData}>
-          payment made
-      </div>
+            proofOfPayment ? (
+              <div className="paymentMade" onClick={fetchData}>
+              payment made
+              </div>
+            ) : (
+              <div className="paymentMade" style={{ background : "#efefef" }}>
+              payment made
+             </div>
+            )
         )
       }
        
