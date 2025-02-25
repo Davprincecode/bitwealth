@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import logo from '../../assets/images/logo.png';
-
 import {toast } from 'react-toastify';
 import {NavLink, useNavigate } from 'react-router-dom';
 import { userAuth } from '../context/AuthContext';
@@ -203,9 +202,11 @@ const handleConfirmPassword = (eventPassword: string) => {
                   />
 
                   <div className="termfooter">
-                 <p>I have agree to the <NavLink to="/term">terms & condition</NavLink> and <NavLink to="/disclamer">Disclaimer</NavLink> of BitwealthCapital.</p>
+                 <p>I hereby acknowledge that I have read, understood, and agreed to the <NavLink to="/term">terms, conditions</NavLink> and <NavLink to="/disclamer">Disclaimer</NavLink> of BitwealthCapital.</p>
                  </div>
                  
+                
+
                 </div>
 
                 <div className="input">

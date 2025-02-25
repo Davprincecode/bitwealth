@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import logo from '../assets/images/logo.png';
 import { FiX } from 'react-icons/fi';
 import { RiHome2Fill } from "react-icons/ri";
@@ -7,7 +7,7 @@ import { LuFileBarChart } from "react-icons/lu";
 import { MdInventory } from "react-icons/md";
 import { TbLogout } from "react-icons/tb";
 import { IoIosLogOut, IoIosSettings, IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
-
+import navPreloader from '../assets/images/navloading1.gif';
 import { userAuth } from '../pages/context/AuthContext';
 import { FaChartLine, FaUserAlt, FaUsers } from 'react-icons/fa';
 import { FcComboChart } from 'react-icons/fc';
@@ -31,7 +31,48 @@ interface MenuItem {
 }
 
 const SideMenu: React.FC<Props> = ({ navBar, handleToggle }) => {
-  const { role, paymentStatus} = userAuth();  
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState<boolean>(false);
+  const {baseUrl, token, role, paymentStatus} = userAuth();  
+
+  const logOut = async () => {
+    setLoading(true);
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", token);
+    const requestOptions: RequestInit = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+    try {
+      const response = await fetch(`${baseUrl}/logout`, requestOptions);
+      if (!response.ok) {
+        const errorResponse = await response.json();
+        throw new Error(errorResponse.message);
+      }
+
+      const result = await response.json(); 
+      
+      // localStorage.removeItem("user");
+      // localStorage.removeItem("token");
+      localStorage.removeItem("myState");
+      localStorage.removeItem("myToken");
+      toast.success("You are now logged out...");
+       setLoading(false); 
+       navigate("/login");
+      
+    } catch (error) {
+        setLoading(false);
+        if (typeof error === "object" && error !== null && "message" in error && typeof error.message === "string") {
+          toast.error(error.message);
+        } else {
+          toast.error('An unknown error occurred.');
+        }
+      }
+  
+ };
+
 
 const handleSub = () => {
   toast.error("To access trade signals, you must be a subscribed member.   Please visit your profile to complete your payment and unlock this feature.");
@@ -66,15 +107,7 @@ const handleSub = () => {
         }
       },
  
-      // {
-      //   title: 'trade history',
-      //   path: '/#',
-      //   icon: <IoIosSettings />,
-      //   subNavOption: {
-      //     "admin mat": [{ title: 'Material Recieve', path: '/material' }],
-      //     "Expenditure": [{ title: 'Expenditure', path: '/shopexpenditure' }]
-      //   }
-      // },
+      
       {
         title: 'Report',
         path: '/#',
@@ -83,11 +116,6 @@ const handleSub = () => {
           "Crypto News": [{ title: 'Crypto News', path: '/crypto-news' }],
           "Trade History": [{ title: 'Trade History', path: '/trade-history' }]
         }
-      },
-      {
-        title: 'Log out',
-        path: '/logout',
-        icon : <IoLogOut />
       }
     );
   } else if (role === 'trade club') {
@@ -120,12 +148,7 @@ const handleSub = () => {
           "Trade History": [{ title: 'Trade History', path: '/user-trade-history' }],
           "Performance": [{ title: 'Performance', path: '/performance' }]
         }
-      },
-      {
-        title: 'Log Out',
-        path: '/logout',
-        icon: <IoIosLogOut />,
-      },
+      }
 
     );
   } else if (role === 'hedge fund'){
@@ -139,7 +162,6 @@ const handleSub = () => {
         title: 'Trade news',
         path: '/trade-news',
         icon: <IoIosSettings />,
-        
       },
       {
         title: 'Profile',
@@ -154,18 +176,9 @@ const handleSub = () => {
           "Trade History": [{ title: 'Trade History', path: '/user-trade-history' }],
           "Performance": [{ title: 'Performance', path: '/performance' }]
         }
-      },
-      {
-        title: 'Log Out',
-        path: '/logout',
-        icon: <IoIosLogOut />,
-      },
-
+      }
     );
-
   }
-
-
     const [openSubMenuIndex, setOpenSubMenuIndex] = useState<number | null>(null);
 
     const toggleSubMenu = (currentIndex: number) => {
@@ -177,21 +190,30 @@ const handleSub = () => {
           <div className="harmburger" onClick={handleToggle}>
             <FiX />
             <i className="fa-solid fa-bars-staggered"></i>
-          </div>
+          </div>           
+           <NavLink to="/">
           <div className="sideNavLogoContainer">
             <div className="sideNavLogo">
               <img src={logo} alt="" />
             </div>
             <p>BitWealthCapital</p>
           </div>
+          </NavLink>
+
           <div className="sideNavMenu">
+
+              {
+          role == "" || loading ? (
+            <div className="sideNavPreloader">
+            <img src={navPreloader} alt="preloader" />
+           </div>
+          ) : (
             <ul>
               {menuItems.map((menuItem, index) => (
                 <li key={index}>
                   {menuItem.subNavOption ? (
                     <div>
                       <div className="topmenu"  style={{ backgroundImage: openSubMenuIndex === index ? 'background: #0400ff26' : 'none' }}    onClick={() => toggleSubMenu(index)} >
-
                         <div className="topmenuItem">
                          <div className="topmenuIcon">
                          {menuItem.icon}
@@ -266,8 +288,29 @@ const handleSub = () => {
                   )}
                 </li>
               ))}
+
+              <li>
+                <div className="topmenu">
+
+                  <div className="topmenuItem" onClick={logOut}>
+                    <div className="topmenuIcon">
+                    <IoIosLogOut />
+                    </div>
+                    <div className="topmenuName">
+                    Log Out
+                    </div>
+                  </div>
+                  
+                </div>
+             
+              </li>
+
             </ul>
+          )  
+          }
+
           </div>
+
         </div>
       );
 }

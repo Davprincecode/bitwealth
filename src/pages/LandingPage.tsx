@@ -151,7 +151,7 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
 {/* =============historical performance and portio */}
             <div className="historySection" id='portfolio'>
                     <div className="historySectionCon">
-                        <h1>our historical performance or portfolio</h1>
+                        <h1>our historical performance</h1>
                         
                         <div className="historyConFlex">
 
