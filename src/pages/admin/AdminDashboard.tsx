@@ -12,46 +12,15 @@ import Upcoming from '../../component/Upcoming';
     
 
 function AdminDashboard() {
-    const {baseUrl, token} = userAuth();
+    
     const [navBar, setNavBar] = useState<boolean>(false);
-    const [loading, setLoading] = useState<boolean>(false);
+  
 
-
-    const [amount, setAmount] = useState(0);
-    const [product, setProduct] = useState(0);
-    const [sales, setSales] = useState(0);
-
-
+  
     const handleToggle = () => {
       setNavBar(!navBar);
     };
 
-    useEffect(() => {
-        fetchData();
-        }, []);
-
-        const fetchData = async () => {
-            setLoading(true);
-            const myHeaders = new Headers();
-            myHeaders.append("Content-Type", "application/json");
-            myHeaders.append("Authorization", token);
-            const requestOptions: RequestInit = {
-              method: 'GET',
-              headers: myHeaders,
-              redirect: 'follow'
-            };
-            try {
-              const response = await fetch(`${baseUrl}/shopdashboard`, requestOptions);
-              const result = await response.json();
-            
-              setProduct(result.data.product);
-              setAmount(result.data.amount);
-              setSales(result.data.sales);
-              setLoading(false);
-            } catch (error) {
-            //   console.log(error);
-            }
-        };  
     return (
       <div>
         <div className="mainWrapper">

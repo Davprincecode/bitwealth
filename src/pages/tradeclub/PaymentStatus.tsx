@@ -118,7 +118,7 @@ function PaymentStatus() {
    <div className="walletflex">
      <div className="walletaddress">
         <div className='btcName'>
-            BTC Address
+            BTC(non-segwit) Address
         </div>
         <div className="btcaddresss">
         1MLvQ95DBwmbzkWCNm2RBcVSmoxFDCo42L

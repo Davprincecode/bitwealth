@@ -6,7 +6,7 @@ import { IoMdCheckmarkCircle } from 'react-icons/io';
 import { TbBackslash } from 'react-icons/tb';
 import { ImBackward2, ImForward3 } from 'react-icons/im';
 import { userAuth } from '../context/AuthContext';
-import { MdAirplanemodeActive, MdAirplanemodeInactive, MdAutoDelete } from 'react-icons/md';
+import { MdAirplanemodeActive, MdAirplanemodeInactive, MdAutoDelete, MdRestore } from 'react-icons/md';
 import { toast } from 'react-toastify';
 
 
@@ -19,8 +19,8 @@ interface usersInterface {
     createdDate :  string;
     createdTime :  string;
     dob :  string;
-    kycStatus: string;
-    membership :  string;
+    kycStatus: boolean;
+    membership: boolean;
     paymentStatus: string;
     phoneNumber :  string;
     profileImg :  string;
@@ -32,6 +32,7 @@ function AllUser() {
     const [navBar, setNavBar] = useState<boolean>(false); 
     const [users, setUsers] = useState<usersInterface[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
+    const [status, setStatus] = useState<boolean>(false);
     const {baseUrl, token} = userAuth();
     
     const handleToggle = () => {
@@ -50,7 +51,7 @@ function AllUser() {
               redirect: 'follow'
             };
             try {
-              const response = await fetch(`${baseUrl}/getalluser`, requestOptions);  
+              const response = await fetch(`${baseUrl}/getalluser`, requestOptions);
               if (!response.ok) {
                 const errorResponse = await response.json();
                 throw new Error(errorResponse.message);
@@ -59,6 +60,7 @@ function AllUser() {
               setUsers(result.data);
               setLoading(false);
             } catch (error) {
+              
                 setLoading(false);
                 if (typeof error === "object" && error !== null && "message" in error && typeof error.message === "string") {
                   toast.error(error.message);
@@ -73,7 +75,7 @@ function AllUser() {
 
 
       const changeStatus = async(userId: string) => {
-        setLoading(true);
+        setStatus(true);
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         myHeaders.append("Authorization", token);
@@ -90,9 +92,9 @@ function AllUser() {
           }
           const result = await response.json();  
           setUsers(result.data);
-          setLoading(false);
+          setStatus(false);
         } catch (error) {
-            setLoading(false);
+          setStatus(false);
             if (typeof error === "object" && error !== null && "message" in error && typeof error.message === "string") {
               toast.error(error.message);
             } else {
@@ -176,8 +178,7 @@ function AllUser() {
                     </thead>
 
                     <tbody >
-                {
-                    users.map((user, id) => (
+                {users && users.map((user, id) => (
                         <tr  key={id}>
                            <td>{id + 1}</td>
                            <td>{user.surName} {user.firstName}</td>
@@ -187,10 +188,13 @@ function AllUser() {
                            <td>{user.dob.split('T')[0]}</td>
                            <td>{user.membership}</td>
                            <td>{user.createdDate}</td>
-                           <td>{user.kycStatus}</td>
-                           <td>{user.paymentStatus}</td>
+                           <td>{user.kycStatus.toString()}</td>
+                           <td>{user.paymentStatus.toString()}</td>
                            <td>
                             { 
+                            status ? (
+                              <p>loading....</p>
+                            ) : (
                             user.status == "active" ? (
                                 <div className="actionwrap" onClick={() => {changeStatus(user.userId)}}>
                                 <div className="actionActive">
@@ -211,13 +215,30 @@ function AllUser() {
                                     </div>
                                 </div>
                             )
+                            )
                             }
                            
                            </td>
                            <td>
-                                <div className="delete" onClick={(e) => {deleteUser(user.userId)}}>
-                                <MdAutoDelete />   
-                                </div>
+                            {
+                              status ? (
+                                   <p>loading....</p>
+                              ) : (
+                                
+                              user.status == "active" ? (
+                                // deleteUser(user.userId)
+                                <div className="delete" onClick={(e) => {changeStatus(user.userId)}}>
+                                      <MdAutoDelete />   
+                                  </div>
+                              ) : (
+                                <div className="delete" onClick={(e) => {changeStatus(user.userId)}}>
+                               <MdRestore /> 
+                              </div>
+                            
+                              )
+                              )
+                              
+                            }
                             </td>
                         </tr>
                     ))

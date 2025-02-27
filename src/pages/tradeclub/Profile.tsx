@@ -44,7 +44,7 @@ function Profile() {
   const [navBar, setNavBar] = useState<boolean>(false); 
   const [loading, setLoading] = useState<boolean>(false);
 
-  const {baseUrl, token, fullName, kycStatus, paymentStatus, membership, image_url, phoneNumber, dob, email, country, setImage_url} = userAuth();
+  const {baseUrl, token, fullName, kycStatus, paymentStatus, membership, image_url, phoneNumber, dob, email, country, role, setImage_url} = userAuth();
  
   
   const handleToggle = () => {
@@ -177,8 +177,8 @@ function Profile() {
                </div>
             </div>
            
-           <div className="profileBiostatus">
-
+            { role !== "admin" && (
+                     <div className="profileBiostatus">
               <NavLink to={kycStatus === null ? "/kycverification" : "#"}>
               <div className="kycStatus">
                 <div className="kycName">
@@ -209,7 +209,6 @@ function Profile() {
 
               </div>  
              </NavLink>
-              
              <NavLink to={paymentStatus === null ? "/subscriptionpayment" : "#"} >
                 
                 <div className="paymentstatus">
@@ -237,13 +236,13 @@ function Profile() {
                       </div>
                     )
                   }
-                
-
-
               </div>
             </NavLink>
-              
-           </div>
+           </div>   
+                  )
+                  
+                  }
+           
 
         </div>
 

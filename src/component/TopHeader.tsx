@@ -20,7 +20,7 @@ const TopHeader : React.FC<modalPopUp> = ({pageTitle, handleToggle}) => {
       navigate(-1);
     };
 
-    const {baseUrl, token, fullName, kycStatus, image_url} = userAuth();
+    const {baseUrl, token, fullName, kycStatus, image_url, role} = userAuth();
     
     const [navBar, setNavBar] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
@@ -48,24 +48,31 @@ const TopHeader : React.FC<modalPopUp> = ({pageTitle, handleToggle}) => {
         </div> */}
         <div className="profile">
             <NavLink to="/profile">
-<div className="profileImgCon">
+            <div className="profileImgCon">
             <div className="profileImg">
                     <img src={ image_url ? image_url :  profile} alt="Profile Picture" />
                     </div>
                     {
+                        role !== "admin" && (
+                            <>
+                         {
                         (kycStatus === 'pending'  || !kycStatus || kycStatus === 'rejected') && (
                             <div className="prfunverified">
                             <GoUnverified />
                             </div> 
                         )
-                    }
-                    {
+                        }
+                        {
                         kycStatus === 'approved' && (
                             <div className="prfverified">
                             <MdVerified />
                             </div>
                         )
+                    }   
+                    </>
+                        )
                     }
+                    
             </div>
             <div className="profileName">
             <p className="surName">
