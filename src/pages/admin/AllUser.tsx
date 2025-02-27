@@ -185,7 +185,15 @@ function AllUser() {
                            <td>{user.email}</td>
                            <td>{user.phoneNumber}</td>
                            <td>{user.country}</td>
-                           <td>{user.dob.split('T')[0]}</td>
+                           <td>
+                            {
+                           user.dob == null ? (
+                            user.dob
+                           ) : (
+                            user.dob.split('T')[0]
+                           )
+                           }
+                           </td>
                            <td>{user.membership}</td>
                            <td>{user.createdDate}</td>
                            <td>{user.kycStatus.toString()}</td>
