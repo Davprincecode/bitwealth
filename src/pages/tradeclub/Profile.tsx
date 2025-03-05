@@ -44,7 +44,7 @@ function Profile() {
   const [navBar, setNavBar] = useState<boolean>(false); 
   const [loading, setLoading] = useState<boolean>(false);
 
-  const {baseUrl, token, fullName, kycStatus, paymentStatus, membership, image_url, phoneNumber, dob, email, country, role, setImage_url} = userAuth();
+  const {baseUrl, token, fullName, kycStatus, paymentStatus, membership, image_url, phoneNumber, dob, email, country, role, setImage_url, refferalId} = userAuth();
  
   
   const handleToggle = () => {
@@ -120,10 +120,17 @@ function Profile() {
             <div className="profileImage">
                 <img src={image_url ? image_url :profile} alt="" />
             </div>
+            {
+              role !== "admin" && (
+                <div className="refferal">
+                <p><span>Referral Code : </span>{refferalId}</p>
+                </div>
+              )
+            }
+           
+
             <div className="upandedit">
               
-
-
 <label htmlFor="file-input" style={{
   backgroundColor: '#00308f',
   color: '#fff',

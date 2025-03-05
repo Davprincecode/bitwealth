@@ -20,6 +20,7 @@ interface AuthProviderProps {
     setSurName: Function;
     setOtherName: Function;
     setImage_url: Function;
+   setRefferalId: Function;
     baseUrl: string; 
     userId : string;
     email : string;
@@ -34,6 +35,7 @@ interface AuthProviderProps {
     paymentStatus : string;
     image_url : string;
     role : string;
+    refferalId : string;
     token: string;
   }
   
@@ -52,6 +54,7 @@ interface AuthProviderProps {
     setSurName:  () => {},
     setOtherName:  () => {},
     setImage_url:  () => {},
+   setRefferalId:  () => {},
     baseUrl: '',
     userId : '',
     email : '',
@@ -65,6 +68,7 @@ interface AuthProviderProps {
     kycStatus : '',
     paymentStatus : '',
     role : '',
+    refferalId : '',
     image_url : '',
     token: '',
   });
@@ -74,7 +78,7 @@ interface AuthProviderProps {
     const location = useLocation();
    
     // const [baseUrl] = useState<string>('http://127.0.0.1:8000/api/v1');
-    const [baseUrl] = useState<string>('https://api.bitwealthcapital.com/api/v1');
+    const [baseUrl] = useState<string>('https://apis.bitwealthcapital.org/api/v1');
   
     const [userId, setUserID] = useState<string>('');
     const [email, setEmail] = useState<string>('');
@@ -89,6 +93,7 @@ interface AuthProviderProps {
     const [role, setRole] = useState<string>('');
     const [surName, setSurName] = useState<string>('');
     const [otherName, setOtherName] = useState<string>('');
+    const [refferalId, setRefferalId] = useState<string>('');
    
      const [token, setToken] = useState<string>(() => {
       const storedToken = localStorage.getItem('myToken');
@@ -105,7 +110,7 @@ interface AuthProviderProps {
       localStorage.setItem('myState', JSON.stringify(true));
     };
   
-    const loginAuth = (userId: string, email: string, fullName : string, surName : string, otherName : string, phoneNumber : string, country: string, dob: string, membership:string, kycStatus:string, paymentStatus:string, image_url: string, role : string,  token?: string) => {
+    const loginAuth = (userId: string, email: string, fullName : string, surName : string, otherName : string, phoneNumber : string, country: string, dob: string, membership:string, kycStatus:string, paymentStatus:string, image_url: string, role : string, refferalId:string,  token?: string) => {
       setRole(role);
       setUserID(userId);
       setEmail(email);
@@ -119,6 +124,7 @@ interface AuthProviderProps {
       setKycStatus(kycStatus);
       setPaymentStatus(paymentStatus);
       setImage_url(image_url);
+     setRefferalId(refferalId);
       if(token){
           localStorage.setItem('myToken', token);
           setToken(token);
@@ -151,8 +157,9 @@ interface AuthProviderProps {
         try {
           const response = await fetch(`${baseUrl}/getuser`, requestOptions);
           const result = await response.json(); 
+         
           if(response.ok){
-            loginAuth(result.data.userId, result.data.email, result.data.fullName, result.data.surName, result.data.otherName, result.data.phoneNumber, result.data.country, result.data.dob, result.data.membership, result.data.kycStatus, result.data.paymentStatus, result.data.image_url, result.data.userRole);
+            loginAuth(result.data.userId, result.data.email, result.data.fullName, result.data.surName, result.data.otherName, result.data.phoneNumber, result.data.country, result.data.dob, result.data.membership, result.data.kycStatus, result.data.paymentStatus, result.data.image_url, result.data.userRole, result.data.refferalId);
           }
         } catch (error) {
           console.log(error);
@@ -172,7 +179,7 @@ interface AuthProviderProps {
   }, [loggedIn]);
   
     return (
-      <AuthContext.Provider value={{ loggedIn, loginAuth, logInUser, logout, setLoggedIn,  baseUrl, userId, email, fullName, surName, otherName, phoneNumber, country, dob, membership, kycStatus, paymentStatus, image_url, role, token, setEmail, setPhoneNumber, setDob, setMembership, setCountry, setFullName, setSurName, setOtherName, setImage_url
+      <AuthContext.Provider value={{ loggedIn, loginAuth, logInUser, logout, setLoggedIn,  baseUrl, userId, email, fullName, surName, otherName, phoneNumber, country, dob, membership, kycStatus, paymentStatus, image_url, refferalId, role, token, setEmail, setPhoneNumber, setDob, setMembership, setCountry, setFullName, setSurName, setOtherName, setImage_url,setRefferalId
       }}>
         {children}
       </AuthContext.Provider>

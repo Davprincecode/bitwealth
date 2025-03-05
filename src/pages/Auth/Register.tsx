@@ -17,6 +17,7 @@ function Register() {
   const [dob, setDob] = useState<Date | null>(null);
   const [membership, setMembership] = useState<string>('');
   const [country, setCountry] = useState<string>('');
+  const [refferalcode, setRefferalcode] = useState<string>('');
   const [confirmpassword, setConfirmPassword] = useState<string>('');
   const [matchPassword, setMatchPassword] = useState<boolean>(false);
   
@@ -55,7 +56,8 @@ function Register() {
       'dob' : dob,
       'membership' :  membership,
       'password' : password,
-      'role' : membership
+      'role' : membership,
+      'refferedBy' : refferalcode
     };
   
     const requestOptions: RequestInit = {
@@ -195,7 +197,12 @@ const handleConfirmPassword = (eventPassword: string) => {
                         ' '
                     )
                 }
-                
+                <div className="input">
+                    <label>Refferal Code</label>
+                    <input type="text" placeholder='refferal code'
+                     value={refferalcode} onChange={(e) => setRefferalcode(e.target.value)}
+                   />
+                </div>
                 <div className="agreementflex">
                 <input 
                     type="checkbox" 
@@ -214,7 +221,7 @@ const handleConfirmPassword = (eventPassword: string) => {
                 <div className="input">
                 <div className="btn">
                 {
-                  surname && otherName && email && membership && phoneNumber && country && password && matchPassword &&  age >= 18 && acceptTerm ? (
+                  surname && otherName && email && membership && phoneNumber && country && password && matchPassword &&  age >= 18 && dob && acceptTerm ? (
                     <button onClick={handleLogin} disabled={loading}>
                       {loading ? 'Loading......' : 'Sign Up'}
                     </button>

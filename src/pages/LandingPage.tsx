@@ -163,11 +163,11 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
                             May - December 2018
                           </div>
                             <div className="profitmargin">
-                              304.59%
+                             954.87%
                             </div>
                             <div className="profitCon">
                               <p>
-                                We Achieved 304.59% profit (~3× ROI).
+                                We Achieved 954.87% profit (~9× ROI).
                               </p>
                             </div>
                         </div>
@@ -177,11 +177,11 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
                             January - December 2019
                           </div>
                             <div className="profitmargin">
-                            677.92%
+                            6262.62%
                             </div>
                             <div className="profitCon">
                               <p>
-                                We Delivered an impressive 677.92% profit (~6.7× ROI).
+                                We Delivered an impressive 6262.62% profit ( {'>'} 40× ROI).
                               </p>
                             </div>
                         </div>
@@ -191,11 +191,11 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
                             January 2020 - December 2021
                           </div>
                             <div className="profitmargin">
-                            2000%
+                            2200%
                             </div>
                             <div className="profitCon">
                               <p>
-                                We Recorded a remarkable 2000% profit (~20× ROI).
+                                We Recorded a remarkable 2200% profit (~20× ROI).
                               </p>
                             </div>
                         </div>
@@ -236,7 +236,7 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
                             
                             <div className="profitCon">
                               <p>
-                              We plan to diversify our cryptocurrency portfolios to maximise returns for the 2025-2025 market cycle.
+                              We plan to diversify our cryptocurrency portfolios to maximise returns for the 2025-2026 market cycle.
                               </p>
                             </div>
                         </div>

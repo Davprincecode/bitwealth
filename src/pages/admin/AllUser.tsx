@@ -26,6 +26,8 @@ interface usersInterface {
     profileImg :  string;
     role :  string;
     status :  string;
+    kyc : string;
+    payment : string;
 }
 
 function AllUser() {
@@ -56,7 +58,7 @@ function AllUser() {
                 const errorResponse = await response.json();
                 throw new Error(errorResponse.message);
               }
-              const result = await response.json(); 
+              const result = await response.json();
               setUsers(result.data);
               setLoading(false);
             } catch (error) {
@@ -196,8 +198,8 @@ function AllUser() {
                            </td>
                            <td>{user.membership}</td>
                            <td>{user.createdDate}</td>
-                           <td>{user.kycStatus.toString()}</td>
-                           <td>{user.paymentStatus.toString()}</td>
+                           <td>{user.kyc === null ? "not verified" : user.kyc}</td>
+                           <td>{user.payment === null ? "not verified" : user.payment}</td>
                            <td>
                             { 
                             status ? (

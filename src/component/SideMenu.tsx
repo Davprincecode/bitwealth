@@ -4,7 +4,7 @@ import logo from '../assets/images/logo.png';
 import { FiX } from 'react-icons/fi';
 import { RiHome2Fill } from "react-icons/ri";
 import { LuFileBarChart } from "react-icons/lu";
-import { MdInventory } from "react-icons/md";
+import { MdInventory, MdNetworkWifi } from "react-icons/md";
 import { TbLogout } from "react-icons/tb";
 import { IoIosLogOut, IoIosSettings, IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
 import navPreloader from '../assets/images/navloading1.gif';
@@ -12,7 +12,9 @@ import { userAuth } from '../pages/context/AuthContext';
 import { FaChartLine, FaUserAlt, FaUsers } from 'react-icons/fa';
 import { FcComboChart } from 'react-icons/fc';
 import { IoLogOut } from 'react-icons/io5';
+// import { FaUsers } from "react-icons/fa";
 import { toast } from 'react-toastify';
+
 
 interface Props {
   navBar: boolean;
@@ -75,7 +77,7 @@ const SideMenu: React.FC<Props> = ({ navBar, handleToggle }) => {
 
 
 const handleSub = () => {
-  toast.error("To access trade signals, you must be a subscribed member.   Please visit your profile to complete your payment and unlock this feature.");
+  toast.error("To access trade signals, you must be a subscriber member. Please visit your profile to complete your payment and unlock this feature.");
 }
 
   const menuItems: MenuItem[] = [];
@@ -125,20 +127,36 @@ const handleSub = () => {
         path: '/trade-dashboard',
         icon: <RiHome2Fill />
       },
-      {
-        title: 'Trade signal',
-        path: '/#',
-        icon: <IoIosSettings />,
-        subNavOption: {
-          "Trade Signals": [{ title: 'Trade Signals', path: '/user-trade-signal' }],
 
-          "Trade new": [{ title: 'Trade new', path: '/trade-news' }]
-        }
+      // {
+      //   title: 'Trade signal',
+      //   path: '/#',
+      //   icon: <IoIosSettings />,
+      //   subNavOption: {
+      //     "Trade Signals": [{ title: 'Trade Signals', path: '/user-trade-signal' }],
+
+      //     "Trade new": [{ title: 'Trade new', path: '/trade-news' }]
+      //   }
+      // },
+      {
+        title: 'Trade Signals',
+        path: '/user-trade-signal',
+        icon: <MdNetworkWifi />,
+      },
+      {
+        title: 'Trade news',
+        path: '/trade-news',
+        icon: <IoIosSettings />,
       },
       {
         title: 'Profile',
         path: '/profile',
         icon: <FaUserAlt />,
+      },
+      {
+        title: 'Referral',
+        path: '/refferals',
+        icon: <FaUsers />,
       },
       {
         title: 'Report',
@@ -167,6 +185,11 @@ const handleSub = () => {
         title: 'Profile',
         path: '/profile',
         icon: <FaUserAlt />,
+      },
+      {
+        title: 'Referral',
+        path: '/refferals',
+        icon: <FaUsers />,
       },
       {
         title: 'Report',
@@ -211,6 +234,7 @@ const handleSub = () => {
             <ul>
               {menuItems.map((menuItem, index) => (
                 <li key={index}>
+
                   {menuItem.subNavOption ? (
                     <div>
                       <div className="topmenu"  style={{ backgroundImage: openSubMenuIndex === index ? 'background: #0400ff26' : 'none' }}    onClick={() => toggleSubMenu(index)} >
@@ -236,7 +260,6 @@ const handleSub = () => {
                           <li key={subItemIndex}>
                             <ul className="submenu-subitems">
                               {menuItem.subNavOption && menuItem.subNavOption[subItemKey] && menuItem.subNavOption[subItemKey].map((subItem, subIndex) => (
-                                 
                                   subItem.path === "/user-trade-signal" ? (
                                     paymentStatus === "approved" ? (
                                       <li key={subIndex}>
@@ -277,11 +300,24 @@ const handleSub = () => {
                          <div className="topmenuIcon">
                          {menuItem.icon}
                          </div>
-                        
                       <div className="topmenuName">
-                        <NavLink to={menuItem.path} className={({ isActive }) => (isActive ? 'active-link' : '')}>
-                          <span>{menuItem.title}</span>
-                        </NavLink>
+                           {    menuItem.path === "/user-trade-signal" ? (
+                                    paymentStatus === "approved" ? (
+                                      <NavLink to={menuItem.path} className={({ isActive }) => (isActive ? 'active-link' : '')}>
+                                        <span>{menuItem.title}</span>
+                                        </NavLink>
+                                    ):(
+                                       <div onClick={handleSub}>
+                                        <span>{menuItem.title}</span>
+                                        </div>
+                                    )
+                                    
+                                    ) : (
+                                        <NavLink to={menuItem.path} className={({ isActive }) => (isActive ? 'active-link' : '')}>
+                                        <span>{menuItem.title}</span>
+                                        </NavLink>
+                                    )
+                                  }
                       </div>
                       </div>
                     </div>
