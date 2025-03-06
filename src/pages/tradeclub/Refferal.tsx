@@ -42,7 +42,6 @@ function Refferal() {
             };
             try {
               const response = await fetch(`${baseUrl}/getrefferals`, requestOptions);
-
               if (!response.ok) {
                 const errorResponse = await response.json();
                 throw new Error(errorResponse.message);
