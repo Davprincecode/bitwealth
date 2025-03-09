@@ -28,9 +28,11 @@ interface usersInterface {
     status :  string;
     kyc : string;
     payment : string;
+    rejectedDate : string;
+   rejectedTime : string;
 }
 
-function AllUser() {
+function RejectedUser() {
     const [navBar, setNavBar] = useState<boolean>(false); 
     const [users, setUsers] = useState<usersInterface[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
@@ -53,12 +55,14 @@ function AllUser() {
               redirect: 'follow'
             };
             try {
-              const response = await fetch(`${baseUrl}/getalluser`, requestOptions);
+              const response = await fetch(`${baseUrl}/getrejecteduser`, requestOptions);
               if (!response.ok) {
                 const errorResponse = await response.json();
                 throw new Error(errorResponse.message);
               }
               const result = await response.json();
+              console.log(result);
+              
               setUsers(result.data);
               setLoading(false);
             } catch (error) {
@@ -76,7 +80,7 @@ function AllUser() {
       }, []);
 
 
-      const changeStatus = async(userId: string) => {
+      const restoreUser = async(userId: string) => {
         setStatus(true);
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -87,7 +91,7 @@ function AllUser() {
           redirect: 'follow'
         };
         try {
-          const response = await fetch(`${baseUrl}/userstatus/${userId}`, requestOptions);  
+          const response = await fetch(`${baseUrl}/restoreuser/${userId}`, requestOptions);  
           if (!response.ok) {
             const errorResponse = await response.json();
             throw new Error(errorResponse.message);
@@ -106,36 +110,7 @@ function AllUser() {
       
       }
 
-      const deleteUser = async(userId: string) => {
-        setStatus(true);
-        const myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", token);
-        const requestOptions: RequestInit = {
-          method: 'DELETE',
-          headers: myHeaders,
-          redirect: 'follow'
-        };
-        try {
-          const response = await fetch(`${baseUrl}/deleteuser/${userId}`, requestOptions);
-          if (!response.ok) {
-            const errorResponse = await response.json();
-            throw new Error(errorResponse.message);
-          }
-          const result = await response.json(); 
-          toast.success("user deleted successfully"); 
-          setUsers(result.data);
-          setStatus(false);
-        } catch (error) {
-            setLoading(false);
-            if (typeof error === "object" && error !== null && "message" in error && typeof error.message === "string") {
-              toast.error(error.message);
-            } else {
-              toast.error('An unknown error occurred.');
-            }
-          }
-      
-      }
+    
 
   return (
     <div>
@@ -158,7 +133,7 @@ function AllUser() {
    <div className="mainContainerWrapper">
         <div className="container-fluid">
             <div className="container-header">
-                 <h2>All Users</h2>
+                 <h2>Rejected Users</h2>
             </div>
             <div className="container-body">
                 <div className="table-responsive">
@@ -172,10 +147,8 @@ function AllUser() {
                         <th>Country</th>
                         <th>Dob</th>
                         <th>Membership</th>
-                        <th>Created date</th>
-                        <th>Kyc Status</th>
-                        <th>Payment Status</th>
-                        <th>Status</th>
+                        <th>Rejected date</th>
+                        <th>Rejected time</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -198,55 +171,18 @@ function AllUser() {
                            }
                            </td>
                            <td>{user.membership}</td>
-                           <td>{user.createdDate}</td>
-                           <td>{user.kyc === null ? "not verified" : user.kyc}</td>
-                           <td>{user.payment === null ? "not verified" : user.payment}</td>
-                           <td>
-                            { 
-                            status ? (
-                              <p>loading....</p>
-                            ) : (
-                            user.status == "active" ? (
-                                <div className="actionwrap" onClick={() => {changeStatus(user.userId)}}>
-                                <div className="actionActive">
-                                    <div className="actionActiveIcon">
-                                     <MdAirplanemodeActive />   
-                                    </div>
-                                    {user.status} 
-                                </div>
-                                </div>
-                            ) : (
-                                <div className="actionwrap"  onClick={() => {changeStatus(user.userId)}}>
-                                    <div className="actionDeactive">
-                                      <div className="actionDeactiveIcon">
-                                        <MdAirplanemodeInactive />
-                                      </div>
-                        
-                                        {user.status}
-                                    </div>
-                                </div>
-                            )
-                            )
-                            }
-                           
-                           </td>
+                           <td>{user.rejectedDate}</td>
+                           <td>{user.rejectedTime}</td>
                            <td>
                             {
                               status ? (
                                    <p>loading....</p>
                               ) : (
-                  
-                              user.status == "active" ? (
-                                // deleteUser(user.userId)
-                                <div className="delete" onClick={(e) => {deleteUser(user.userId)}}>
-                                      <MdAutoDelete />   
-                                  </div>
-                              ) : (
-                                <div className="delete" onClick={(e) => {deleteUser(user.userId)}}>
+
+                                <div className="delete" onClick={(e) => {restoreUser(user.userId)}}>
                                <MdRestore /> 
                               </div>
                             
-                              )
                               )
                               
                             }
@@ -292,4 +228,4 @@ function AllUser() {
   )
 }
 
-export default AllUser
+export default RejectedUser

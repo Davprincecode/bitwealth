@@ -47,6 +47,7 @@ import TradingViewNews from "./pages/tradingViewNews";
 import CryptoPrice from "./pages/CryptoPrice";
 import UserList from "./pages/admin/UserList";
 import Refferal from "./pages/tradeclub/Refferal";
+import RejectedUser from "./pages/admin/RejectedUser";
 
 
 function App() {
@@ -110,6 +111,7 @@ function App() {
     <Route path="/all-signal" element={<TradingHistory />} />
     <Route path="/trade-history" element={<TradeHistories />} />
     <Route path="/all-users" element={<AllUser />} />
+    <Route path="/rejected-users" element={<RejectedUser />} />
     <Route path="/crypto-news" element={<CryptoNews />} />
     <Route path="/pendingkyc" element={<PendingKyc />} />
     <Route path="/pendingpayments" element={<PaymentPending />} />
