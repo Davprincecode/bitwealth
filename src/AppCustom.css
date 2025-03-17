@@ -28,7 +28,7 @@ color: black;
     color: white;
 }
 .bodyappblack .sideNavActive{
-  background: #0598fa;
+  background: black;
 }
 .bodyappblack .container-body table thead th{
   background: #111b8e;
@@ -41,6 +41,23 @@ color: black;
 }
 .bodyappblack .terms-and-conditions, .bodyappblack .disclaimer{
 background-color: black;
+}
+
+.bodyappblack .column-title{
+color: black;
+}
+.bodyappblack .column-number{
+color: black;
+}
+.bodyappblack .sideNav{
+background-color: black;
+border-right: 1px solid;
+}
+.bodyappblack .box{
+  color: black;
+}
+.day{
+  cursor: pointer;
 }
 /* ============landing page ========= */
 .bodyappblack .herosectioncontent h1 {

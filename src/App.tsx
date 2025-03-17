@@ -11,7 +11,7 @@ import { userAuth } from "./pages/context/AuthContext";
 import BinanceApi from "./pages/Binance";
 import TermsAndConditions from "./TermAndCondition";
 import Disclaimer from "./Disclamer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SignalForm from "./SignalForm";
 import Register from "./pages/Auth/Register";
 import ConfirmEmail from "./pages/ConfirmEmail";
@@ -54,11 +54,12 @@ import ResourcesIframeLocal from "./ResourcesIframeLocal";
 
 
 function App() {
-  const {baseUrl, token} = userAuth();
-
-  // let colorSwitch = "white";
-  const [colorSwitch, setColorSwitch] = useState("white");
-
+  const {color} = userAuth();
+  let userColor = color ? color : "white";
+  const [colorSwitch, setColorSwitch] = useState(userColor);
+  useEffect(() => {
+    setColorSwitch(userColor);
+  }, [userColor]);
  const colorSwitchFunction = () => {
   
   if(colorSwitch == "white"){

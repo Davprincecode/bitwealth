@@ -69,7 +69,6 @@ const LandingPageHeader: React.FC<LandingProp> = ({ colorSwitchFunction, colorSw
           ) : (
               <IoIosMoon /> 
           )
-
           }        
         </div>
       </div>

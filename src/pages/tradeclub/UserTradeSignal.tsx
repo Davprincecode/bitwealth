@@ -11,7 +11,6 @@ import { useNavigate } from 'react-router-dom';
 
 interface productsInterface { 
   status :  string;
-
   asset :  string;
 currentPrice :  string;
 date :  string;

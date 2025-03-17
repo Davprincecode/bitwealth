@@ -20,7 +20,8 @@ interface AuthProviderProps {
     setSurName: Function;
     setOtherName: Function;
     setImage_url: Function;
-   setRefferalId: Function;
+    setRefferalId: Function;
+    setColor : Function;
     baseUrl: string; 
     userId : string;
     email : string;
@@ -36,6 +37,7 @@ interface AuthProviderProps {
     image_url : string;
     role : string;
     refferalId : string;
+    color : string;
     token: string;
   }
   
@@ -55,6 +57,7 @@ interface AuthProviderProps {
     setOtherName:  () => {},
     setImage_url:  () => {},
    setRefferalId:  () => {},
+   setColor : () => {},
     baseUrl: '',
     userId : '',
     email : '',
@@ -69,6 +72,7 @@ interface AuthProviderProps {
     paymentStatus : '',
     role : '',
     refferalId : '',
+    color : '',
     image_url : '',
     token: '',
   });
@@ -95,6 +99,7 @@ interface AuthProviderProps {
     const [surName, setSurName] = useState<string>('');
     const [otherName, setOtherName] = useState<string>('');
     const [refferalId, setRefferalId] = useState<string>('');
+    const [color, setColor] = useState<string>('');
    
      const [token, setToken] = useState<string>(() => {
       const storedToken = localStorage.getItem('myToken');
@@ -111,7 +116,7 @@ interface AuthProviderProps {
       localStorage.setItem('myState', JSON.stringify(true));
     };
   
-    const loginAuth = (userId: string, email: string, fullName : string, surName : string, otherName : string, phoneNumber : string, country: string, dob: string, membership:string, kycStatus:string, paymentStatus:string, image_url: string, role : string, refferalId:string,  token?: string) => {
+    const loginAuth = (userId: string, email: string, fullName : string, surName : string, otherName : string, phoneNumber : string, country: string, dob: string, membership:string, kycStatus:string, paymentStatus:string, image_url: string, role : string, refferalId:string, color: string, token?: string) => {
       setRole(role);
       setUserID(userId);
       setEmail(email);
@@ -126,6 +131,7 @@ interface AuthProviderProps {
       setPaymentStatus(paymentStatus);
       setImage_url(image_url);
      setRefferalId(refferalId);
+     setColor(color);
       if(token){
           localStorage.setItem('myToken', token);
           setToken(token);
@@ -158,10 +164,9 @@ interface AuthProviderProps {
         };
         try {
           const response = await fetch(`${baseUrl}/getuser`, requestOptions);
-          const result = await response.json(); 
-         
+          const result = await response.json();   
           if(response.ok){
-            loginAuth(result.data.userId, result.data.email, result.data.fullName, result.data.surName, result.data.otherName, result.data.phoneNumber, result.data.country, result.data.dob, result.data.membership, result.data.kycStatus, result.data.paymentStatus, result.data.image_url, result.data.userRole, result.data.refferalId);
+            loginAuth(result.data.userId, result.data.email, result.data.fullName, result.data.surName, result.data.otherName, result.data.phoneNumber, result.data.country, result.data.dob, result.data.membership, result.data.kycStatus, result.data.paymentStatus, result.data.image_url, result.data.userRole, result.data.refferalId, result.data.color);
           }
         } catch (error) {
           location.pathname
@@ -180,7 +185,7 @@ interface AuthProviderProps {
   }, [loggedIn]);
   
     return (
-      <AuthContext.Provider value={{ loggedIn, loginAuth, logInUser, logout, setLoggedIn,  baseUrl, userId, email, fullName, surName, otherName, phoneNumber, country, dob, membership, kycStatus, paymentStatus, image_url, refferalId, role, token, setEmail, setPhoneNumber, setDob, setMembership, setCountry, setFullName, setSurName, setOtherName, setImage_url,setRefferalId
+      <AuthContext.Provider value={{ loggedIn, loginAuth, logInUser, logout, setLoggedIn,  baseUrl, userId, email, fullName, surName, otherName, phoneNumber, country, dob, membership, kycStatus, paymentStatus, image_url, refferalId, role, token, setEmail, setPhoneNumber, setDob, setMembership, setCountry, setFullName, setSurName, setOtherName, setImage_url, setRefferalId, color, setColor
       }}>
         {children}
       </AuthContext.Provider>

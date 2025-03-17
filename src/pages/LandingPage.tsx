@@ -36,9 +36,6 @@ interface LandingProp {
 }
 
 const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }) =>{
-
-  
-  
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
