@@ -131,9 +131,13 @@ function Login() {
     <div className='login'>
       <NavLink to="/">
         <div className="loginLogo">
+
+            <div className="imgWrapper">
             <div className="img">
                 <img src={logo} alt="" />
             </div>
+           </div>
+
         </div>
         </NavLink>
      

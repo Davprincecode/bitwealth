@@ -23,7 +23,6 @@ const LandingPageHeader: React.FC<LandingProp> = ({ colorSwitchFunction, colorSw
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
   return (
     <div>
       <div className="headingCon">
@@ -55,6 +54,7 @@ const LandingPageHeader: React.FC<LandingProp> = ({ colorSwitchFunction, colorSw
                 loggedIn && role == "hedge fund" ?  "/hedge-dashboard" : "/login"
                   }>login</NavLink> 
                 </div>
+
                 <div className="signupauth">
                 <NavLink to="/register">sign up</NavLink>  
                 </div>

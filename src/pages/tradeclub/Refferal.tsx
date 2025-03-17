@@ -65,11 +65,11 @@ function Refferal() {
 
         const [referralLink, setReferralLink] = useState(false);
         const [referralCodeCopied, setReferralCodeCopied] = useState(false);
-        const btc = '1MLvQ95DBwmbzkWCNm2RBcVSmoxFDCo42L'; 
+        const refLink = `bitwealthcapital.org/#/register/${refferalId}`; 
         const refCode = refferalId; 
 
-      const handleBtc = () => {
-        navigator.clipboard.writeText(btc);
+      const handleRefLink = () => {
+        navigator.clipboard.writeText(refLink);
         setReferralLink(true);
         setTimeout(() => setReferralLink(false), 2000); 
       };
@@ -123,11 +123,25 @@ function Refferal() {
         {refferalId}
         </div>
      </div>
-
     <div onClick={handleRefCode} className='copy'>
       {referralCodeCopied? 'Copied!' : 'Copy'}
-    </div>   
+    </div>      
    </div>
+
+   <div className="walletflex">
+     <div className="walletaddress">
+        <div className='btcName'>
+         Referral Link
+        </div>
+        <div className="btcaddresss">
+        {refLink}
+        </div>
+     </div>
+    <div onClick={handleRefLink} className='copy'>
+      {referralLink? 'Copied!' : 'Copy'}
+    </div>    
+   </div>
+
         <div className="container-fluid">
             <div className="container-header">
                  <h2>Refferals</h2>
@@ -139,7 +153,6 @@ function Refferal() {
                     <tr >
                         <th>No</th>
                         <th>Name</th>
-                        <th>Email</th> 
                         <th>Country</th> 
                     </tr>
                     </thead>
@@ -149,7 +162,6 @@ function Refferal() {
                         <tr key={id}>
                             <td>{id + 1}</td>
                           <td>{user.surName +" "+ user.firstName}</td>
-                          <td>{user.email}</td>
                           <td>{user.country}</td>
                         </tr>
                     ))

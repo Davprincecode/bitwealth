@@ -48,6 +48,9 @@ import CryptoPrice from "./pages/CryptoPrice";
 import UserList from "./pages/admin/UserList";
 import Refferal from "./pages/tradeclub/Refferal";
 import RejectedUser from "./pages/admin/RejectedUser";
+import ResourcesIframe from "./ResourcesIframe";
+import ResourcesIframeLocal from "./ResourcesIframeLocal";
+
 
 
 function App() {
@@ -96,6 +99,7 @@ function App() {
     <Route path="/signal" element={<SignalForm />} />
     <Route path="/login" element={<Login />} />
     <Route path="/register" element={<Register />} />
+    <Route path="/register/:refferalId" element={<Register />} />
     <Route path="/redirectform" element={<RedirectForm />} />
     <Route path="/emailconfirm/:token" element={<ConfirmEmail/>} />
     <Route path="/forgetpassword" element={<ForgetPassword/>} />
@@ -137,6 +141,15 @@ function App() {
 <Route path="/subscriptionpayment" element={<PaymentStatus />} />
 <Route path="/user-trade-history" element={<UserTradeHistory />} />
 <Route path="/performance" element={<UserPerformance />} />
+
+
+<Route path="/resource" element={<ResourcesIframeLocal />} />
+
+
+
+<Route path="/resourceframe" element={< ResourcesIframe/>} />
+
+
 
 
 {/* <Route path="/tradeview" element={<TradingViewNews />} />

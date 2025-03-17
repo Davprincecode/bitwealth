@@ -77,8 +77,9 @@ interface AuthProviderProps {
     const navigate = useNavigate();
     const location = useLocation();
    
-    // const [baseUrl] = useState<string>('http://127.0.0.1:8000/api/v1');
-    const [baseUrl] = useState<string>('https://apis.bitwealthcapital.org/api/v1');
+    const [baseUrl] = useState<string>('http://127.0.0.1:8000/api/v1');
+    
+    // const [baseUrl] = useState<string>('https://apis.bitwealthcapital.org/api/v1');
   
     const [userId, setUserID] = useState<string>('');
     const [email, setEmail] = useState<string>('');
@@ -139,7 +140,8 @@ interface AuthProviderProps {
     };
 
    useEffect(() => {
-    const exemptedPaths = ['/register', '/', '/term', '/disclamer', '/forgetpassword', '/changepassword/:token', '/emailconfirm/:token', '/redirectform ', '/login'];
+
+    const exemptedPaths = ['/register', '/register/:refferalId', '/', '/term', '/disclamer', '/forgetpassword', '/changepassword/:token', '/emailconfirm/:token', '/redirectform ', '/login', '/resource', '/resourcedoc'];
 
     const fetchData = async () => {
       if (loggedIn) {
@@ -162,14 +164,13 @@ interface AuthProviderProps {
             loginAuth(result.data.userId, result.data.email, result.data.fullName, result.data.surName, result.data.otherName, result.data.phoneNumber, result.data.country, result.data.dob, result.data.membership, result.data.kycStatus, result.data.paymentStatus, result.data.image_url, result.data.userRole, result.data.refferalId);
           }
         } catch (error) {
-          console.log(error);
           location.pathname
           if (!exemptedPaths.includes(location.pathname)) {
             logout()
           }
         }
       } else {
-        location.pathname
+        location.pathname 
         if (!exemptedPaths.includes(location.pathname)) {
           logout()
         }

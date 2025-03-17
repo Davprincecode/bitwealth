@@ -60,9 +60,7 @@ function RejectedUser() {
                 const errorResponse = await response.json();
                 throw new Error(errorResponse.message);
               }
-              const result = await response.json();
-              console.log(result);
-              
+              const result = await response.json();  
               setUsers(result.data);
               setLoading(false);
             } catch (error) {

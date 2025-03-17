@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
 import logo from '../../assets/images/logo.png';
 import {toast } from 'react-toastify';
-import {NavLink, useNavigate } from 'react-router-dom';
+import {NavLink, useNavigate, useParams } from 'react-router-dom';
 import { userAuth } from '../context/AuthContext';
 import { ImCheckmark } from 'react-icons/im';
 import Country from './Country';
 
 function Register() {
   const navigate = useNavigate();
+  const { refferalId } = useParams();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [surname, setSurname] = useState<string>('');
@@ -22,10 +23,13 @@ function Register() {
   const [matchPassword, setMatchPassword] = useState<boolean>(false);
   
   const [loading, setLoading] = useState<boolean>(false);
-  const {baseUrl} = userAuth();  
+  const {baseUrl} = userAuth(); 
+  const refId = refferalId ? refferalId : '';
+  useEffect(() => {
+    setRefferalcode(refId);
+  }, [refId, setRefferalcode]);  
 
   const [age, setAge] = useState(19);
-
   const calculateAge = (dobDate: Date | null) => {
     if (!dobDate) return;
   
@@ -103,8 +107,10 @@ const handleConfirmPassword = (eventPassword: string) => {
     <div className='login'>
       <NavLink to="/">
         <div className="loginLogo">
+          <div className="imgWrapper">
             <div className="img">
                 <img src={logo} alt="" />
+            </div>
             </div>
         </div>
         </NavLink>
@@ -199,9 +205,11 @@ const handleConfirmPassword = (eventPassword: string) => {
                 }
                 <div className="input">
                     <label>Refferal Code</label>
+
                     <input type="text" placeholder='refferal code'
                      value={refferalcode} onChange={(e) => setRefferalcode(e.target.value)}
                    />
+
                 </div>
                 <div className="agreementflex">
                 <input 
