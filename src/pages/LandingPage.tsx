@@ -423,6 +423,29 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
 </div>
   {/* ======================events end=============== */}
 
+
+
+{/* ============== resources ======= */}
+<div className="terms-and-conditions resources">
+<h2>Resources</h2>
+<section>
+        <h2>WHAT IS BITCOIN ?</h2>
+        <p>Bitcoin is a decentralized digital currency, also known as a cryptocurrency, that was invented in 2008 by an unknown person or group of people using the name Satoshi Nakamoto.......</p>
+</section>
+      <div className="read-more">
+      <NavLink to='/page_resources'>
+        <button>Read More</button>
+        <div>
+          <FaArrowCircleRight />
+        </div>
+      </NavLink>
+        </div>
+
+
+</div>
+{/* ============== resources end ======= */}
+
+
 {/* ============= team start ======== */}
 <div className="founderProfile" id='team'>
        

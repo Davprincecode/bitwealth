@@ -177,7 +177,7 @@ function AllUser() {
                         <th>Country</th>
                         <th>Dob</th>
                         <th>Membership</th>
-                        <th>Refferal No</th>
+                        <th>Referral No</th>
                         <th>Created date</th>
                         <th>Kyc Status</th>
                         <th>Payment Status</th>

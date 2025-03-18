@@ -75,7 +75,7 @@ function RefferalDetails() {
 <div className="mainContainer">
 
   <div className="mainContainersHeader">
-      <TopHeader pageTitle='Refferals' handleToggle={handleToggle}/>
+      <TopHeader pageTitle='Referrals' handleToggle={handleToggle}/>
   </div>
 
      {/* ==========main container wrapper ============= */}
@@ -83,7 +83,7 @@ function RefferalDetails() {
   
         <div className="container-fluid">
             <div className="container-header">
-                 <h2>Refferals</h2>
+                 <h2>Referrals</h2>
             </div>
             <div className="container-body">
                 <div className="table-responsive">

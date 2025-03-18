@@ -52,6 +52,7 @@ import ResourcesIframe from "./ResourcesIframe";
 import ResourcesIframeLocal from "./ResourcesIframeLocal";
 import ResourcesIframe2 from "./ResourcesIframe2";
 import RefferalDetails from "./pages/admin/RefferalDetails";
+import PageResources from "./PageResources";
 
 
 
@@ -98,6 +99,8 @@ function App() {
     <Route path="/crypto" element={<BinanceApi />} />
 
     <Route path="/term" element={<TermsAndConditions />} />
+    <Route path="/page_resources" element={<PageResources />} />
+
     <Route path="/disclamer" element={<Disclaimer />} />
     <Route path="/signal" element={<SignalForm />} />
     <Route path="/login" element={<Login />} />

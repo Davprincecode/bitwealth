@@ -56,6 +56,12 @@ border-right: 1px solid;
 .bodyappblack .box{
   color: black;
 }
+.bodyappblack .terms-and-conditions h2{
+color: white;
+}
+.bodyappblack .disclaimer h2{
+color: white;
+}
 .day{
   cursor: pointer;
 }
@@ -760,9 +766,9 @@ margin: 0px 10px;
     display: flex;
     gap: 10px;
   }
-  /* .terms-and-conditions .read-more:hover{
-    width: 20% !important;
-  } */
+  .terms-and-conditions a{
+      color: #2196f3; 
+  }
   @media (max-width: 768px) {
     .team-member {
       flex-basis: calc(40% - 20px); 
@@ -774,7 +780,13 @@ margin: 0px 10px;
        margin: 20px 0px;
       }
   }
-  
+  .joinUs{ 
+    text-decoration: underline;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+  }
 /* ============ our team end ============= */
 
 /* faq */
@@ -1811,4 +1823,14 @@ border-radius: 4px;
 
 .price-change.red {
   color: #ff3b30;
+}
+
+@media(max-width : 400px){
+  .grid-container{
+    display: block;
+  }
+  .grid-container .box{
+    overflow: auto;
+    margin-bottom: 10px;
+  }
 }

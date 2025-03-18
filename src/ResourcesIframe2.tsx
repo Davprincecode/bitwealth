@@ -26,7 +26,7 @@ function ResourcesIframe2() {
 <div className="mainContainer">
 
   <div className="mainContainersHeader">
-      <TopHeader pageTitle='dashboard' handleToggle={handleToggle}/>
+      <TopHeader pageTitle='resources' handleToggle={handleToggle}/>
   </div>
 
     

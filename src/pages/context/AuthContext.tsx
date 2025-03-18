@@ -81,9 +81,9 @@ interface AuthProviderProps {
     const navigate = useNavigate();
     const location = useLocation();
    
-    // const [baseUrl] = useState<string>('http://127.0.0.1:8000/api/v1');
+    const [baseUrl] = useState<string>('http://127.0.0.1:8000/api/v1');
     
-    const [baseUrl] = useState<string>('https://apis.bitwealthcapital.org/api/v1');
+    // const [baseUrl] = useState<string>('https://apis.bitwealthcapital.org/api/v1');
   
     const [userId, setUserID] = useState<string>('');
     const [email, setEmail] = useState<string>('');
@@ -147,7 +147,7 @@ interface AuthProviderProps {
 
    useEffect(() => {
 
-    const exemptedPaths = ['/register', '/register/:refferalId', '/', '/term', '/disclamer', '/forgetpassword', '/changepassword/:token', '/emailconfirm/:token', '/redirectform ', '/login', '/resource', '/resourcedoc'];
+    const exemptedPaths = ['/register', '/register/:refferalId', '/', '/term', '/disclamer', '/forgetpassword', '/changepassword/:token', '/emailconfirm/:token', '/redirectform ', '/login', '/page_resources'];
 
     const fetchData = async () => {
       if (loggedIn) {
