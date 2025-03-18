@@ -8,6 +8,7 @@ import { ImBackward2, ImForward3 } from 'react-icons/im';
 import { userAuth } from '../context/AuthContext';
 import { MdAirplanemodeActive, MdAirplanemodeInactive, MdAutoDelete, MdRestore } from 'react-icons/md';
 import { toast } from 'react-toastify';
+import { NavLink } from 'react-router-dom';
 
 
 interface usersInterface { 
@@ -25,6 +26,8 @@ interface usersInterface {
     phoneNumber :  string;
     profileImg :  string;
     role :  string;
+    refferalId: string;
+    referralNum : number;
     status :  string;
     kyc : string;
     payment : string;
@@ -59,6 +62,8 @@ function AllUser() {
                 throw new Error(errorResponse.message);
               }
               const result = await response.json();
+              
+              
               setUsers(result.data);
               setLoading(false);
             } catch (error) {
@@ -172,6 +177,7 @@ function AllUser() {
                         <th>Country</th>
                         <th>Dob</th>
                         <th>Membership</th>
+                        <th>Refferal No</th>
                         <th>Created date</th>
                         <th>Kyc Status</th>
                         <th>Payment Status</th>
@@ -198,6 +204,17 @@ function AllUser() {
                            }
                            </td>
                            <td>{user.membership}</td>
+                           <td>
+                            <div className="refferalCon">
+                              <div className="refferalNo">
+                                {user.referralNum}
+                               
+                              </div>
+                              <div className="refferalNav">
+                               <NavLink to={`/viewrefferal/${user.refferalId}`}>view</NavLink>
+                              </div>
+                            </div>
+                           </td>
                            <td>{user.createdDate}</td>
                            <td>{user.kyc === null ? "not verified" : user.kyc}</td>
                            <td>{user.payment === null ? "not verified" : user.payment}</td>

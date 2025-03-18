@@ -51,6 +51,7 @@ import RejectedUser from "./pages/admin/RejectedUser";
 import ResourcesIframe from "./ResourcesIframe";
 import ResourcesIframeLocal from "./ResourcesIframeLocal";
 import ResourcesIframe2 from "./ResourcesIframe2";
+import RefferalDetails from "./pages/admin/RefferalDetails";
 
 
 
@@ -117,6 +118,7 @@ function App() {
     <Route path="/all-signal" element={<TradingHistory />} />
     <Route path="/trade-history" element={<TradeHistories />} />
     <Route path="/all-users" element={<AllUser />} />
+    <Route path="/viewrefferal/:refferalId" element={<RefferalDetails />} />
     <Route path="/rejected-users" element={<RejectedUser />} />
     <Route path="/crypto-news" element={<CryptoNews />} />
     <Route path="/pendingkyc" element={<PendingKyc />} />
