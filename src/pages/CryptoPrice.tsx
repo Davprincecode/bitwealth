@@ -16,7 +16,7 @@ function CryptoPrice() {
  
 
   useEffect(() => {
-    const socket = new WebSocket('wss://data-stream.binance.vision:443/ws/!ticker@arr');
+    const socket = new WebSocket('wss://data-stream.binance.vision:9443/ws/!ticker@arr');
     socket.onmessage = (event) => {
       const data = JSON.parse(event.data);
       const altcoinPairs: AltcoinPair[] = data

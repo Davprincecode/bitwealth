@@ -15,21 +15,15 @@ function TradeDashboard() {
     const {baseUrl, token} = userAuth()
     const [navBar, setNavBar] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
-
-
     const [amount, setAmount] = useState(0);
     const [product, setProduct] = useState(0);
     const [sales, setSales] = useState(0);
-
-
     const handleToggle = () => {
       setNavBar(!navBar);
     };
-
     useEffect(() => {
         // fetchData();
         }, []);
-
         const fetchData = async () => {
             setLoading(true);
             const myHeaders = new Headers();
@@ -52,10 +46,6 @@ function TradeDashboard() {
             //   console.log(error);
             }
         };  
-
-
-
-
     return (
       <div>
         <div className="mainWrapper">
@@ -77,7 +67,6 @@ function TradeDashboard() {
      <div className="mainContainerWrapper">
       <CryptoLandingPage />
      </div>
-
          </div>
          </div>
       </div>

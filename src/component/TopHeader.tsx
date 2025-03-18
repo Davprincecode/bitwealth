@@ -126,7 +126,7 @@ const TopHeader : React.FC<modalPopUp> = ({pageTitle, handleToggle}) => {
 
 {/* ===============mobile view========= */}
 
-<div className="topHeader mobileview">
+<div className="topHeader mobileview" style={{ background: color }}>
        <div className="backArrow" onClick={goBack}>
         {/* <NavLink to=""> */}
             <FaArrowLeft />

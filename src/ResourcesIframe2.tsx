@@ -4,10 +4,10 @@ import TopHeader from './component/TopHeader'
 import rpdf from './assets/resources/resources1.pdf'
 import logo from './assets/images/logo.jpeg'
 import { NavLink } from 'react-router-dom'
-import {  FaLongArrowAltRight } from 'react-icons/fa'
+import { FaLongArrowAltLeft } from 'react-icons/fa'
 
 
-function ResourcesIframeLocal() {
+function ResourcesIframe2() {
 
   const [navBar, setNavBar] = useState<boolean>(false);
   const handleToggle = () => {
@@ -43,29 +43,29 @@ function ResourcesIframeLocal() {
   }}
 /> */}
 
-<div className="responsive-iframe">  
+
+<div className="responsive-iframe">
+  
 <div className="imgPreview">
   <img src={logo} alt="" />
 </div>
 <iframe 
-    src="https://drive.google.com/file/d/1Ue2nNXLezQgSFBYyMGW0GGDisAZFWnF0/preview?embedded=true" 
+    src="https://drive.google.com/file/d/1wVNZxMAgg-2rV02Ib8eXqmurbrwwNsbY/preview?embedded=true" 
     width="100%" 
     height="440px" 
     allowFullScreen
     style={{ border: "none", overflow: 'hidden' }}
     >
 </iframe>
-
-
-
 <div className="nextPageCon">
   <div className="NavPageLink">
-    <NavLink to="/resource2">Next Page</NavLink>
+    <NavLink to="/resource">Prev Page</NavLink>
   </div>
   <div className="icon">
-    <FaLongArrowAltRight />
+    <FaLongArrowAltLeft />
   </div>
 </div>
+
 
 </div>
 
@@ -81,4 +81,4 @@ function ResourcesIframeLocal() {
   
 }
 
-export default ResourcesIframeLocal
+export default ResourcesIframe2

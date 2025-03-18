@@ -46,7 +46,7 @@ body{
     width: 220px;
     text-align: center;
     padding-right: 10px;
-    padding-top: 50px;
+    padding-top: 20px;
     transition: all 0.9s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: auto;
     background: #0598fa;
@@ -105,6 +105,24 @@ body{
     /* .sideNavMenu ul{
     
     } */
+
+
+
+
+/* ============= iframe ======================= */
+
+
+
+
+  @media (max-width: 768px) {
+    iframe, embed, object {
+        display: block !important;
+    }
+}
+
+/* ============ iframe end ==================== */
+
+
     .sideNavMenu ul .active{
     background-image: var(--bckMixedColor);
     }

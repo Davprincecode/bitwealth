@@ -50,6 +50,7 @@ import Refferal from "./pages/tradeclub/Refferal";
 import RejectedUser from "./pages/admin/RejectedUser";
 import ResourcesIframe from "./ResourcesIframe";
 import ResourcesIframeLocal from "./ResourcesIframeLocal";
+import ResourcesIframe2 from "./ResourcesIframe2";
 
 
 
@@ -145,6 +146,7 @@ function App() {
 
 
 <Route path="/resource" element={<ResourcesIframeLocal />} />
+<Route path="/resource2" element={<ResourcesIframe2 />} />
 
 
 

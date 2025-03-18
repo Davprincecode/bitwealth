@@ -9,7 +9,7 @@ import { TbLogout } from "react-icons/tb";
 import { IoIosLogOut, IoIosSettings, IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
 import navPreloader from '../assets/images/navloading1.gif';
 import { userAuth } from '../pages/context/AuthContext';
-import { FaChartLine, FaUserAlt, FaUsers } from 'react-icons/fa';
+import { FaBookReader, FaChartLine, FaUserAlt, FaUsers } from 'react-icons/fa';
 import { FcComboChart } from 'react-icons/fc';
 import { IoLogOut } from 'react-icons/io5';
 // import { FaUsers } from "react-icons/fa";
@@ -76,8 +76,9 @@ const SideMenu: React.FC<Props> = ({ navBar, handleToggle }) => {
  };
 
 
-const handleSub = () => {
-  toast.error("To access trade signals, you must be a subscriber member. Please visit your profile to complete your payment and unlock this feature.");
+const handleSub = (path: string) => {
+  const paths = path == "/user-trade-signal" ? "trade signals" : "resources";
+  toast.error(`To access ${paths}, subscribe in your profile.`);
 }
 
   const menuItems: MenuItem[] = [];
@@ -145,6 +146,11 @@ const handleSub = () => {
         icon: <MdNetworkWifi />,
       },
       {
+        title: 'Resources',
+        path: '/resource',
+        icon: <FaBookReader />,
+      },
+      {
         title: 'Trade news',
         path: '/trade-news',
         icon: <IoIosSettings />,
@@ -176,6 +182,11 @@ const handleSub = () => {
         title: 'Dashboard',
         path: '/hedge-dashboard',
         icon: <RiHome2Fill />
+      },
+      {
+        title: 'Resources',
+        path: '/resource',
+        icon: <FaBookReader />,
       },
       {
         title: 'Trade news',
@@ -261,7 +272,7 @@ const handleSub = () => {
                           <li key={subItemIndex}>
                             <ul className="submenu-subitems">
                               {menuItem.subNavOption && menuItem.subNavOption[subItemKey] && menuItem.subNavOption[subItemKey].map((subItem, subIndex) => (
-                                  subItem.path === "/user-trade-signal" ? (
+                                  subItem.path === "/user-trade-signal" || subItem.path === "/resource" ? (
                                     paymentStatus === "approved" ? (
                                       <li key={subIndex}>
                                       <span>-</span>
@@ -270,11 +281,9 @@ const handleSub = () => {
                                           </NavLink>
                                         </li>
                                     ) : (
-                                      <li key={subIndex} onClick={handleSub}>
+                                      <li key={subIndex} onClick={() =>handleSub(subItem.path)}>
                                       <span>-</span>
-                                          {/* <NavLink to={subItem.path} className={({ isActive }) => (isActive ? 'active-link' : '')}> */}
                                             <span>{subItem.title}</span>
-                                          {/* </NavLink> */}
                                         </li>
                                     )
                                         
@@ -302,13 +311,13 @@ const handleSub = () => {
                          {menuItem.icon}
                          </div>
                       <div className="topmenuName">
-                           {    menuItem.path === "/user-trade-signal" ? (
+                           {    menuItem.path === "/user-trade-signal" || menuItem.path === "/resource" ? (
                                     paymentStatus === "approved" ? (
                                       <NavLink to={menuItem.path} className={({ isActive }) => (isActive ? 'active-link' : '')}>
                                         <span>{menuItem.title}</span>
                                         </NavLink>
                                     ):(
-                                       <div onClick={handleSub}>
+                                       <div onClick={() => handleSub(menuItem.path)}>
                                         <span>{menuItem.title}</span>
                                         </div>
                                     )
