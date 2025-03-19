@@ -73,7 +73,7 @@ function PageResources() {
       </section>
       <section>
         <h2>6. Divisibility</h2>
-        <p>Bitcoin can be divided into smaller units, with the smallest unit being a satoshi, which is one hundred millionth of a Bitcoin (0.00000001 BTC).</p>
+        <p>Bitcoin can be divided into smaller units, with the smallest unit being a satoshi, which is one hundred millionth of a Bitcoin (0.00000001 BTC). 100 Million Satoshis = 1 Bitcoin</p>
       </section>
       <section>
         <h2>7. Borderless</h2>

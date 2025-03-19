@@ -426,8 +426,8 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
 
 
 {/* ============== resources ======= */}
-<div className="terms-and-conditions resources">
-<h2>Resources</h2>
+<div className="terms-and-conditions resources" id='resources'>
+<h2>Educational Resources</h2>
 <section>
         <h2>WHAT IS BITCOIN ?</h2>
         <p>Bitcoin is a decentralized digital currency, also known as a cryptocurrency, that was invented in 2008 by an unknown person or group of people using the name Satoshi Nakamoto.......</p>
@@ -500,7 +500,7 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
 {/* ============== term and condition end ======= */}
 
 {/* ======= faq === */}
-<div className="faqCon">
+<div className="faqCon" id='faqs'>
   <FAQ /> 
 </div>
 {/* ===== faq end ============ */}
@@ -567,9 +567,10 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
                     <div className="itemCon">
                       <h2>company</h2>
                       
-                      <p onClick={() => handleNav('about')} >about us</p>
-                      <p onClick={() => handleNav('team')} >our team</p>
-                      <p>referral program</p>
+                      <p onClick={() => handleNav('about')} >About Us</p>
+                      <p onClick={() => handleNav('team')} >Our Team</p>
+                      <p onClick={() => handleNav('resources')} >Educational Resources</p>
+                      {/* <p>referral program</p> */}
                     </div>
 
                     <div className="itemCon">

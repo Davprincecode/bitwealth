@@ -33,18 +33,15 @@ const LandingPageHeader: React.FC<LandingProp> = ({ colorSwitchFunction, colorSw
 
         <div className="headermenu">
          <ul className={mobileNav ? 'mobileNavActive' : 'mobileNav'}>
-                <li onClick={() => handleNav('home')}>
-                   Home
-                </li>
-                <li onClick={() => handleNav('about')}>
-                    About Us
-                </li>
-                <li onClick={() => handleNav('portfolio')}>
-                    Portfolio
-                </li>
-                <li onClick={() => handleNav('event')}>
+                {/* <li onClick={() => handleNav('event')}>
                     Event
-                </li>
+                </li> */}
+                <li onClick={() => handleNav('home')}>Home</li> 
+                <li onClick={() => handleNav('about')}>About Us</li> 
+                <li onClick={() => handleNav('portfolio')}>Performance</li> 
+                <li onClick={() => handleNav('team')}>Team</li> 
+                <li onClick={() => handleNav('resources')}> Educational Resources</li> 
+                <li onClick={() => handleNav('faqs')}>FAQs</li> 
             </ul>
 
             <div className= {mobileNav ? 'mobileauthActive' : 'auth'}>
