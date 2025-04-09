@@ -22,6 +22,7 @@ interface AuthProviderProps {
     setImage_url: Function;
     setRefferalId: Function;
     setColor : Function;
+    setKycStatus : Function;
     baseUrl: string; 
     userId : string;
     email : string;
@@ -58,6 +59,7 @@ interface AuthProviderProps {
     setImage_url:  () => {},
    setRefferalId:  () => {},
    setColor : () => {},
+   setKycStatus : () => {},
     baseUrl: '',
     userId : '',
     email : '',
@@ -185,7 +187,7 @@ interface AuthProviderProps {
   }, [loggedIn]);
   
     return (
-      <AuthContext.Provider value={{ loggedIn, loginAuth, logInUser, logout, setLoggedIn,  baseUrl, userId, email, fullName, surName, otherName, phoneNumber, country, dob, membership, kycStatus, paymentStatus, image_url, refferalId, role, token, setEmail, setPhoneNumber, setDob, setMembership, setCountry, setFullName, setSurName, setOtherName, setImage_url, setRefferalId, color, setColor
+      <AuthContext.Provider value={{ loggedIn, loginAuth, logInUser, logout, setLoggedIn,  baseUrl, userId, email, fullName, surName, otherName, phoneNumber, country, dob, membership, kycStatus, paymentStatus, image_url, refferalId, color,  role, token, setEmail, setPhoneNumber, setDob, setMembership, setCountry, setFullName, setSurName, setOtherName, setImage_url, setRefferalId, setColor, setKycStatus
       }}>
         {children}
       </AuthContext.Provider>

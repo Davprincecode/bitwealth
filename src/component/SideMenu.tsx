@@ -98,7 +98,7 @@ const handleSub = (path: string) => {
           "Rejected Users": [{ title: 'Rejected Users', path: '/rejected-users' }],
           "Pending Kyc": [{ title: 'pending kyc', path: '/pendingkyc' }],
           "Pending Payments": [{ title: 'Pending Payments', path: '/pendingpayments' }],
-          // "Users Trade": [{ title: 'Users Trade', path: '/userlist' }],
+          "Email": [{ title: 'send email', path: '/send-email' }],
         }
       },
       {
@@ -117,8 +117,8 @@ const handleSub = (path: string) => {
         path: '/#',
         icon: <LuFileBarChart />,
         subNavOption: {
-          "Crypto News": [{ title: 'Crypto News', path: '/crypto-news' }],
-          "Trade History": [{ title: 'Trade History', path: '/trade-history' }]
+          "Api Feedback": [{ title: 'Api Feedback', path: '/user-list' }],
+          "Crypto News": [{ title: 'Crypto News', path: '/crypto-news' }]
         }
       }
     );

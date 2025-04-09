@@ -44,15 +44,7 @@ function AdminDashboard() {
 
              <Dashboard />
             
-          <div className="transactionsection">
-            <div className="firstcontainer">
-              <h4>user trade history</h4>
-              <Upcoming />
-            </div>
-            {/* <div className="secondsection">
-              <h4>recent transaction</h4>
-            </div> */}
-          </div>
+         
 
             
 

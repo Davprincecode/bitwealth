@@ -9,25 +9,30 @@ function KycVerification() {
 
   const [navBar, setNavBar] = useState<boolean>(false); 
   const [loading, setLoading] = useState<boolean>(false);
-  const {baseUrl, token, membership} = userAuth();
+  const {baseUrl, token, membership, setKycStatus} = userAuth();
   const [idCard, setIdCard] = useState<File | null>(null);
   const [address, setAddress] = useState<string>('');
   const [binanceApiKey, setBinanceApiKey] = useState<string>('');
-  const [okxApiKey, setOkxApiKey] = useState<string>('');
+  const [binanceSecretKey, setBinanceSecretKey] = useState<string>('');
+  const [userName, setUserName] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   const [proofAddress, setProofAddress] = useState<File | null>(null);
 
   const handleToggle = () => {
       setNavBar(!navBar);
     };
 
-  
+
   const fetchData = async () => {
         setLoading(true);
         const formData = new FormData();
         formData.append('address', address);
-        formData.append('binanceApiKey', binanceApiKey);
-        formData.append('okxApiKey', okxApiKey);
-       
+        formData.append('apiKey', binanceApiKey);
+        formData.append('secretKey', binanceSecretKey);
+        formData.append('userType', membership);
+        formData.append('platform', 'binance');
+        formData.append('userName', userName);
+        formData.append('password', password);  
         if (idCard) {
             formData.append('idCard', idCard);
         }
@@ -43,7 +48,7 @@ function KycVerification() {
           body: formData,
         };
           try {
-            const response = await fetch(`${baseUrl}/createkyc`, requestOptions);
+            const response = await fetch(`${baseUrl}/createkyc`, requestOptions); 
             if (!response.ok) {
               const errorResponse = await response.json();
               throw new Error(errorResponse.message);
@@ -53,8 +58,11 @@ function KycVerification() {
             setIdCard(null);
             setAddress('');
             setBinanceApiKey('');
-            setOkxApiKey('');
+            setBinanceSecretKey('');
+            setUserName('');
+            setPassword('');
             setProofAddress(null);
+            setKycStatus("pending");
             setLoading(false);
           } catch (error) {
             setLoading(false);
@@ -133,29 +141,29 @@ function KycVerification() {
 <div className="input">
                     <label >Binance Login</label>
                     <input type="text" placeholder='Email'
-                    value={binanceApiKey} onChange={(e) => setBinanceApiKey(e.target.value)}
+                    value={userName} onChange={(e) => setUserName(e.target.value)}
                    />
                 </div>
                 <div className="input">
                     <label >Password</label>
                     <input type="text" placeholder='Password'
-                    value={okxApiKey} onChange={(e) => setOkxApiKey(e.target.value)}
+                    value={password} onChange={(e) => setPassword(e.target.value)}
                    />
                 </div>
                 </>
   ) : (
       <>
 
-<div className="input">
+                <div className="input">
                     <label >Binance Api Key</label>
-                    <input type="text" placeholder='Binance Api Key'
+                    <input type="text" placeholder='Api Key'
                     value={binanceApiKey} onChange={(e) => setBinanceApiKey(e.target.value)}
                    />
                 </div>
                 <div className="input">
-                    <label >Okx Api Key</label>
-                    <input type="text" placeholder='Okx Api Key'
-                    value={okxApiKey} onChange={(e) => setOkxApiKey(e.target.value)}
+                    <label >Binance Secret Key</label>
+                    <input type="text" placeholder='Secret Key'
+                    value={binanceSecretKey} onChange={(e) => setBinanceSecretKey(e.target.value)}
                    />
                 </div>
 
@@ -166,7 +174,7 @@ function KycVerification() {
                 <div className="input">
                 <div className="btn">
                 {
-                  idCard && address && proofAddress && binanceApiKey && okxApiKey  ? (
+                  idCard && address && proofAddress && binanceApiKey && binanceSecretKey || idCard && address && proofAddress && userName && password  ? (
                     <button  disabled={loading} onClick={fetchData}>
                       {loading ? 'Loading......' : 'Send'}
                     </button>

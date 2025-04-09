@@ -53,6 +53,10 @@ import ResourcesIframeLocal from "./ResourcesIframeLocal";
 import ResourcesIframe2 from "./ResourcesIframe2";
 import RefferalDetails from "./pages/admin/RefferalDetails";
 import PageResources from "./PageResources";
+import TradeUserList from "./pages/admin/TradeUserList";
+import UserWalletTradeHistory from "./pages/admin/userTrade/UserWalletTradeHistory";
+import FutureTrade from "./pages/admin/userTrade/FutureTrade";
+
 
 
 
@@ -111,16 +115,19 @@ function App() {
     <Route path="/forgetpassword" element={<ForgetPassword/>} />
     <Route path="/changepassword/:token" element={<ChangePassword/>} />
 
-    
-
     {/* ============= admin ============= */}
     <Route path="/admin-dashboard" element={<AdminDashboard  />} />
     <Route path="/create-signal" element={<CreateSignal />} />
     <Route path="/send-email" element={<SendEmail />} />
     <Route path="/kyc" element={<KycUser />} />
     <Route path="/all-signal" element={<TradingHistory />} />
-    <Route path="/trade-history" element={<TradeHistories />} />
     <Route path="/all-users" element={<AllUser />} />
+{/* =========================== */}
+    {/* trade history */}
+    <Route path="/user-list" element={<TradeUserList />} />
+    <Route path="/user-trade-history/:userId" element={<UserWalletTradeHistory />} />
+    <Route path="/future-history/:userId" element={<FutureTrade />} />
+{/* ================================= */}
     <Route path="/viewrefferal/:refferalId" element={<RefferalDetails />} />
     <Route path="/rejected-users" element={<RejectedUser />} />
     <Route path="/crypto-news" element={<CryptoNews />} />
