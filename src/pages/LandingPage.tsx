@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import LandingPageHeader from './LandingPageHeader'
 import { NavLink } from 'react-router-dom'
 import heroImg from '../assets/images/heronewImage.png'
@@ -36,8 +36,9 @@ interface LandingProp {
 }
 
 const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }) =>{
-  
+  const [loading, setLoading] = useState<boolean>(false);
   const apiDataTest = async () => {
+    setLoading(true);
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
       const requestOptions: RequestInit = {
@@ -49,8 +50,10 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
         const response = await fetch('http://127.0.0.1:8000/api/v1/apitest', requestOptions);
         const result = await response.text();   
         console.log(result);
+        setLoading(false);
       } catch (error) {
         console.error(error);
+        setLoading(false);
       }
   };
   
@@ -154,7 +157,10 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
 
             {/* <div className="load">
               <div className="loaded" onClick={apiDataTest}>
-                submit
+              loading ?
+               { 
+               "loading......" : 
+               "submit api test"}
               </div>
            </div> */}
 
@@ -568,9 +574,16 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
                         </NavLink> 
                         </div>
                         <div className="icon"> 
-                        <NavLink to="https://chat.whatsapp.com/K1VoVtRnuTHF3054jI1bga"  target="_blank">
+      <NavLink to="https://wa.me/+447963341946?text=Hello%20BitWealthCapital%2C%20I%27m%20interested%20in%20your%20services"  target="_blank">
                           <FaWhatsappSquare />
                         </NavLink> 
+                        {/* <NavLink to="https://chat.whatsapp.com/K1VoVtRnuTHF3054jI1bga"  target="_blank">
+                          <FaWhatsappSquare />
+                        </NavLink> */}
+                        
+                        {/* <NavLink to="https://chat.whatsapp.com/+447963341946"  target="_blank">
+                          <FaWhatsappSquare />
+                        </NavLink>  */}
                         </div>
                         <div className="icon"> 
                         <NavLink to="#">

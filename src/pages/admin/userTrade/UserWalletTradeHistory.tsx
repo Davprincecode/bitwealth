@@ -1,27 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import SideMenu from '../../../component/SideMenu'
 import TopHeader from '../../../component/TopHeader'
-import { IoCheckmarkDoneSharp } from 'react-icons/io5';
-import { IoMdCheckmarkCircle } from 'react-icons/io';
-import { TbBackslash } from 'react-icons/tb';
-import { ImBackward2, ImForward3 } from 'react-icons/im';
 import { userAuth } from '../../context/AuthContext';
-import { MdAirplanemodeActive, MdAirplanemodeInactive, MdAutoDelete, MdRestore } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import { NavLink, useParams } from 'react-router-dom';
 
-
+interface wallet{
+  balance : string,
+walletId: string,
+walletName : string
+}
 
 function UserWalletTradeHistory() {
+    const [userWallet, setUserWallet] = useState<wallet[]>([]);
     const [navBar, setNavBar] = useState<boolean>(false); 
     const [loading, setLoading] = useState<boolean>(false);
-    const { userId } = useParams();
+    const [balance, setBalance] = useState<number>(0);
     const {baseUrl, token} = userAuth();
     
     const handleToggle = () => {
         setNavBar(!navBar);
       };
 
+
+      const { userId } = useParams();
       useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
@@ -34,13 +36,14 @@ function UserWalletTradeHistory() {
               redirect: 'follow'
             };
             try {
-              const response = await fetch(`${baseUrl}/getalluser`, requestOptions);
+              const response = await fetch(`${baseUrl}/wallet/${userId}`, requestOptions);
               if (!response.ok) {
                 const errorResponse = await response.json();
                 throw new Error(errorResponse.message);
               }
-              const result = await response.json();
-            //   setUsers(result.data);
+              const result = await response.json(); 
+              setUserWallet(result.data);
+              setBalance(result.total_balance); 
               setLoading(false);
             } catch (error) {
               
@@ -55,7 +58,6 @@ function UserWalletTradeHistory() {
         };
         fetchData();
       }, []);
-    
   return (
     <div>
 <div className="mainWrapper">
@@ -82,13 +84,13 @@ function UserWalletTradeHistory() {
                      <div className="estimatedBalance">
                         <div className="bal">
                           <h4>Estimated balance</h4>
-                          <h1>11000.300 <span> USDT</span></h1>  
+                          <h1>{balance} <span> USDT</span></h1>  
                         </div>
 
                         <div className="tradeOverview">
                         {/* /${userId} */}
                             <div className="trade">
-                                <NavLink to={`/future-history/${userId}`}> Spot </NavLink>
+                                <NavLink to={`/spot-history/${userId}`}> Spot </NavLink>
                             </div>
                             <div className="trade">
                                 <NavLink to={`/future-history/${userId}`}> Future </NavLink>
@@ -100,10 +102,14 @@ function UserWalletTradeHistory() {
                      <div className="estimateDeposit">
                         <div className="btnFlex">
                             <div className="payButton">
-                                deposit history
+                                <NavLink to={`/deposit-history/${userId}`}>
+                                    deposit history
+                                </NavLink>
                             </div>
                             <div className="payButton">
-                                withdraw history
+                                <NavLink to={`/withdraw-history/${userId}`}>
+                                    withdraw history
+                                </NavLink>
                             </div>
                         </div>
 
@@ -133,31 +139,31 @@ function UserWalletTradeHistory() {
                             <table>
                             <thead>
                             <tr >
-                                <th>Coin</th>
+                                <th>Wallet Name</th>
                                 <th>Amount</th>
-                                <th>Available</th> 
-                                <th>Frozen</th>
                             </tr>
                             </thead>
                             <tbody >
-                                <tr>
-                                <td>Funding</td>
-                                <td>1000</td>
-                                <td>200</td>
-                                <td>500</td>
-                                </tr> 
-                                <tr>
-                                <td>Funding</td>
-                                <td>1000</td>
-                                <td>200</td>
-                                <td>500</td>
-                                </tr> 
-                                <tr>
-                                <td>Funding</td>
-                                <td>1000</td>
-                                <td>200</td>
-                                <td>500</td>
-                                </tr>            
+                              {
+                                 loading ? (
+                                  <tr>
+                                    <td colSpan={7} className='emptyTd'>Loading....</td>
+                                </tr>
+                            ) : (
+                              userWallet.length > 0 ? (
+                                 userWallet.map((data, index)=>(
+                                    <tr key={index}>
+                                      <td>{data.walletName}</td>
+                                      <td>{data.balance}</td>
+                                    </tr> 
+                                )) 
+                                ) : (
+                                  <tr>
+                                    <td colSpan={7} className='emptyTd'>No wallet fund</td>
+                                  </tr>
+                                )
+                                )
+                              }        
                             </tbody>
                             </table> 
                         </div>

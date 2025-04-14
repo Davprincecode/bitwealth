@@ -11,14 +11,14 @@ import { FcApproval } from 'react-icons/fc';
 
 
 interface usersInterface { 
-address :  string;
-binanceApiKey :  string;
-fullname :  string;
-idCard :  string;
-okxApiKey :  string;
-proofOfAddress :  string;
-status :  string;
-userId :  string;
+    address :  string;
+    apiKey :  string;
+    secretKey :  string;
+    fullName :  string;
+    idCard :  string;
+    proofOfAddress :  string;
+    status :  string;
+    userId :  string;
 }
 
 function PendingKyc() {
@@ -157,8 +157,8 @@ function PendingKyc() {
                         <th>No</th>
                         <th>Name</th>
                         <th>address</th>
-                        <th>binance api</th>
-                        <th>okx api</th>
+                        <th>api key</th>
+                        <th>secret key</th>
                         <th>id card</th>
                         <th>proofOfAddress</th>
                         <th>Status</th>
@@ -171,10 +171,10 @@ function PendingKyc() {
                     users.map((user, id) => (
                         <tr  key={id}>
                            <td>{id + 1}</td> 
-                            <td>{user.fullname}</td> 
+                            <td>{user.fullName}</td> 
                             <td>{user.address}</td> 
-                            <td>{user.binanceApiKey}</td> 
-                            <td>{user.okxApiKey}</td> 
+                            <td>{user.apiKey}</td> 
+                            <td>{user.secretKey}</td> 
                             <td>
                                 <div className="kycImg">
                                     <img src={user.idCard} alt="" />

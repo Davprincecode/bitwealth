@@ -7,24 +7,24 @@ import { toast } from 'react-toastify';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 
 
-interface usersInterface { 
-    'user_id' :  string;
-    'signal_id' :  string;
-    'order_id' :  string;
-    'symbol' :  string;
-    'price' :  string;
-    'qty' :  string;
-    'quoteQty' :  string;
-    'commission' :  string;
-    'commissionAsset' :  string;
-    'date' :  string;
-    // 'balance_b4_trade' :  string;
-    // 'balance_after_trade'  :  string;
+interface depositInterface { 
+    address : string,
+    amount : string,
+    coin : string,
+    completeTime : string,
+    network : string,
+    status : string,
+    transferType : string,
+    txId : string,
+    userId : string,
+    walletType : string,
+    transactionFee : string,
+    applyTime : string
 }
 
-function SpotTrade() {
+function WithdrawTrade() {
     const [navBar, setNavBar] = useState<boolean>(false); 
-    const [spot, setSpot] = useState<usersInterface[]>([]);
+    const [deposit, setDeposit] = useState<depositInterface[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const { userId } = useParams();
     const {baseUrl, token} = userAuth();
@@ -45,15 +45,16 @@ function SpotTrade() {
               redirect: 'follow'
             };
             try {
-              const response = await fetch(`${baseUrl}/spot_trade/${userId}`, requestOptions);
+              const response = await fetch(`${baseUrl}/withdraw_history/${userId}`, requestOptions);
               if (!response.ok) {
                 const errorResponse = await response.json();
                 throw new Error(errorResponse.message);
               }
               const result = await response.json();
-              setSpot(result.data);
+              setDeposit(result.data);
               setLoading(false);
             } catch (error) {
+              
                 setLoading(false);
                 if (typeof error === "object" && error !== null && "message" in error && typeof error.message === "string") {
                 //   toast.error(error.message);
@@ -80,7 +81,7 @@ function SpotTrade() {
 <div className="mainContainer">
 
   <div className="mainContainersHeader">
-      <TopHeader pageTitle='Spot Trade' handleToggle={handleToggle}/>
+      <TopHeader pageTitle='Withdraw History' handleToggle={handleToggle}/>
   </div>
 
     
@@ -89,6 +90,9 @@ function SpotTrade() {
    <div className="mainContainerWrapper">
     
     <div className="tradingCon">
+
+        
+         
          {/* <div className="tradingFlex">
             <div className="tradingColumn">
                 name
@@ -103,17 +107,23 @@ function SpotTrade() {
                 </select>
             </div>
          </div> */}
+
+
         <div className="container-fluid">
+            {/* <div className="container-header">
+                 <h2>All Users</h2>
+            </div> */}
             <div className="container-body">
                 <div className="table-responsive">
                    <table>
                     <thead>
                     <tr >
                         <th>No</th>
-                        <th>Symbol</th>
-                        <th>Price</th> 
-                        <th>Quantity</th>
-                        <th>Quote Quantity</th>
+                        <th>Asset</th>
+                        <th>Network</th>
+                        <th>Amount</th>
+                        <th>Transaction fee</th> 
+                        <th>Wallet type</th>
                         <th>Date</th>
                     </tr>
                     </thead>
@@ -125,20 +135,22 @@ function SpotTrade() {
                       <td colSpan={7} className='emptyTd'>Loading....</td>
                   </tr>
               ) : (
-                spot.length > 0 ? 
-                (spot.map((data, id) => (
+                deposit.length > 0 ? 
+                ( deposit.map((data, id) => (
                         <tr  key={id}>
                            <td>{id + 1}</td>
-                           <td>{data.symbol}</td>
-                           <td>{data.price}</td>
-                           <td>{data.qty}</td>
-                           <td>{data.quoteQty}</td>
-                           <td>{data.date}</td>
+                           <td>{data.coin}</td>
+                           <td>{data.network}</td>
+                           <td>{data.amount}</td>
+                           <td>{data.transactionFee}</td>
+                           <td>{data.walletType}</td>
+                           <td>{data.applyTime}</td>
                         </tr>
-                    ))
-                    ) : (
+                    ) 
+                    )
+                    ): (
                         <tr>
-                            <td colSpan={7} className='emptyTd'>No Spot History</td>
+                            <td colSpan={7} className='emptyTd'>No Withdraw History</td>
                         </tr>
                     )
                     )
@@ -162,4 +174,4 @@ function SpotTrade() {
   )
 }
 
-export default SpotTrade
+export default WithdrawTrade

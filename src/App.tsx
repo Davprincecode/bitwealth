@@ -56,6 +56,11 @@ import PageResources from "./PageResources";
 import TradeUserList from "./pages/admin/TradeUserList";
 import UserWalletTradeHistory from "./pages/admin/userTrade/UserWalletTradeHistory";
 import FutureTrade from "./pages/admin/userTrade/FutureTrade";
+import SpotTrade from "./pages/admin/userTrade/SpotTrade";
+import DepositTrade from "./pages/admin/userTrade/DepositTrade";
+import WithdrawTrade from "./pages/admin/userTrade/WithdrawTrade";
+import FutureTradeHistory from "./pages/admin/userTrade/FutureTradeHistory";
+import OpenPosition from "./pages/admin/userTrade/OpenPosition";
 
 
 
@@ -127,7 +132,12 @@ function App() {
     <Route path="/user-list" element={<TradeUserList />} />
     <Route path="/user-trade-history/:userId" element={<UserWalletTradeHistory />} />
     <Route path="/future-history/:userId" element={<FutureTrade />} />
-{/* ================================= */}
+    <Route path="/spot-history/:userId" element={<SpotTrade/>} />
+    <Route path="/deposit-history/:userId" element={<DepositTrade/>} />
+    <Route path="/withdraw-history/:userId" element={<WithdrawTrade/>} />
+
+
+
     <Route path="/viewrefferal/:refferalId" element={<RefferalDetails />} />
     <Route path="/rejected-users" element={<RejectedUser />} />
     <Route path="/crypto-news" element={<CryptoNews />} />

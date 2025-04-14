@@ -13,24 +13,9 @@ import { NavLink } from 'react-router-dom';
 
 interface usersInterface { 
     userId :  string;
-    email :  string;
-    surName :  string;
-    firstName :  string;
-    country :  string;
-    createdDate :  string;
-    createdTime :  string;
-    dob :  string;
-    kycStatus: boolean;
-    membership: boolean;
-    paymentStatus: string;
-    phoneNumber :  string;
-    profileImg :  string;
-    role :  string;
-    refferalId: string;
-    referralNum : number;
-    status :  string;
-    kyc : string;
-    payment : string;
+    createdDate:  string;
+    fullName:  string;
+    userType:  string;
 }
 
 function TradeUserList() {
@@ -56,12 +41,14 @@ function TradeUserList() {
               redirect: 'follow'
             };
             try {
-              const response = await fetch(`${baseUrl}/getalluser`, requestOptions);
+              const response = await fetch(`${baseUrl}/getlistkyc`, requestOptions);
               if (!response.ok) {
                 const errorResponse = await response.json();
                 throw new Error(errorResponse.message);
               }
               const result = await response.json();
+              console.log(result.data);
+              
               setUsers(result.data);
               setLoading(false);
             } catch (error) {
@@ -110,8 +97,6 @@ function TradeUserList() {
                     <tr >
                         <th>No</th>
                         <th>Name</th>
-                        <th>Email</th> 
-                        <th>Phone Number</th>
                         <th>Membership</th>
                         <th>Created date</th>
                         <th>Status</th>
@@ -122,10 +107,8 @@ function TradeUserList() {
                 {users && users.map((user, id) => (
                         <tr  key={id}>
                            <td>{id + 1}</td>
-                           <td>{user.surName} {user.firstName}</td>
-                           <td>{user.email}</td>
-                           <td>{user.phoneNumber}</td>
-                           <td>{user.membership}</td>
+                           <td>{user.fullName}</td>
+                           <td>{user.userType}</td>
                            <td>{user.createdDate}</td>
                            <td><div className="refferalNav">
                                <NavLink to={`/user-trade-history/${user.userId}`}>view</NavLink>

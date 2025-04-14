@@ -5,33 +5,34 @@ import { ImBackward2, ImForward3 } from 'react-icons/im';
 import { userAuth } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
+import OpenPosition from './OpenPosition';
+import FutureTradeHistory from './FutureTradeHistory';
 
 
 interface usersInterface { 
-    userId :  string;
-    email :  string;
-    surName :  string;
-    firstName :  string;
-    country :  string;
-    createdDate :  string;
-    createdTime :  string;
-    dob :  string;
-    kycStatus: boolean;
-    membership: boolean;
-    paymentStatus: string;
-    phoneNumber :  string;
-    profileImg :  string;
-    role :  string;
-    refferalId: string;
-    referralNum : number;
-    status :  string;
-    kyc : string;
-    payment : string;
+  avg_price :  string;
+  client_order_id :  string;
+  cum_quote :  string;
+  date :  string;
+  executed_qty :  string;
+  order_id :  string;
+  orig_qty :  string;
+  orig_type :  string;
+  position_side :  string;
+  price :  string;
+  side :  string;
+  signal_id :  string;
+  stop_price :  string;
+  symbol :  string;
+  time_in_force :  string;
+  type :  string;
+  working_type :  string;
 }
 
 function FutureTrade() {
     const [navBar, setNavBar] = useState<boolean>(false); 
-    const [users, setUsers] = useState<usersInterface[]>([]);
+    const [openOrder, setOpenOrder] = useState<usersInterface[]>([]);
+    const [switchTrade, setSwitchTrade] = useState<string>("open_order");
     const [loading, setLoading] = useState<boolean>(false);
     const { userId } = useParams();
     const {baseUrl, token} = userAuth();
@@ -39,7 +40,9 @@ function FutureTrade() {
     const handleToggle = () => {
         setNavBar(!navBar);
       };
-
+    const switchFuture = (data : string) => {
+      setSwitchTrade(data);
+    }
       useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
@@ -52,19 +55,19 @@ function FutureTrade() {
               redirect: 'follow'
             };
             try {
-              const response = await fetch(`${baseUrl}/getalluser`, requestOptions);
+              const response = await fetch(`${baseUrl}/open_trade/${userId}`, requestOptions);
               if (!response.ok) {
                 const errorResponse = await response.json();
                 throw new Error(errorResponse.message);
               }
               const result = await response.json();
-              setUsers(result.data);
+              setOpenOrder(result.data);
               setLoading(false);
             } catch (error) {
               
                 setLoading(false);
                 if (typeof error === "object" && error !== null && "message" in error && typeof error.message === "string") {
-                  toast.error(error.message);
+                  // toast.error(error.message);
                 } else {
                   toast.error('An unknown error occurred.');
                 }
@@ -74,8 +77,6 @@ function FutureTrade() {
         fetchData();
       }, []);
 
-
-    
   return (
     <div>
 <div className="mainWrapper">
@@ -91,29 +92,32 @@ function FutureTrade() {
       <TopHeader pageTitle='Future Trade' handleToggle={handleToggle}/>
   </div>
 
-    
-     
      {/* ==========main container wrapper ============= */}
    <div className="mainContainerWrapper">
     
     <div className="tradingCon">
 
          <div className="tradingOrder">
-            <div className="order orderActive">
+
+
+            <div className={switchTrade == "open_order" ? "orderActive" : "order"} onClick={() => switchFuture("open_order")}>
                 open orders
-                <div className="orderDash orderDashActive"></div>
+                <div className={switchTrade == "open_order" ? "orderDashActive" : "orderDash"}></div>
             </div>
-            <div className="order">
+
+
+            <div className={switchTrade == "open_position" ? "orderActive" : "order"} onClick={() => switchFuture("open_position")}>
                 open position
-                <div className="orderDash "></div>
+                <div className={switchTrade == "open_position" ? "orderDashActive" : "orderDash"}></div>
             </div>
-            <div className="order">
+
+            <div className={switchTrade == "trade_history" ? "orderActive" : "order"}  onClick={() => switchFuture("trade_history")}>
                 trade history
-                <div className="orderDash "></div>
+                <div className={switchTrade == "trade_history" ? "orderDashActive" : "orderDash"}></div>
             </div>
          </div>
          
-         <div className="tradingFlex">
+         {/* <div className="tradingFlex">
             <div className="tradingColumn">
                 name
             </div>
@@ -126,49 +130,76 @@ function FutureTrade() {
                     <option value="symbol">XRPUSDT</option>
                 </select>
             </div>
-         </div>
+         </div> */}
 
 
         <div className="container-fluid">
-            {/* <div className="container-header">
-                 <h2>All Users</h2>
-            </div> */}
-            <div className="container-body">
-                <div className="table-responsive">
-                   <table>
-                    <thead>
-                    <tr >
-                        <th>No</th>
-                        <th>Name</th>
-                        <th>Email</th> 
-                        <th>Phone Number</th>
-                        <th>Membership</th>
-                        <th>Created date</th>
-                        <th>Status</th>
-                    </tr>
-                    </thead>
+            
 
-                    <tbody >
-                {users && users.map((user, id) => (
-                        <tr  key={id}>
-                           <td>{id + 1}</td>
-                           <td>{user.surName} {user.firstName}</td>
-                           <td>{user.email}</td>
-                           <td>{user.phoneNumber}</td>
-                           <td>{user.membership}</td>
-                           <td>{user.createdDate}</td>
-                           <td><div className="refferalNav">
-                               <NavLink to={`/user-trade-history/${user.userId}`}>view</NavLink>
-                              </div>
-                            </td>
-                           
-                        </tr>
-                    ))
-                }                        
-                    </tbody>
-                    </table> 
-                </div>
-            </div>
+            {
+              switchTrade == "open_order" ? (
+                  <div className="container-body">
+                      <div className="table-responsive">
+                        <table>
+                          <thead>
+                          <tr >
+                              <th>No</th>
+                              <th>symbol</th>
+                              <th>price</th> 
+                              <th>orig quantity</th>
+                              <th>orig type</th>
+                              <th>position side</th>
+                              <th>side</th>
+                              <th>stop price</th>
+                              <th>type</th>
+                              <th>working type</th>
+                              <th>date</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+
+
+                      {
+                        loading ? (
+                              <tr>
+                                <td colSpan={7} className='emptyTd'>Loading....</td>
+                            </tr>
+                        ) : (
+                      openOrder.length > 0 ? (
+                        openOrder.map((data, id) => (
+                              <tr  key={id}>
+                                <td>{id + 1}</td>
+                                <td>{data.symbol}</td>
+                                <td>{data.price}</td>
+                                <td>{data.orig_qty}</td>
+                                <td>{data.orig_type}</td>
+                                <td>{data.position_side}</td>
+                                <td>{data.side}</td>
+                                <td>{data.stop_price}</td>
+                                <td>{data.type}</td>
+                                <td>{data.working_type}</td>
+                                <td>{data.date}</td>
+                              </tr>
+                          ))
+
+                          ) : (
+                            <tr>
+                                <td colSpan={7} className='emptyTd'>No Future History</td>
+                            </tr>
+                        )
+                        )
+                      }                        
+                          </tbody>
+                          </table> 
+                      </div>
+                  </div>
+              ) : switchTrade == "open_position" ? (
+               <OpenPosition userId={userId}/>
+              ) : switchTrade == "trade_history" ? (
+                <FutureTradeHistory userId={userId}/>
+              ) : null
+            }
+            
 
            
         </div>

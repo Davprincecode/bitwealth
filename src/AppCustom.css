@@ -1418,12 +1418,15 @@ font-size: 20px;
 .tradingOrder .orderActive{
 color: white;
 }
+.bodyappwhite .orderActive{
+color: #000000 !important;
+}
 
 .tradingOrder .order .orderDash{
   margin-top: 2px;
   width: 40px;
 }
-.tradingOrder .order .orderDashActive{
+ .orderDashActive{
   margin-top: 2px;
   width: 40px; 
   border-top: 2px solid #e1712d;
@@ -1805,11 +1808,14 @@ text-transform: capitalize;
 background-color: #e1712d;
 padding: 2px 10px;
 border-radius: 4px;
+text-align: center;
 }
 .refferalNav a{
 
 }
-
+.backArrow{
+  cursor: pointer;
+}
 /* ======= refferal end ========= */
 
 
@@ -1997,7 +2003,11 @@ border-radius: 4px;
 .price-change.red {
   color: #ff3b30;
 }
-
+.emptyTd{
+  text-align: center;
+  padding-top: 16px;
+  font-weight: 700;
+}
 @media(max-width : 400px){
   .grid-container{
     display: block;
