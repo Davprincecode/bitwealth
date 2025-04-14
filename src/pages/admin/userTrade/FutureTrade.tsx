@@ -61,6 +61,8 @@ function FutureTrade() {
                 throw new Error(errorResponse.message);
               }
               const result = await response.json();
+              console.log(result.data);
+              
               setOpenOrder(result.data);
               setLoading(false);
             } catch (error) {
@@ -147,6 +149,7 @@ function FutureTrade() {
                               <th>symbol</th>
                               <th>price</th> 
                               <th>orig quantity</th>
+                              <th>executed quantity</th>
                               <th>orig type</th>
                               <th>position side</th>
                               <th>side</th>
@@ -172,6 +175,7 @@ function FutureTrade() {
                                 <td>{data.symbol}</td>
                                 <td>{data.price}</td>
                                 <td>{data.orig_qty}</td>
+                                <td>{data.executed_qty}</td>
                                 <td>{data.orig_type}</td>
                                 <td>{data.position_side}</td>
                                 <td>{data.side}</td>

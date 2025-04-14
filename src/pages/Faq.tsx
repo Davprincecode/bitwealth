@@ -29,7 +29,8 @@ const FAQ = () => {
         },
         {
           question: 'What are the fees and revshare on profits associated with the trade club/hedge fund?',
-          answer: 'The trade club has a commitment fee of $50 and a revshare of 10% at the end of a cryptocurrency market cycle or annually. The hedge fund has a management fee of 2.5% of Assets Under Management (AUM) and a revshare of 20% of profits.',
+          // answer: 'The trade club has a commitment fee of $50 and a revshare of 10% at the end of a cryptocurrency market cycle or annually. The hedge fund has a management fee of 2.5% of Assets Under Management (AUM) and a revshare of 20% of profits.',
+          answer : 'The trade club has a commitment fee of $50 and a revshare of 15% at the end of a cryptocurrency market cycle or annually. The hedge fund has a management fee of 2.5% of Assets Under Management (AUM) and a revshare of 30% of profits.',
           icon: '',
         },
         {

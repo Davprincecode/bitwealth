@@ -83,9 +83,9 @@ interface AuthProviderProps {
     const navigate = useNavigate();
     const location = useLocation();
    
-    // const [baseUrl] = useState<string>('http://127.0.0.1:8000/api/v1');
+    const [baseUrl] = useState<string>('http://127.0.0.1:8000/api/v1');
     
-    const [baseUrl] = useState<string>('https://apis.bitwealthcapital.org/api/v1');
+    // const [baseUrl] = useState<string>('https://apis.bitwealthcapital.org/api/v1');
   
     const [userId, setUserID] = useState<string>('');
     const [email, setEmail] = useState<string>('');

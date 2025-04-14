@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { userAuth } from '../../context/AuthContext';
 
 interface usersInterface { 
+    symbol : string;
     entryPrice :  string;
     breakEvenPrice : string;
     initialMargin : string;
@@ -45,6 +46,8 @@ const OpenPosition : React.FC<posProp> = ({userId}) => {
                 throw new Error(errorResponse.message);
               }
               const result = await response.json();
+              console.log(result.data);
+              
               setOpenPosition(result.data);
               setLoading(false);
             } catch (error) {
@@ -70,6 +73,7 @@ const OpenPosition : React.FC<posProp> = ({userId}) => {
                     <thead>
                     <tr >
                         <th>No</th>
+                        <th>symbol</th>
                         <th>entryPrice</th> 
                         <th>breakEvenPrice</th>
                         <th>initialMargin</th>
@@ -79,6 +83,7 @@ const OpenPosition : React.FC<posProp> = ({userId}) => {
                         <th>markPrice</th>
                         <th>positionAmt</th>
                         <th>positionSide</th>
+                        <th>trade type</th>
                         <th>unRealizedProfit</th>
                         <th>positionInitial_margin</th>
                         <th>date</th>
@@ -96,6 +101,7 @@ const OpenPosition : React.FC<posProp> = ({userId}) => {
                     openPosition.map((data, id) => (
                         <tr  key={id}>
                            <td>{id + 1}</td>
+                           <td>{data.symbol}</td>
                             <td>{data.entryPrice}</td>
                             <td>{data.breakEvenPrice}</td>
                             <td>{data.initialMargin}</td>
@@ -105,6 +111,7 @@ const OpenPosition : React.FC<posProp> = ({userId}) => {
                             <td>{data.markPrice}</td>
                             <td>{data.positionAmt}</td>
                             <td>{data.positionSide}</td>
+                            <td>{parseFloat(data.positionAmt) >= 0 ? "Long/Buy" : "Short/Sell"}</td>
                             <td>{data.unRealizedProfit}</td>
                             <td>{data.positionInitial_margin}</td>
                             <td>{data.updateDate}</td>
