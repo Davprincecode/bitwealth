@@ -634,7 +634,7 @@ const LandingPage: React.FC<LandingProp> = ({ colorSwitchFunction, colorSwitch }
           
       </div>
        <div className="copyright">
-            <p>© 2025 ismodev. All rights reserved.</p>
+            <p>© 2025 BitWealthCapital. All rights reserved.</p>
            </div>
       </div>
       
